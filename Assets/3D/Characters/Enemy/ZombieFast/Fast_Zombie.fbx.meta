@@ -1,0 +1,1039 @@
+fileFormatVersion: 2
+guid: b9e59dcb9cc9a9e46bee5b8101e86d7d
+timeCreated: 1484189505
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bip01
+    100002: Bip01 HeadNub
+    100004: Bip01 Ponytail1Nub
+    100006: Bip01_Head1
+    100008: Bip01_Jaw_Bone
+    100010: Bip01_L_Calf
+    100012: Bip01_L_Clavicle
+    100014: Bip01_L_Finger01
+    100016: Bip01_L_Finger02
+    100018: Bip01_L_Finger03
+    100020: Bip01_L_Finger11
+    100022: Bip01_L_Finger12
+    100024: Bip01_L_Finger13
+    100026: Bip01_L_Foot
+    100028: Bip01_L_Forearm
+    100030: Bip01_L_Hand
+    100032: Bip01_L_Thigh
+    100034: Bip01_L_Toe0
+    100036: Bip01_L_UpperArm
+    100038: Bip01_Neck1
+    100040: Bip01_Pelvis
+    100042: Bip01_R_Calf
+    100044: Bip01_R_Clavicle
+    100046: Bip01_R_Finger01
+    100048: Bip01_R_Finger02
+    100050: Bip01_R_Finger03
+    100052: Bip01_R_Finger41
+    100054: Bip01_R_Finger42
+    100056: Bip01_R_Finger43
+    100058: Bip01_R_Foot
+    100060: Bip01_R_Forearm
+    100062: Bip01_R_Hand
+    100064: Bip01_R_Thigh
+    100066: Bip01_R_Toe0
+    100068: Bip01_R_UpperArm
+    100070: Bip01_Spine
+    100072: Bip01_Spine1
+    100074: Bip01_Spine2
+    100076: //RootNode
+    100078: LToeeff
+    100080: objFastZombie_ArtSun
+    100082: RToeeff
+    100084: Bip01 Footsteps
+    100086: Bip01 Head
+    100088: Bip01 L Calf
+    100090: Bip01 L Clavicle
+    100092: Bip01 L Finger0
+    100094: Bip01 L Finger01
+    100096: Bip01 L Finger0Nub
+    100098: Bip01 L Finger1
+    100100: Bip01 L Finger11
+    100102: Bip01 L Finger1Nub
+    100104: Bip01 L Foot
+    100106: Bip01 L Forearm
+    100108: Bip01 L Hand
+    100110: Bip01 L Thigh
+    100112: Bip01 L Toe0
+    100114: Bip01 L Toe0Nub
+    100116: Bip01 L UpperArm
+    100118: Bip01 Neck
+    100120: Bip01 Pelvis
+    100122: Bip01 Ponytail1
+    100124: Bip01 R Calf
+    100126: Bip01 R Clavicle
+    100128: Bip01 R Finger0
+    100130: Bip01 R Finger01
+    100132: Bip01 R Finger0Nub
+    100134: Bip01 R Finger1
+    100136: Bip01 R Finger11
+    100138: Bip01 R Finger1Nub
+    100140: Bip01 R Foot
+    100142: Bip01 R Forearm
+    100144: Bip01 R Hand
+    100146: Bip01 R Thigh
+    100148: Bip01 R Toe0
+    100150: Bip01 R Toe0Nub
+    100152: Bip01 R UpperArm
+    100154: Bip01 Spine
+    100156: Bip01 Spine1
+    400000: Bip01
+    400002: Bip01 HeadNub
+    400004: Bip01 Ponytail1Nub
+    400006: Bip01_Head1
+    400008: Bip01_Jaw_Bone
+    400010: Bip01_L_Calf
+    400012: Bip01_L_Clavicle
+    400014: Bip01_L_Finger01
+    400016: Bip01_L_Finger02
+    400018: Bip01_L_Finger03
+    400020: Bip01_L_Finger11
+    400022: Bip01_L_Finger12
+    400024: Bip01_L_Finger13
+    400026: Bip01_L_Foot
+    400028: Bip01_L_Forearm
+    400030: Bip01_L_Hand
+    400032: Bip01_L_Thigh
+    400034: Bip01_L_Toe0
+    400036: Bip01_L_UpperArm
+    400038: Bip01_Neck1
+    400040: Bip01_Pelvis
+    400042: Bip01_R_Calf
+    400044: Bip01_R_Clavicle
+    400046: Bip01_R_Finger01
+    400048: Bip01_R_Finger02
+    400050: Bip01_R_Finger03
+    400052: Bip01_R_Finger41
+    400054: Bip01_R_Finger42
+    400056: Bip01_R_Finger43
+    400058: Bip01_R_Foot
+    400060: Bip01_R_Forearm
+    400062: Bip01_R_Hand
+    400064: Bip01_R_Thigh
+    400066: Bip01_R_Toe0
+    400068: Bip01_R_UpperArm
+    400070: Bip01_Spine
+    400072: Bip01_Spine1
+    400074: Bip01_Spine2
+    400076: //RootNode
+    400078: LToeeff
+    400080: objFastZombie_ArtSun
+    400082: RToeeff
+    400084: Bip01 Footsteps
+    400086: Bip01 Head
+    400088: Bip01 L Calf
+    400090: Bip01 L Clavicle
+    400092: Bip01 L Finger0
+    400094: Bip01 L Finger01
+    400096: Bip01 L Finger0Nub
+    400098: Bip01 L Finger1
+    400100: Bip01 L Finger11
+    400102: Bip01 L Finger1Nub
+    400104: Bip01 L Foot
+    400106: Bip01 L Forearm
+    400108: Bip01 L Hand
+    400110: Bip01 L Thigh
+    400112: Bip01 L Toe0
+    400114: Bip01 L Toe0Nub
+    400116: Bip01 L UpperArm
+    400118: Bip01 Neck
+    400120: Bip01 Pelvis
+    400122: Bip01 Ponytail1
+    400124: Bip01 R Calf
+    400126: Bip01 R Clavicle
+    400128: Bip01 R Finger0
+    400130: Bip01 R Finger01
+    400132: Bip01 R Finger0Nub
+    400134: Bip01 R Finger1
+    400136: Bip01 R Finger11
+    400138: Bip01 R Finger1Nub
+    400140: Bip01 R Foot
+    400142: Bip01 R Forearm
+    400144: Bip01 R Hand
+    400146: Bip01 R Thigh
+    400148: Bip01 R Toe0
+    400150: Bip01 R Toe0Nub
+    400152: Bip01 R UpperArm
+    400154: Bip01 Spine
+    400156: Bip01 Spine1
+    2300000: objFastZombie_ArtSun
+    3300000: objFastZombie_ArtSun
+    4300000: objFastZombie_ArtSun
+    7400000: idle
+    7400002: walk
+    7400004: catch
+    7400006: gnaw
+    7400008: tore
+    7400010: hit
+    7400012: dead_backward
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: objFastZombie_ArtSun
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0/LToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0/RToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01
+          HeadNub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone/Bip01
+          Ponytail1Nub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02/Bip01_L_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12/Bip01_L_Finger13
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02/Bip01_R_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42/Bip01_R_Finger43
+        weight: 0
+      - path: objFastZombie_ArtSun
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: walk
+      takeName: Take 001
+      firstFrame: 45
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0/LToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0/RToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01
+          HeadNub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone/Bip01
+          Ponytail1Nub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02/Bip01_L_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12/Bip01_L_Finger13
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02/Bip01_R_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42/Bip01_R_Finger43
+        weight: 0
+      - path: objFastZombie_ArtSun
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: catch
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 127
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0/LToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0/RToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01
+          HeadNub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone/Bip01
+          Ponytail1Nub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02/Bip01_L_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12/Bip01_L_Finger13
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02/Bip01_R_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42/Bip01_R_Finger43
+        weight: 0
+      - path: objFastZombie_ArtSun
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: gnaw
+      takeName: Take 001
+      firstFrame: 130
+      lastFrame: 184
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.97381556
+        functionName: ExecuteEvent
+        data: OnAnimatorItemEndUse
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0/LToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0/RToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01
+          HeadNub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone/Bip01
+          Ponytail1Nub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02/Bip01_L_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12/Bip01_L_Finger13
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02/Bip01_R_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42/Bip01_R_Finger43
+        weight: 0
+      - path: objFastZombie_ArtSun
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: tore
+      takeName: Take 001
+      firstFrame: 190
+      lastFrame: 225
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0/LToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0/RToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01
+          HeadNub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone/Bip01
+          Ponytail1Nub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02/Bip01_L_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12/Bip01_L_Finger13
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02/Bip01_R_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42/Bip01_R_Finger43
+        weight: 0
+      - path: objFastZombie_ArtSun
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: hit
+      takeName: Take 001
+      firstFrame: 230
+      lastFrame: 252
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0/LToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0/RToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01
+          HeadNub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone/Bip01
+          Ponytail1Nub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02/Bip01_L_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12/Bip01_L_Finger13
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02/Bip01_R_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42/Bip01_R_Finger43
+        weight: 0
+      - path: objFastZombie_ArtSun
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: dead_backward
+      takeName: Take 001
+      firstFrame: 255
+      lastFrame: 303
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_L_Thigh/Bip01_L_Calf/Bip01_L_Foot/Bip01_L_Toe0/LToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_R_Thigh/Bip01_R_Calf/Bip01_R_Foot/Bip01_R_Toe0/RToeeff
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01
+          HeadNub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_Head1/Bip01_Jaw_Bone/Bip01
+          Ponytail1Nub
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger01/Bip01_L_Finger02/Bip01_L_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_L_Clavicle/Bip01_L_UpperArm/Bip01_L_Forearm/Bip01_L_Hand/Bip01_L_Finger11/Bip01_L_Finger12/Bip01_L_Finger13
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger01/Bip01_R_Finger02/Bip01_R_Finger03
+        weight: 0
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42
+        weight: 1
+      - path: Bip01/Bip01_Pelvis/Bip01_Spine/Bip01_Spine1/Bip01_Neck1/Bip01_R_Clavicle/Bip01_R_UpperArm/Bip01_R_Forearm/Bip01_R_Hand/Bip01_R_Finger41/Bip01_R_Finger42/Bip01_R_Finger43
+        weight: 0
+      - path: objFastZombie_ArtSun
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
