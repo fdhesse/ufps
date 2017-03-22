@@ -1,0 +1,193 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Matte
+  m_Shader: {fileID: 4800000, guid: 8c0b2bcc63e7847d0b2febbe7fb9ebce, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _BaseTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BumpMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Control
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 39b4668168fcfbc4e84fd26358cc04d0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Normal0
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Normal1
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Normal2
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Normal3
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SkyCubeIBL
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SpecTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Splat0
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Splat1
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Splat2
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Splat3
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _DetailWeight
+      second: 1
+    - first:
+        name: _DiffFresnel
+      second: 0
+    - first:
+        name: _FadeNear
+      second: 500
+    - first:
+        name: _FadeRange
+      second: 100
+    - first:
+        name: _Fresnel
+      second: 0
+    - first:
+        name: _Fresnel0
+      second: 0
+    - first:
+        name: _Fresnel1
+      second: 0
+    - first:
+        name: _Fresnel2
+      second: 0
+    - first:
+        name: _Fresnel3
+      second: 0
+    - first:
+        name: _Fresnel4
+      second: 0
+    - first:
+        name: _Fresnel5
+      second: 0
+    - first:
+        name: _Fresnel6
+      second: 0
+    - first:
+        name: _Fresnel7
+      second: 0
+    - first:
+        name: _Gloss0
+      second: 1
+    - first:
+        name: _Gloss1
+      second: 1
+    - first:
+        name: _Gloss2
+      second: 1
+    - first:
+        name: _Gloss3
+      second: 1
+    - first:
+        name: _OccStrength
+      second: 1
+    - first:
+        name: _ShadowInt
+      second: 0.53571427
+    - first:
+        name: _Shininess
+      second: 4
+    - first:
+        name: _SpecFresnel
+      second: 0
+    - first:
+        name: _SpecInt
+      second: 1
+    - first:
+        name: _SpecInt0
+      second: 1
+    - first:
+        name: _SpecInt1
+      second: 1
+    - first:
+        name: _SpecInt2
+      second: 1
+    - first:
+        name: _SpecInt3
+      second: 1
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Emission
+      second: {r: 0, g: 0, b: 0, a: 0}
+    - first:
+        name: _ShadowColor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 1, g: 1, b: 1, a: 1}

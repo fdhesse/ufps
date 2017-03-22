@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 108: {fileID: 10800000}
+  m_Layer: 0
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400002}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: Austria
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: -0.15385206, y: 0.31700605, z: -0.052195832, w: -0.9344048}
+  m_LocalPosition: {x: 0, y: 3.7313023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 0
+--- !u!4 &400002
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 400000}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!108 &10800000
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 0
+  serializedVersion: 7
+  m_Type: 1
+  m_Color: {r: 1, g: 0.977351, b: 0.76865673, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: 3
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.041
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967039
+  m_Lightmapping: 1
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c992e8fbb96f7b3498a28a9e664f95df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specularCube: {fileID: 8900000, guid: 974ac51f7c9d1004b89cb94fb7009210, type: 2}
+  skyboxCube: {fileID: 8900000, guid: dc8fa8bc22a95bf4c816265a7f482e8b, type: 2}
+  IsProbe: 0
+  dimensions:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+  masterIntensity: 0.5
+  skyIntensity: 1.5
+  specIntensity: 1
+  diffIntensity: 1
+  camExposure: 1
+  specIntensityLM: 1
+  diffIntensityLM: 1
+  hdrSky: 1
+  hdrSpec: 1
+  linearSpace: 1
+  autoDetectColorSpace: 1
+  hasDimensions: 0
+  SH:
+    c:
+    - 2.1697884
+    - 2.083092
+    - 2.159418
+    - 0.37342578
+    - 0.6407261
+    - 0.9664669
+    - -0.3903864
+    - -0.40888426
+    - -0.37805662
+    - 0.36878443
+    - 0.47469744
+    - 0.5179888
+    - 0.045793425
+    - 0.056878544
+    - 0.070474744
+    - -0.10321908
+    - -0.090433106
+    - -0.08179845
+    - 0.14442666
+    - 0.13489386
+    - 0.117238976
+    - -0.25515088
+    - -0.23173049
+    - -0.19696277
+    - 0.12905608
+    - 0.10194715
+    - 0.062116705
+    cBuffer:
+    - {x: 0.61208594, y: 0.5876294, z: 0.60916054, w: 0}
+    - {x: 0.18245676, y: 0.31306037, z: 0.47221813, w: 0}
+    - {x: -0.19074377, y: -0.19978186, z: -0.1847194, w: 0}
+    - {x: 0.18018898, y: 0.23193835, z: 0.25309062, w: 0}
+    - {x: 0.05003154, y: 0.06214257, z: 0.07699707, w: 0}
+    - {x: -0.11277185, y: -0.09880255, z: -0.089368775, w: 0}
+    - {x: 0.04555095, y: 0.042544387, z: 0.036976185, w: 0}
+    - {x: -0.27876472, y: -0.2531768, z: -0.21519138, w: 0}
+    - {x: 0.070500016, y: 0.055691104, z: 0.033932757, w: 0}
+  CustomSH: {fileID: 0}
+  _blackCube: {fileID: 0}
+  _SkyboxMaterial: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100002}
+  m_IsPrefabParent: 1

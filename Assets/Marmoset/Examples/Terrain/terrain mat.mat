@@ -1,0 +1,223 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: terrain mat
+  m_Shader: {fileID: 4800000, guid: 3587b6a54b1c8914c9d7d07edb105bf4, type: 3}
+  m_ShaderKeywords: MARMO_BOX_PROJECTION_OFF MARMO_SKY_BLEND_OFF
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _BaseTex
+      second:
+        m_Texture: {fileID: 2800000, guid: d6c48bd22abad5b4b92b216474932a15, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BumpMap
+      second:
+        m_Texture: {fileID: 2800000, guid: 5a10c0b79464c5d4f836cd8ee16e7ba2, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Control
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DiffCubeIBL
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Normal0
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Normal1
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Normal2
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Normal3
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _OccTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SpecCubeIBL
+      second:
+        m_Texture: {fileID: 8900000, guid: 974ac51f7c9d1004b89cb94fb7009210, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SpecTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Splat0
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Splat1
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Splat2
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Splat3
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _DetailWeight
+      second: 1
+    - first:
+        name: _DiffFresnel
+      second: 0
+    - first:
+        name: _FadeNear
+      second: 700
+    - first:
+        name: _FadeRange
+      second: 100
+    - first:
+        name: _Fresnel
+      second: 0
+    - first:
+        name: _Fresnel0
+      second: 0
+    - first:
+        name: _Fresnel1
+      second: 0
+    - first:
+        name: _Fresnel2
+      second: 0
+    - first:
+        name: _Fresnel3
+      second: 0
+    - first:
+        name: _Fresnel4
+      second: 0
+    - first:
+        name: _Fresnel5
+      second: 0
+    - first:
+        name: _Fresnel6
+      second: 0
+    - first:
+        name: _Fresnel7
+      second: 0
+    - first:
+        name: _Gloss0
+      second: 1
+    - first:
+        name: _Gloss1
+      second: 1
+    - first:
+        name: _Gloss2
+      second: 1
+    - first:
+        name: _Gloss3
+      second: 1
+    - first:
+        name: _OccStrength
+      second: 1
+    - first:
+        name: _Shininess
+      second: 3.5217812
+    - first:
+        name: _SkyID
+      second: 0
+    - first:
+        name: _SpecFresnel
+      second: 1
+    - first:
+        name: _SpecInt
+      second: 1
+    - first:
+        name: _SpecInt0
+      second: 0.35714287
+    - first:
+        name: _SpecInt1
+      second: 0.38461536
+    - first:
+        name: _SpecInt2
+      second: 0.37087914
+    - first:
+        name: _SpecInt3
+      second: 0.5041209
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Tiling0
+      second: {r: 100, g: 100, b: 0, a: 0}
+    - first:
+        name: _Tiling1
+      second: {r: 50, g: 50, b: 0, a: 0}
+    - first:
+        name: _Tiling2
+      second: {r: 100, g: 100, b: 0, a: 0}
+    - first:
+        name: _Tiling3
+      second: {r: 100, g: 100, b: 0, a: 0}
+    - first:
+        name: _Tiling4
+      second: {r: 10, g: 10, b: 0.1, a: 0.1}
+    - first:
+        name: _Tiling5
+      second: {r: 100, g: 100, b: 0, a: 0}
+    - first:
+        name: _Tiling6
+      second: {r: 100, g: 100, b: 0, a: 0}
+    - first:
+        name: _Tiling7
+      second: {r: 100, g: 100, b: 0, a: 0}
