@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MeshMat
+  m_Shader: {fileID: 4800000, guid: 6c878572b37d9444fbe97119bbf1c765, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _BumpMap
+      second:
+        m_Texture: {fileID: 2800000, guid: f270c3093473d6e4f92bcdf33511bfdf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BumpTex
+      second:
+        m_Texture: {fileID: 2800000, guid: f270c3093473d6e4f92bcdf33511bfdf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DiffCubeIBL
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 34fd97228cb445a4d8716e9908c9348c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SpecCubeIBL
+      second:
+        m_Texture: {fileID: 8900000, guid: 3ad2fe3979f526d459e6a6fd65c124af, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SpecTex
+      second:
+        m_Texture: {fileID: 2800000, guid: a8b04aeca7d0a8d46b20424d39f354bc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SpecularMap
+      second:
+        m_Texture: {fileID: 2800000, guid: a8b04aeca7d0a8d46b20424d39f354bc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SubdermisTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _TranslucencyMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Cutoff
+      second: 0
+    - first:
+        name: _Fresnel
+      second: 0
+    - first:
+        name: _FresnelFalloff
+      second: 0
+    - first:
+        name: _Fuzz
+      second: 0
+    - first:
+        name: _FuzzOcc
+      second: 0.5
+    - first:
+        name: _FuzzScatter
+      second: 1
+    - first:
+        name: _Shininess
+      second: 6.5691047
+    - first:
+        name: _SkyID
+      second: 0
+    - first:
+        name: _SpecInt
+      second: 1
+    - first:
+        name: _SpecularIntensity
+      second: 2
+    - first:
+        name: _SpecularSharpness
+      second: 0.9464286
+    - first:
+        name: _Subdermis
+      second: 0
+    - first:
+        name: _Translucency
+      second: 0
+    - first:
+        name: _TranslucencySky
+      second: 0
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
+    - first:
+        name: _DiffuseColor
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - first:
+        name: _FuzzColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _SpecularColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _SubdermisColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _TranslucencyColor
+      second: {r: 1, g: 0.5, b: 0.4, a: 1}
