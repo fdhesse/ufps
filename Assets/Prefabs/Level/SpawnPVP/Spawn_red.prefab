@@ -1,0 +1,276 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1844846075452128}
+  m_IsPrefabParent: 1
+--- !u!1 &1061155009608610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4117272738630312}
+  - component: {fileID: 114748183351552546}
+  m_Layer: 0
+  m_Name: Red2
+  m_TagString: Red
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1160129272846038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4143116421416358}
+  - component: {fileID: 114165791729353494}
+  m_Layer: 0
+  m_Name: Red3
+  m_TagString: Red
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1170138664872476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4026173423461270}
+  - component: {fileID: 114199253163456094}
+  m_Layer: 0
+  m_Name: Red1
+  m_TagString: Red
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1844846075452128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4456436012376674}
+  m_Layer: 0
+  m_Name: Spawn_red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1892386339447046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4581167319679506}
+  - component: {fileID: 114635744840894710}
+  m_Layer: 0
+  m_Name: Red5
+  m_TagString: Red
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1925836693257106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4413091223163176}
+  - component: {fileID: 114459054118248624}
+  m_Layer: 0
+  m_Name: Red4
+  m_TagString: Red
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4026173423461270
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170138664872476}
+  m_LocalRotation: {x: -0, y: 0.65951157, z: -0, w: -0.7516945}
+  m_LocalPosition: {x: 174.56, y: -0.01, z: 133.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4456436012376674}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -82.728004, z: 0}
+--- !u!4 &4117272738630312
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061155009608610}
+  m_LocalRotation: {x: -0, y: 0.70417625, z: -0, w: -0.7100252}
+  m_LocalPosition: {x: 180.12, y: -0.15, z: 134.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4456436012376674}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 270.46, z: 0}
+--- !u!4 &4143116421416358
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160129272846038}
+  m_LocalRotation: {x: -0, y: 0.7696387, z: -0, w: -0.63847965}
+  m_LocalPosition: {x: 179.55, y: -0.48, z: 142.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4456436012376674}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -100.378006, z: 0}
+--- !u!4 &4413091223163176
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925836693257106}
+  m_LocalRotation: {x: -0, y: 0.7623131, z: -0, w: -0.6472084}
+  m_LocalPosition: {x: 173.8, y: -0.31, z: 142.91998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4456436012376674}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: -99.095, z: 0}
+--- !u!4 &4456436012376674
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844846075452128}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -36.39801, y: 38.327724, z: -62.37696}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4026173423461270}
+  - {fileID: 4117272738630312}
+  - {fileID: 4143116421416358}
+  - {fileID: 4413091223163176}
+  - {fileID: 4581167319679506}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4581167319679506
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892386339447046}
+  m_LocalRotation: {x: -0, y: 0.6854443, z: -0, w: -0.72812515}
+  m_LocalPosition: {x: 178, y: -0.16, z: 138.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4456436012376674}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: -86.64101, z: 0}
+--- !u!114 &114165791729353494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160129272846038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaafec1a22871c845accc1a9f5a02feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomDirection: 0
+  Radius: 0
+  GroundSnapThreshold: 2
+  LockGroundSnapToRadius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 0.23529412}
+  m_MarkerStyle: 2
+--- !u!114 &114199253163456094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170138664872476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaafec1a22871c845accc1a9f5a02feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomDirection: 0
+  Radius: 0
+  GroundSnapThreshold: 2
+  LockGroundSnapToRadius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 0.23529412}
+  m_MarkerStyle: 2
+--- !u!114 &114459054118248624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925836693257106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaafec1a22871c845accc1a9f5a02feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomDirection: 0
+  Radius: 0
+  GroundSnapThreshold: 2
+  LockGroundSnapToRadius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 0.23529412}
+  m_MarkerStyle: 2
+--- !u!114 &114635744840894710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892386339447046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaafec1a22871c845accc1a9f5a02feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomDirection: 0
+  Radius: 0
+  GroundSnapThreshold: 2
+  LockGroundSnapToRadius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 0.23529412}
+  m_MarkerStyle: 2
+--- !u!114 &114748183351552546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061155009608610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaafec1a22871c845accc1a9f5a02feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomDirection: 0
+  Radius: 0
+  GroundSnapThreshold: 2
+  LockGroundSnapToRadius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 0.23529412}
+  m_MarkerStyle: 2
