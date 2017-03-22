@@ -1,0 +1,34 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request5200Pack 		// 购买一个商品
+{
+	required uint32 UserID = 1;
+	required string ProduceId = 2;   // 商品ID
+	required bool IsUseVipGold = 3;		//是否用VipGold补齐
+}
+
+message Response5200Pack
+{
+	required uint32	ErrorCode		= 1;  // 逻辑错误码
+  required string ProduceId = 2;   																		// 商品ID		
+	required Game.KingsMan.Cfg.PayPriceVec PriceVec = 3;								// 不足的资源
+	required int32 NeedVipGold = 4;																			//使用VipGold补齐
+	required int32 LastCount = 5;								//剩余次数
+	required bool IsUseVipGold = 6;							//是否用VipGold补齐
+		
+}
+
+message Request5203Pack           //购买资源
+{
+	required uint32 UserID = 1;//用户ID
+	required Game.KingsMan.Cfg.PayPriceVec PriceVec = 2;
+}
+
+message Response5203Pack
+{
+	required int32 ErrCode = 1;//错误码
+}

@@ -1,0 +1,184 @@
+syntax = "proto2";
+import "ResourceNotEnough.proto";
+import "CommonDefs.proto";
+import "KillCards.proto";
+package Game.KingsMan.MessagePack;
+
+message CardInfo
+{
+	optional Game.KingsMan.Cfg.ECardCategory CardClass	= 1;	// 卡的类别，hero or skill
+	optional string CardType	= 2;	             // 卡的类型, 就是InventoryID;
+	optional bool		IsKilled	= 3;               // true 表明由于卡类型重复而被直接祭天
+	
+	repeated Game.KingsMan.Cfg.KillCardRes KillGotResList = 4; // 卡被祭掉得到的资源
+	optional int32  CardNum   = 5;               // 抽到的卡牌数量
+}
+
+message Request3200Pack           // 抽取若干卡片
+{
+	required uint32 UserID    = 1;  // 用户ID
+	required bool		IsFree    = 2;  // 是否是免费抽取
+	required int32	CardSlot  = 3;  // 参看ShareEnum中的SelectCardSlotEnum
+	required int32  CardsNum  = 4;  // 希望抽取的卡片数
+}
+
+message Response3200Pack
+{
+	required int32 ErrorCode = 1;   // 逻辑错误码，说明抽卡失败的原因
+	repeated CardInfo CDInfos	= 2;	// 返回抽取卡片的信息
+	optional Game.KingsMan.Cfg.ResourceNotEnough ResNotEnoughInfo = 3; //资源 不足
+	optional int32 NeedResNum = 4;  // 需要的资源数量
+}
+
+message Request3202Pack           // 兑换卡片请求
+{
+	required uint32 UserID    		= 1;  // 用户ID
+	required string InventoryID		= 2;  // 要兑换的卡片
+}
+
+message Response3202Pack          // 兑换卡牌回馈
+{
+	repeated CardInfo CDInfos	= 1;	// 返回抽取卡片的信息
+	required Game.KingsMan.Cfg.ResourceNotEnough ResNotEnoughInfo = 2; //资源 不足
+}
+
+message Request3203Pack           // 刷新兑换卡片列表请求
+{
+	required uint32 UserID    = 1;  // 用户ID
+}
+
+message Response3203Pack          // 刷新兑换卡片列表回馈
+{
+	repeated CardInfo CDInfos	= 1;	// 返回抽取卡片的信息
+	required Game.KingsMan.Cfg.ResourceNotEnough ResNotEnoughInfo = 2; //资源 不足
+}
+
+message Request3205Pack           // 竞标卡片请求
+{
+	required uint32 UserID    = 1;  // 用户ID
+	required bool		IsFree    = 2;  // 是否是免费抽取
+	required int32	CardSlot  = 3;  // 参看ShareEnum中的SelectCardSlotEnum
+	required int32  CardsNum  = 4;  // 希望抽取的卡片数
+}
+
+message Response3205Pack          // 竞标卡牌回馈
+{
+	repeated CardInfo CDInfos	= 1;	// 返回抽取卡片的信息
+	required Game.KingsMan.Cfg.ResourceNotEnough ResNotEnoughInfo = 2; //资源 不足
+}
+
+message Request3210Pack           // 升级卡片
+{
+	required uint32 UserID    = 1;  // 用户ID
+	required string InventoryId	= 2;	// 要升级的卡片的信息	
+	required int32 UUID       = 3;//唯一标识
+	required bool IsCompletion = 4;	//是否使用VipGold补齐
+	required bool IsImm = 5;	//是否立即生成
+	required bool IsBuyFragment = 6; //是否强制升级 	
+}
+
+message Response3210Pack
+{
+	required int32	ErrorCode		= 1;  // 逻辑错误码
+	required Game.KingsMan.Cfg.PayPriceVec NeedPrice = 2;					    // 还差的资源
+	required int32 NeedVipGold = 3;					    // 还需要的VipGold	
+	required bool IsCompletion = 4;	//是否使用VipGold补齐
+	required bool IsImm = 5;	//是否立即生成 	
+}
+
+message Request3211Pack           						        // 更换卡牌的SlotID
+{
+	required uint32 UserID    = 1;  				  	        // 用户ID
+	required string ChapterName = 2;						        // 章节名称
+	required string LevelName = 3;										      // 关卡ID
+	required Game.KingsMan.Cfg.EChallengeMode ChallengeMode    = 4;  			// 是否为精英模式
+	repeated Game.KingsMan.Cfg.CardSlotProperty HeroCardSlotInfos = 5;				// 上阵的英雄卡牌信息
+	repeated Game.KingsMan.Cfg.CardSlotProperty SkillCardSlotInfos = 6;				// 上阵的技能卡牌信息
+	
+	required int32 CardGroupIndex = 7;			//当前操作的卡组Index，从0开始 
+}
+
+//出错的卡牌
+message ErrorCardInfo
+{	
+	required int32 UUID    = 1;  				  	        // UUID
+	required int32 Reason    = 2;											//出错的原因
+	required Game.KingsMan.Cfg.EInventoryCategory Category = 3; //卡牌的类型
+}
+
+message Response3211Pack
+{
+	repeated ErrorCardInfo ErrorCards = 1;	//出错的卡牌
+}
+
+
+
+
+message Request3212Pack           						        // 销毁一张卡牌
+{
+	required uint32 UserID    = 1;  				  	        // 用户ID
+	required int32 UUID = 2;						        // 销毁卡牌的UUID
+}
+
+message Response3212Pack
+{
+	required int32 ErrorCode = 1;   // 逻辑错误码
+	repeated Game.KingsMan.Cfg.KillCardRes KillGotResList = 2; // 卡被祭掉得到的资源 
+}
+
+
+
+message Request3213Pack           						        // 升级被动技能
+{
+	required uint32 UserID    = 1;  				  	        // 用户ID
+	required int32 HeroUUID = 2;						        //所属英雄
+	required string SkillInventoryId = 3; 					//被动技能类型
+	required bool IsCompletion = 4;	//是否使用VipGold补齐
+	required bool IsImm = 5;	//是否立即生成 	
+}
+
+message Response3213Pack
+{
+	required int32 ErrorCode = 1;   // 逻辑错误码
+	required Game.KingsMan.Cfg.PayPriceVec NeedPrice = 2;					    // 还差的资源
+	required int32 NeedVipGold = 3;					    // 还需要的VipGold	
+	required bool IsCompletion = 4;	//是否使用VipGold补齐
+	required bool IsImm = 5;	//是否立即生成 	
+}
+
+
+
+message Request3220Pack				//购买卡组
+{
+	required uint32 UserID    = 1;  				  	        // 用户ID
+	required int32 CardGroupIndex = 2;									// 解锁的卡组索引 (from 0)用来避免断网误解锁
+}
+
+message Response3220Pack				//购买卡组
+{
+	required int32 ErrorCode = 1;   // 逻辑错误码
+	
+}
+
+message Request3221Pack				//切换卡组
+{
+	required uint32 UserID    = 1;  				  	        // 用户ID
+	required int32 CardGroupIndex = 2;									// 切换到的卡组索引 (from 0)
+}
+
+message Response3221Pack				//切换卡组
+{
+	required int32 ErrorCode = 1;   // 逻辑错误码
+}
+
+message Request3222Pack				//修改卡组名称
+{
+	required uint32 UserID    = 1;  				  	        // 用户ID
+	required int32 CardGroupIndex = 2;									// 切换到的卡组索引 (from 0)
+	required string ChangeName = 3;			//新取的名称
+}
+
+message Response3222Pack				//修改卡组名称
+{
+	required int32 ErrorCode = 1;   // 逻辑错误码
+}

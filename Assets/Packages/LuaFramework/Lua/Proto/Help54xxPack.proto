@@ -1,0 +1,18 @@
+syntax = "proto2";
+import "Help.proto";
+package Game.KingsMan.MessagePack;
+
+message Request5400Pack 		// GetDailyTaskReward
+{
+	required uint32 UserID = 1;
+	required int32  HelpID = 2;   // 活动ID
+	required int32  HelpRewardID = 3;   // 活动奖励ID
+}
+
+message Response5400Pack
+{
+	required uint32	ErrorCode		= 1;  // 逻辑错误码
+	required uint32 UserID			= 2;	
+	required Game.KingsMan.Cfg.HelpRwdGroupDef RewardG = 3;  	// 本活动奖励组的奖励列表
+}
+

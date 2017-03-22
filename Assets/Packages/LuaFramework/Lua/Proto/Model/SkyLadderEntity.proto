@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+import "ExtensionDefs.proto";
+
+package Game.KingsMan.Model;
+
+message SkyLadderUserInfo
+{
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"UserID", IsKey = true)]
+	required uint32 UserID = 1;
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"UserName")]	
+	required string UserName = 2[default="", (Game.KingsMan.Cfg.MemAttrib)="Localize=false"];
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Level")]	
+	required int32 Level = 3;	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Icon")]	
+	required string Icon	 = 4[default=""];
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Grade")]	
+	required int32 Grade	 = 5;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Group")]
+	required int32 Group	 = 10;	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LoginTime")]	
+	required uint64 LoginTime = 20;
+}
+	

@@ -1,0 +1,66 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message LevelEntity
+{
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string Name                            = 1;    // 关卡名称
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required bool Unlock                            = 2;    // 是否解锁
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required int32 PassNum                          = 3;    // 通过关卡次数
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required int32 Evaluate                         = 4;    // 关卡评价
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+    required int32 DaysNum                          = 5;    // 今日剩余挑战次数
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+    required int32 ReNum                            = 6;    // 今日重置挑战次数
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32 SelfTime                        = 7;    //本关自己全灭时间
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32 BetterRank                      = 8;//本关最好排名
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required bool IsNotDead					        = 9;	// 是否没有英雄死亡
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required bool IsArrKillEnemyPercent				= 10;	// 是否满足杀敌率
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required bool IsArrPassLevelTime				= 11;	// 是否达到全灭时间
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32 LastBestRankReward				= 12;	// 上一次最好排名领奖名次
+}
+
+/** @Inject
+ * public LevelVec()
+ * {
+ *     LevelEntitys.PropertyName = "LevelEntitys";
+ *     AddChildrenListener(LevelEntitys);
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message LevelVec
+{
+    // @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+    repeated LevelEntity LevelEntitys                     = 1;    // 关卡数据数组
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required bool IsGetChapterReward                      = 2;//是否已领取章节奖励
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required bool IsGetSSSReward                          = 3;//是否已领取全S奖励
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string ChapterName                           = 4;//章节名称
+}
+
+/** @Inject
+ * public ChapterVec()
+ * {
+ *     Chapters.PropertyName = "Chapters";
+ *     AddChildrenListener(Chapters);
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message ChapterVec
+{
+    // @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+    repeated LevelVec Chapters                     = 1;    // 章节列表
+}

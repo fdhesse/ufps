@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message VipLevelConditionEntity  // 一个Vip解锁条件实体
+{
+		required int32                              UUID      = 1;      // 本条件的唯一ID
+		required int32                              Times     = 2;      // 本条件实例累计的动作次数(对于动作次数)或数量(对于消耗资源)
+		required bool   														ConditionState  = 3;      // 本条件状态
+}
+
+/** @Inject
+ * public VipRecordEntity()
+ * {
+ *     VipLevelCEntity.PropertyName = "VipLevelCE";
+ *     AddChildrenListener(VipLevelCE);
+ * }
+ */
+ 
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message VipRecordEntity  // 一个Vip等级的实体数据
+{
+	required int32                              Level      = 1;      // 等级
+	
+	required Game.KingsMan.Cfg.RewardGotState   GotState  = 2;      // 该等级是否解锁
+
+		// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipLevelCEntity", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	map<int32, VipLevelConditionEntity> VipLevelCEntity = 3;
+	
+			// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipLevelCE", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated VipLevelConditionEntity VipLevelCE = 4;     // Vip等级实体表（包含所有等级VIP的所有解锁条件的数据）
+}
+

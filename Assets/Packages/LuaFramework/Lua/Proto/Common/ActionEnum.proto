@@ -1,0 +1,313 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+enum ActionFlag
+{
+    AF_SYNCUD                                       = 0x00000001;
+    AF_SYNCNOTICE                                   = 0x00000002;
+}
+
+enum ActionEnum
+{
+	Heartbeat										= 1;
+	Interrupt										= 2;
+
+	// Connection Manage
+	ReportServer                = 1000;
+	AddServer                   = 1001;
+	RemoveServer                = 1002;
+	ReportGate 					= 1003;
+	ShutdownServer 				= 1004;
+	
+	// Login
+	LoginAccount                = 1100;
+	SetNickName                 = 1101;
+	BanAccount                  = 1102;
+	GetUserByNickName   				= 1103;  // check user nick name which has logined since the server start
+	UpdateUserByNickName        = 1104;
+	NotifyUserLogin							= 1105;
+	
+	PushServerAction						= 1107;
+	
+	// Cfg
+	GetCfg                      = 2000;
+    SyncUtcNow                  = 2001;
+	
+	SUpdateUserRankInf          = 2100;
+	SGetRankListData            = 2101;
+	
+	SGetGiftCode                = 2300;
+	
+	UseExchangeCode             = 3000;	
+	
+	CUpdateUserRankInf          = 3150;
+	CGetRankListData            = 3151;
+	
+	//pvp match
+	UpdatePvpUserMatchInf       = 3160; //user business ==> pvpmatcher server
+	GetPvpUserMatchInf       	= 3161; //client ==> pvpmatcher server
+	
+	//pvp
+	UploadPvpLevelData 			= 3170; //pvp editor,保存数据
+	GetPvpLevelData 			= 3171;	//获取其它用户的pvp level data
+	UploadPvpBattleResult  		= 3172;	//pvp战斗结果,返回回放id
+	SendPvpBattleReport			= 3173; //上传回放数据
+	BeginPvpBattle              = 3174; //请求战斗
+	BeginPvpSpying              = 3175; //请求侦察
+	PvpMatchFlushCost           = 3176;//pvp匹配刷新消耗
+	AddPvpBattleTimes           = 3177;//增加掠夺次数
+	
+	
+	
+	PrepareRTBattleCards = 3180;		//设置实时战斗的卡牌
+	
+	
+	UpdateHuntingEvaluate				= 3500;	//更新狩猎模式的星级
+	ChangeHuntingCount					= 3501;	//改变狩猎模式的次数
+	// Get Cards
+	GetCards                      = 3200; // 抽取卡片(含单抽，十连抽)
+	ExchangeCards									= 3202; // 兑换卡片
+	RefreshExchangeCard           = 3203; // 刷新兑换卡片(含免费自动和收费两种刷新)
+	BiddingCards                  = 3205; // 竞标卡片
+	
+	// LevelUp Cards
+	LevelUpCards									= 3210; // 升级卡片	
+	PrepareCards									= 3211; // 准备卡牌	
+	DiscardCards									= 3212; // 分解卡牌	
+	LevelUpPassive								= 3213; // 升级被动技能
+	
+	BuyCardGroup									= 3220; // 购买卡组
+	SwitchCardGroup								= 3221; // 切换卡组	
+	ChangeCardGroupName						= 3222; // 修改卡组的名称
+			
+	CGetGiftCode									= 3300;     
+	
+	// GuardCards
+		
+	GetGuardCard									= 3400; //收获一张防御卡牌
+	BuyGuardCardMaker							= 3401; //解锁一个生产卡槽
+	CreateGuardCard								= 3402;	//创建一张防御卡牌
+	GuardCardUpgrade							= 3403;	//升级一张防御卡牌
+
+	//Level 关卡	
+	EnterLevel                  = 4100;
+	LevelWin										= 4101;
+	LevelFail					= 4102;
+	LevelReset                  = 4103;
+	ChapterRewardGet            = 4104;
+	UnlockAllLevel              = 4105;
+  
+	//HeroUpgrade
+	HeroUpLevel                 = 4210; // 特工升级
+	HeroUpRatity                = 4211; // 特工升品
+	HeroTrain										= 4212; // 特工训练
+	HeroFragmentChange										= 4213; // 万能碎片转换普通碎片
+	
+	//EquipUpgrade
+	EquipUpLevel									= 4310; // 装备升级
+	PentandGetAndFlush						= 4311; // 挂件获取或刷新
+	PentandDurable								= 4312; // 挂件耐久修复
+	EquipFlush										= 4313; // 装备刷新
+	EquipExChange										= 4314; // 装备更换
+	EquipChange										= 4315; // 装备替换
+	
+	//Vip
+	UpVipLevel										= 4500;		//升级VIP等级
+	GetVipGift										= 4501;		//领取VIP礼包
+	
+	// User Data
+	CheckUserData								  = 5000;
+	DownloadUserData						  = 5001;
+	UploadUserData							  = 5002;
+	ModifyUserData							  = 5003;
+	OutputUserData								= 5004;    // 输出指定的用户数据到XML中, for Debugging
+	RoutineUserData								= 5005;    // 定期刷新用户数据的状态，比如每日任务等
+	GetReward                     = 5006;    // 领取临时奖励
+	ChangeHeadIcon                = 5007;    // 更换头像
+	SetRegionID                   = 5008;    // 设置地区ID
+	SetInviteCode                 = 5020;    // 邀请码兑换
+	RefreshUserData               = 5050;    // 刷新用户信息
+	GetUserRTBData                = 5060;    // 获取用户实时战相关统计数据
+
+	// Daily Task
+	GetDailyTaskReward					= 5100;		// 领取任务奖励
+	LocalDailyTaskEvent         = 5101;   // 客户端日常任务事件
+	
+	//Buy Produce
+	BuyProduce                  = 5200;		//购买一个商品
+	CommonBuyRes                = 5203;     //通用购买资源
+	BlackMarketBuy							= 5204;		//黑市商品购买
+	RTGoldConvert								= 5205;		//商店里面的钞票兑换
+	//Activity
+	GetActivityReward						= 5300;		// 领取活动奖励
+	
+	//Help
+	GetHelpReward								= 5400;  //领取帮助奖励
+	
+	// Guide       
+	CompleteGuide               = 5500;   // 完成一个指南
+	UnLockAllGuide							= 5501;		// 解锁全部指南
+	UnlockAllGameSystem					= 5502;		// 解锁全部游戏系统
+	// Mail
+	SendMail										= 6000;
+	ExeMail											= 6001;
+	DeleteMail									= 6002;
+	GetMails										= 6003;
+	
+	InitMails										= 6100;
+	AddMails										= 6101;
+	RemoveMails										= 6102;
+	UserSendMail									= 6103; //userserver send mail
+	
+	ReadMail										= 6110;
+	TakeMail										= 6111;
+	RemoveMail										= 6112;
+
+	RefreshMails									= 6120;
+		 	
+	CreateGuild										= 6200;
+	DeleteGuild										= 6201;
+	RequestJoinGuild								= 6202;
+	AgreeJoinGuild									= 6203;
+	LeaveGuild										= 6204;
+	UpGuildMember									= 6205;
+	DownGuildMember								    = 6206;
+	QueryGuild										= 6207;
+	UpdateGuild										= 6208;
+	RefuseJoin                    = 6209;	 //拒绝加入
+	SearchGuild										= 6210;
+	ChallengeGuildMember							= 6211;//对工会发起挑战
+	GuildRequestDonate								= 6212;
+	GuildAgreeDonate								= 6213;
+	GuildShowActivity								= 6214;
+	GuildDonateActivity								= 6215;
+	GuildShareRecord								= 6216;
+	GuildPlaybackRecord								= 6217;
+	GuildLikeRecord  								= 6218;
+	
+	MailGuild										= 6220;
+
+	AcceptGuildChallenge						    = 6221;	//接受工会成员发起的挑战
+	CancelGuildChallenge					       	= 6222;	//取消工会成员发起的挑战
+	RefreshGuildChallenge					       	= 6223;	//查询自己发起的挑战
+	
+	GuildChat       								= 6230;	
+	GuildQueryUserDetail                            = 6231;
+	QueryGuildEx									= 6232;
+	GuildGetChatList       							= 6233;	
+	
+	GetGuildRankInf                                 = 6260;
+
+	UpdateGuildUser									= 6280; //guild server update guild info of user
+	QueryGuildUsers									= 6281; //guild server query user info of guild
+	NotifyGuildUsers								= 6282; //guild server notify user info to others guild server
+	
+	ReportGuildInfo									= 6290;	//guild server report guild info to guild master
+	UpdateGuildRank									= 6291;	//guild master update guild rank to guild server
+	GatherGuildInfo									= 6292;	//guild master gather guild info from guild server
+			 	
+	SkyLadderUpdateUsers            = 6300; 
+	SkyLadderGetMatchedUsers        = 6301; 
+	
+	// Inventory 道具系统
+	AE_INVENTORY_DEAL                 = 6311;     // 用道具交易道具
+	AE_INVENTORY_LEVELUP              = 6312;     // 用道具升级道具   
+	AE_INVENTORY_ATTACH               = 6313;     // 道具挂接
+	AE_INVENTORY_DETACH               = 6314;     // 道具接挂
+	
+	
+	// Box       宝箱系统
+	AE_BOX_GET                        = 6331;     // 获取宝箱
+	AE_BOX_OPEN                       = 6332;     // 开启宝箱
+	AE_BOX_GETREWARD                  = 6333;     // 领取宝箱奖励
+				 				 	
+	// Building
+	GetResourceFromBuilding 						= 7000; // 从建筑中收集资源
+	UpgradeBuilding               = 7001;	//升级一个建筑
+	BePlundered                  = 7002;	//基地被掠夺
+
+	// ProgressQueue
+	FinishPorgressImm								= 7100; // 立即升级完毕
+	CancelProgress									= 7101; // 取消升级
+	RefreshProgress								= 7104; // 刷新所有的升级项目
+	ConfirmFinishProgress					= 7105; // 确认一个已经结束的项目
+		
+	// Talent
+	AddTalentPoint									= 7200; // 为一个天赋加点
+	ClearTalentPoints								= 7201; // 清空天赋点	
+	
+	// TreasureBox
+	RefreshPVPBox           = 7300; //刷新PVP宝箱
+	OpenPVPBox           = 7301; //打开PVP宝箱
+	RefreshTimeBox           = 7310; //刷新Time宝箱
+	OpenTimeBox           = 7311; //打开Time宝箱
+	RefreshRTBMedalBox  = 7312; //刷新勋章宝箱(皇冠宝箱)
+	OpenRTBMedalBox = 7313; //打开勋章宝箱(皇冠宝箱)
+	
+	
+	RefreshRTBWinBox = 7314; //刷新战斗宝箱(包含是否VIPGold刷新)
+	OpenRTBWinBox = 7315; //打开战斗宝箱
+	
+	RefreshMunitionsBox = 7400; //刷新军需箱
+	OpenMunitionsBox = 7401; //打开军需箱
+	
+	// Purchase
+	CreateOrder										= 8000;	// 用户业务服务器上创建充值订单
+	QueryOrderByOrderNO           = 8001;	// 用户业务服务器上根据订单号查询充值订单
+	DeliveryOrder									= 8002;	// 充值业务服务器通知用户业务服务器发货
+	ValidateOrder									= 8003;	// 客户端通知用户业务服务器校验订单
+
+	CreateOrder2									= 8030;	// 充值服务器上创建充值订单
+	QueryOrderByOrderNO2          = 8031;	// 充值服务器上根据订单号查询充值订单
+	ValidateOrder2                = 8033;	// 充值服务器上校验订单
+	
+	UseUp                         = 9001;	//背包物品的使用
+	RandomNickName								= 9100;	//随机取名称的请求
+	
+	RTTeamInviteUser2Server       = 9200; // 向用户业务服务器发送邀请用户组队请求
+	RTTeamReponseUser2Server 			= 9201; // 向用户业务服务器发送响应用户组队请求
+	RTTeamIsSuccess 			= 9202; // 向用户业务服务器发送响应用户组队请求
+	RTTeamIsWhichMode 			= 9203; // 向用户业务服务器发送用户组队状态
+	
+	RTMatchStart					= 9400;
+	RTMatchUpdate					= 9401;
+	RTMatchCancel					= 9402;
+	RTMatchAddToList				= 9403; //demo使用,请求加入匹配列表或从列表移除
+	RTMatchGetUserList				= 9404; //demo使用,请求获取匹配列表和匹配结果
+	RTMatchUser						= 9405; //demo使用,请求匹配指定用户
+	RTMatchGetRoomUrl				= 9406; //请求分配一个roomserver
+
+    RT2V2JoinDesk                   = 9410; // 加入2V2桌子
+    RT2V2LeaveDesk                  = 9411; // 离开2V2桌子
+    RT2V2GetDesksInf                = 9412; // 获取房间桌子信息列表
+	
+	MatchStart					= 9420;
+	MatchUpdate					= 9421;
+	MatchCancel					= 9422;
+	MatchBegin					= 9423;
+
+	RTSendBattleReport				= 9450; //发送战报给对战双方
+	RTGetBattleUploadInf			= 9451; //获取战报回放数据上传参数
+    RTQueryCanBattle                = 9452; //查询玩家当前是否被禁止实时PVP
+	
+	RoomCreate						= 9500;
+	RoomJoin						= 9501;
+	RoomSendCmd						= 9502;
+	RoomSyncCmds					= 9503;
+    RoomReportSync                  = 9504;
+    RoomRejoinSync                  = 9505;
+    RoomPlayerExit                  = 9506;
+
+    RoomRequestJoin                 = 9550; //断线后重加入房间
+    RoomSyncLoading                 = 9551;
+    RoomRequestReady                = 9552;
+    RoomSyncStartGame               = 9553;
+    RoomReportPlayer                = 9554;
+	RoomRequestFinished             = 9559;
+	
+	RoomSendGameResult              = 9570; //发送给user server, 计算游戏结果
+    RoomSendUserExit                = 9571; // 发送玩家侧推到user server,禁止继续PVP
+	
+	GodAction											= 9999; //GM工具用的请求
+}

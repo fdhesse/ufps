@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+import "CommonDefs.proto";
+import "ProgressEntity.proto";
+
+/** @Inject
+ * public ProgressEntityVec()
+ * {
+ *     ProgressVec.PropertyName = "ProgressVec";
+ *     AddChildrenListener(ProgressVec);
+ * }
+ */
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message ProgressEntityVec
+{
+		required Game.KingsMan.Cfg.EProgressType	ProgressType = 1;								//进行中的项目类型
+		
+		// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+		repeated ProgressEntity ProgressVec = 2;			//同种类型的项目实体		
+}

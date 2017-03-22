@@ -1,0 +1,156 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message RTBattleCardInfo
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string   InventoryId 	= 1;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32    Level 	= 2;
+}
+
+/** @Inject
+ * public RTBattlePlayerInfo()
+ * {
+ *     CardList.PropertyName = "CardList";
+ *     AddChildrenListener(CardList);
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message RTBattlePlayerInfo
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required uint32   UserId 	= 1;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string   NickName 	= 2;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required uint32   ExpLevel 	= 3;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required uint32   RTCupNum 	= 4;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string   HeadIcon 	= 5;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required uint32   GuildId 	= 6;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string   GuildName = 7;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32    TeamId    = 8;
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated RTBattleCardInfo CardList = 9;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32    GuildIcon    = 10;
+}
+
+/** @Inject
+ * public RTLevelBattleReport()
+ * {
+ *     PlayerInfos.PropertyName = "PlayerInfos";
+ *     AddChildrenListener(PlayerInfos);
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message RTLevelBattleReport  // pvp 战报
+{
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required uint64           	PvpBattleId	  	= 1;     //battle id
+
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string           	BattleIdent	  	= 2; 
+
+  // @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+  repeated RTBattlePlayerInfo   PlayerInfos	  	= 3;  
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32           Cups			   	= 5;
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32           Resource1	   	= 6;
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32           Resource2	   	= 7;
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int64           BattleTime	  	= 8;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required bool            IsWin  			= 9;
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          PlaybackUrl 		= 13;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          PlaybackToken 	= 14;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          ResVersionCode 	= 15;  
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          ParamStr  		= 18;   
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          BattleResult		= 19; 
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int64          LastShareTime		= 20;
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32          LastShareLeagueId		= 21;
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32           UserId 			= 22;//用于巅峰对决中分组
+}
+
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message RTBattleAttrib 
+{		
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int64          LastRefreshTime		= 1; //	
+		
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int64          LastAttackTime  	= 2; //最后一次pvp攻击时间		
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          BattleTotalTimes		= 3;  //累计战斗次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          BattleWinTotalTimes		= 4;  //累计胜利次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          BattleLoseTotalTimes	= 5;  //失败总次数
+	
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "RTBattleEntity", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message RTBattleEntity  // 
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+    
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"FormatVersion" )]
+	required int32 FormatVersion = 2;			//Modle格式的版本，用来保证新旧版本的兼容性		
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"BattleCount" )]
+	required uint32 BattleCount = 5;
+	
+		// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"BattleReportList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated RTLevelBattleReport BattleReportList = 6;    // pvp 关卡访问信息	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Attribs", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	required RTBattleAttrib Attribs = 8;	
+}
+
+     

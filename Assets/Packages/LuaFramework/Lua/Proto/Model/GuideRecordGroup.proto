@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+import "GuideRecordEntity.proto";
+import "CommonDefs.proto";
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuideRecordGroup{
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuideList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated GuideRecordEntity GuideList = 1;    // 指南列表，与指南配置中的列表一致, 指南需要一个个的完成
+	  // @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+  required Game.KingsMan.Cfg.GuideState    State    = 2;                // 当前指南组的完成状态
+  	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuideGroupID")]
+	required int32 GuideGroupIndex = 3;          //  当前指南组的索引
+		// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CurGuideNew")]
+	required int32 CurGuideNew = 4;              //  当前指南组运行的指南的下标
+}
+
+
+
+     

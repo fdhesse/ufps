@@ -1,0 +1,18 @@
+syntax = "proto2";
+import "CommonDefs.proto";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message BuildingEntity
+{
+	required int32 UUID = 1;					// 建筑UUID
+	required string InventoryId = 2;	// 建筑类型	
+	required int32  Level = 3;      // 建筑的当前等级,从1开始
+	required sint64 LastGetTime = 4;					// 上次领取产品的时间（石油，钞票，随机物资）
+	required sint64 StartWorkingTime = 5;											// 开始生产的时间 
+	required int32 SaveProduce = 6;				//存储的产品
+	required Game.KingsMan.Cfg.EBuildingState State = 7;	//状态
+	
+	required int32 LosedProduce = 8;				//被掠夺的产品数量
+}

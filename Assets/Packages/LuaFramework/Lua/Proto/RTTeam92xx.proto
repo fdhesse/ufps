@@ -1,0 +1,50 @@
+syntax = "proto2";
+
+
+package Game.KingsMan.MessagePack;
+
+message Request9200Pack  // RTTeamInviteUser2Server
+{
+	required int32 DestUserID = 1; // 被邀请用户的ID
+	required int32 ScrUserID = 2; //  邀请用户的ID
+}
+
+message Response9200Pack
+{	
+	required int32 ErrorCode = 1;
+}
+
+message Request9201Pack  // RTTeamReponseUser2Server
+{
+	required int32 DestUserID = 1; // 被邀请用户的ID
+	required int32 ScrUserID = 2; //  邀请用户的ID
+	required bool OkOrRefuse = 3; //  同意或拒绝
+}
+
+message Response9201Pack
+{	
+	required int32 ErrorCode = 1;
+}
+
+message Request9202Pack  // RTTeamIsSuccess
+{
+	required int32 DestUserID = 1; // 被邀请用户的ID
+	required int32 ScrUserID = 2; //  邀请用户的ID
+	required bool IsSuccess = 3; //  组队是否达成
+}
+
+message Response9202Pack
+{	
+	required int32 ErrorCode = 1;
+}
+
+message Request9203Pack  // RTTeamIsWhichMode
+{
+	required int32 UserID = 1; // 被通知组队状态用户的ID
+	required int32 Mode = 2;//1,取消组队；2,准备战斗；3,取消准备；4,开始匹配；5，取消匹配
+}
+
+message Response9203Pack
+{	
+	required int32 ErrorCode = 1;
+}

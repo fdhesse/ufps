@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+import "ExtensionDefs.proto";
+
+package Game.KingsMan.Model;
+
+enum GuildFlag
+{
+    JOIN_DISABLED                                       = 1;
+    JOIN_NEEDALLOW                                      = 2;
+}
+
+enum GuildLevel
+{
+	Level0 = 0;
+	Level1 = 1;
+	Level2 = 2;
+	Level3 = 3;
+	Level4 = 4;	
+	//consider maybe designer will add more level here!!!!	
+	Creator = 5;
+}

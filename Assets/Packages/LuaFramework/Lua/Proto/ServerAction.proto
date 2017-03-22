@@ -1,0 +1,80 @@
+syntax = "proto2";
+package Game.KingsMan.MessagePack;
+
+enum EServerActionId
+{
+    Guild_1 = 1;   // 公会推送消息1
+    
+    // 2v2 组队消息
+    RTTeam_RequestInviteUser = 10;   
+    RTTeam_ResponseInviteUser = 11;
+	RTTeam_IsSuccess = 12;
+	RTTeam_IsWhichMode = 13;
+}
+
+message Request1107Pack
+{	
+	required int32  ServerActionId = 1;	
+	required bytes  MsgData    = 2;  
+	repeated int32  UserIdList = 3; //推送的用户列表
+}
+
+message Response1107Pack
+{	
+	required int32  ServerActionId = 1;	
+	required bytes MsgData = 2;  
+	repeated int32  UserIdList = 3; //推送的用户列表
+}
+
+message ServerActionPack
+{
+	required int32  ServerActionId = 1;	
+	required bytes  MsgData = 2;  
+}
+message SA_Guild_1
+{	
+	required int32  GuildId = 2;
+}
+
+enum GuildDirtyFlags 
+{
+	GUILD_DATA = 1;
+	GUILD_CHAT = 2;
+}
+
+message SA_Guild_Data
+{	
+	required int32 GuildId = 1;
+	required int32 GuildFlags = 2;	
+}
+
+message SA_RTTeam_PlayerInfo
+{
+	required string Name = 1;
+	required string LeagueName = 2;
+	required string HeadIcon = 3;
+	required int32 Level = 4;
+	required int32 RT2V2CupNum = 5;
+	required int32 LeagueIcon = 6;
+}
+
+// 组队消息
+message SA_RTTeam_RequestInviteUser
+{
+	required int32 DestUserID = 1; // 被邀请用户的ID
+	required int32 ScrUserID = 2; //  邀请用户的ID
+	required SA_RTTeam_PlayerInfo PlayerInfo = 3;
+}
+
+message SA_RTTeam_ReponseInviteUser
+{
+	required int32 DestUserID = 1; // 被邀请用户的ID
+	required int32 ScrUserID = 2; //  邀请用户的ID
+	required bool OkOrRefuse = 3; //  同意或拒绝
+	required SA_RTTeam_PlayerInfo PlayerInfo = 4;
+}
+
+message SA_RTTeam_WhichMode
+{
+	required int32 Mode = 1;//状态1,取消组队；2,准备战斗；3,取消准备；4,开始匹配；5，取消匹配
+}

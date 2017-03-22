@@ -1,0 +1,24 @@
+syntax = "proto2";
+import "ExtensionDefs.proto";
+package Game.KingsMan.MessagePack;
+
+message Request4500Pack 		//升级Vip等级的请求
+{
+	required uint32 UserID = 1;
+}
+
+message Response4500Pack	//升级Vip等级的回馈
+{
+
+}
+
+message Request4501Pack 		//领取VIP礼包的请求
+{
+	required uint32 UserID = 1;
+	required int32 VipLevel = 2;
+}
+
+message Response4501Pack   //领取VIP礼包的回馈
+{
+	
+}

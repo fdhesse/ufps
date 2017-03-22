@@ -1,0 +1,29 @@
+syntax = "proto2";
+import "ExtensionDefs.proto";
+package Game.KingsMan.MessagePack;
+
+message Request3500Pack 		//更新狩猎模式的星级
+{
+	required uint32 UserID = 1;
+	required string levelname = 2;   // 关卡名称
+	required int32 Evaluate = 3;				//星级
+}
+
+message Response3500Pack	//更新狩猎模式的星级
+{
+	
+}
+
+message Request3501Pack 		//消耗狩猎模式的次数
+{
+	required uint32 UserID = 1;
+	required bool ConsumeOrAdd = 2;	//是否是消耗，不是就是添加
+	required int32 model = 3; //模式
+	required string ProduceId = 5;
+	required bool IsUseVipGold = 6;
+}
+
+message Response3501Pack   //消耗狩猎模式的次数
+{
+
+}

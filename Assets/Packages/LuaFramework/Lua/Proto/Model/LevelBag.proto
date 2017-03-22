@@ -1,0 +1,34 @@
+syntax = "proto2";
+
+import "LevelEntity.proto";
+
+package Game.KingsMan.Model;
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "LevelBag", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message LevelBag
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+    
+  // @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary
+  // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ChallengeMap", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+  map<string, ChapterVec> ChallengeMap = 4;     // 各模式下关卡数据表<模式枚举名,模式下关卡列表>
+    
+  // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastRefreshPassLevelTime")]
+	required sint64 LastRefreshPassLevelTime	= 5;				// 上次刷新每日过关次数的时间
+	
+  // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"FormatVersion" )]
+	required int32 FormatVersion = 6;			//Modle格式的版本，用来保证新旧版本的兼容性
+}

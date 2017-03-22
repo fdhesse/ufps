@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.Cfg;
+
+message ResourceNotEnough
+{
+  required int32 VipGoldNum       	= 1;//需要黄金数量
+	required int32 LackResClass	    	= 2;//缺少资源种类
+	required EResourceType LackRes		= 3;//第一种资源类型
+	required int32 LackResNum			= 4;//缺少数量
+	required EResourceType LackResT		= 5;//第二种资源类型
+	required int32 LackResTNum			= 6;//缺少数量
+}

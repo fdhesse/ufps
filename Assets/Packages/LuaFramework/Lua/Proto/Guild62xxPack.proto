@@ -1,0 +1,495 @@
+syntax = "proto2";
+
+import "GuildLevel.proto";
+import "Guild.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request6200Pack	//create guild
+{
+	required uint32 UserID = 1;
+	required string Name = 2;
+	required string Desc = 3;
+	required int32 Icon = 4;		
+	required int32 Score = 5;
+	required int32 Location = 6;
+	required uint32 Flags = 7;	
+	required int32 JoinScore = 8;
+	required int32 GuildID = 9; // 0 means from client, otherswize means from guild master
+	
+	//will filled by UserServer, GuildServer need these infomation
+	optional Game.KingsMan.Model.GuildUserInfo UserInfo = 10;	
+}
+
+message Response6200Pack
+{
+	required int32 GuildID = 2;
+	required Game.KingsMan.Model.GuildLevel GuildLevel = 3;
+	required string GuildName = 4;
+	required int32 Contribution = 5;	
+}
+
+message Request6201Pack	//delete guild
+{
+	required uint32 UserID = 1;
+	required int32 GuildID = 2;
+}
+
+message Response6201Pack
+{
+	//required uint32 Status = 1;	
+}
+
+message Request6202Pack	//request join guild
+{
+	required uint32 UserID = 1;
+	required int32 GuildID = 2;
+		
+	optional int32 GuildScore = 3;
+
+	//will filled by UserServer, GuildServer need these infomation
+	//optional Game.KingsMan.Model.GuildMemberInfo MemberInfo = 10;	
+}
+
+message Response6202Pack
+{
+	optional Game.KingsMan.Model.GuildUserInfo UserInfo = 1;	
+}
+
+message Request6209Pack	//refuse join guild
+{
+	required uint32 UserID = 1;
+	required int32 GuildID = 2;
+		
+	optional int32 GuildScore = 3;
+
+	//will filled by UserServer, GuildServer need these infomation
+	//optional Game.KingsMan.Model.GuildMemberInfo MemberInfo = 10;	
+}
+
+message Response6209Pack
+{
+	optional Game.KingsMan.Model.GuildUserInfo UserInfo = 1;	
+}
+
+message Request6203Pack	//agree join guild
+{
+	required uint32 UserID = 1;
+	required int32 TargetID = 2;
+	required Game.KingsMan.Model.GuildLevel GuildLevel = 4;
+	//will filled by UserServer, GuildServer need these infomation
+	optional int32 GuildID = 3;
+}
+
+message Response6203Pack
+{
+}
+
+message Request6204Pack	//leave guild
+{
+	required uint32 UserID = 1;
+	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 2;
+}
+
+message Response6204Pack
+{
+	//required uint32 Status = 1;
+}
+
+message Request6205Pack	//upgrade guild member
+{
+	required uint32 UserID = 1;
+	required uint32 TargetID = 2;
+	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 3;	
+}
+
+message Response6205Pack
+{
+	//required uint32 Status = 1;
+}
+
+message Request6206Pack	//degrade guild member
+{
+	required uint32 UserID = 1;
+	required uint32 TargetID = 2;
+		
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 3;		
+}
+
+message Response6206Pack
+{
+	//required uint32 Status = 1;
+}
+
+message Request6207Pack	//query guild
+{
+	required uint32 UserID = 1;	
+	required int32 GuildID = 2;
+	required bool First = 3;
+}
+
+message Response6207Pack
+{
+	repeated Game.KingsMan.Model.GuildUserInfo MembersUserInfo = 1;	
+	required bool NeedRefreshUserData = 2;
+}
+
+message Request6208Pack	//update guild
+{
+	required uint32 UserID = 1;
+	required string Name = 2;
+	required string Desc = 3;
+	required int32 Icon = 4;		
+	required int32 Score = 5;
+	required int32 Location = 6;
+	required uint32 Flags = 7;	
+	required int32 JoinScore = 8;
+	required int32 GuildID = 9; // 0 means create, else means update guild
+	
+	//will filled by UserServer, GuildServer need these infomation
+	//optional Game.KingsMan.Model.GuildMemberInfo MemberInfo = 10;	
+}
+
+message Response6208Pack
+{
+}
+
+
+message Request6210Pack	//search guild
+{
+	required uint32 UserID = 1;
+	required string Name = 2;
+	required int32 MinMemberNum = 3;
+	required int32 MaxMemberNum = 4;	
+	required int32 Score = 5;
+	required int32 Location = 6;
+}
+
+message Response6210Pack
+{
+	//required uint32 Status = 1;
+	repeated Game.KingsMan.Model.GuildInfo GuildList = 1;
+}
+
+
+message Request6211Pack	//challenge guild member
+{
+	required uint32 UserID = 1;
+	required string ChallengeDes = 2;//发起模拟战的描叙
+	required int32 GuildID = 3;		
+	required string RoomUrl = 4;		//模拟战的房间号	
+}
+
+message Response6211Pack
+{
+	//required uint32 Status = 1;
+}
+
+message Request6212Pack	//request donate to guild member
+{
+	required uint32 UserID = 1;
+	required string ItemID = 2;
+	required uint32 ItemNum = 3;
+	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 4;			
+}
+
+message Response6212Pack
+{
+	//required uint32 Status = 1;
+}
+
+message Request6213Pack	//agree donate to guild member
+{
+	required uint32 UserID = 1;
+	required uint32 TargetID = 2;
+	required uint32 ItemNum = 3;
+	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 4;	
+	optional string ItemID = 5;					
+}
+
+message Response6213Pack
+{
+	required string ItemID = 1;
+	required uint32 ItemNum = 2;
+}
+
+message GuildChallengeInfo
+{
+	required uint32 UserID = 1;
+	required uint32 TargetID = 2;
+}
+
+message Request6221Pack	//accept Challenge to guild member
+{
+	required uint32 UserID = 1;
+	required uint32 TargetID = 2;
+	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 4;				
+}
+
+message Response6221Pack
+{
+	required GuildChallengeInfo Challenge = 1;
+}
+
+message Request6222Pack	//cancel Challenge to guild member
+{
+	required int32 GuildID = 1;		
+}
+
+message Response6222Pack
+{
+
+}
+
+message Request6223Pack	//refresh Challenge to guild member
+{
+	required int32 GuildID = 1;		
+}
+
+message Response6223Pack
+{
+	required GuildChallengeInfo Challenge = 1;
+}
+
+message Request6214Pack	//agree donate to guild member
+{			
+}
+
+message Response6214Pack
+{
+}
+
+
+message Request6215Pack	//donate to guild
+{
+	required uint32 UserID = 1;
+	required string ItemID = 2;
+	required uint32 ItemNum = 3;
+	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 4;			
+}
+
+
+message Response6215Pack
+{
+	required string ItemID = 1;
+	required uint32 ItemNum = 2;
+}
+
+message Request6216Pack	//share combat record
+{
+	required uint32 UserID = 1;
+	required uint64 RecordID = 2;
+	required uint32 EnemyID = 3;//敌人的ID
+	required bool IsWin = 4;		//是否胜利
+	required string Url	= 5;		//观看的路径
+	required string VersionCode = 8;//版本号
+	required string EnemyNickName = 9;//敌人的昵称
+	required int32 EnemyGuildID = 10;//敌人的工会ID
+	required string EnemyGuildName = 12;//敌人的工会名称
+	required string EnemyHeadIcon = 13;	//敌人的头像
+	//required bool IsOnlinePvp = 14;	//是否是在线PVP(时时战报,异步战报)
+	required int32 CombatType = 14;		
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 6;	
+}
+
+message Response6216Pack
+{
+}
+
+message Request6217Pack	//playback combat record
+{
+	required uint32 UserID = 1;
+	required uint64 RecordID = 2;
+	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 3;				
+}
+
+
+message Response6217Pack
+{
+}
+
+message Request6218Pack	//like combat record
+{
+	required uint32 UserID = 1;
+	required uint64 RecordID = 2;
+	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 3;				
+}
+
+
+message Response6218Pack
+{
+}
+
+
+message Request6220Pack	//mail to guild member
+{
+	required uint32 UserID = 1;
+	required string Title = 2;
+	required string Content = 3;
+	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 4;	
+}
+
+message Response6220Pack
+{
+	//required uint32 Status = 1;
+}
+
+message Request6230Pack	//guild chat
+{
+	required uint32 UserID = 1;
+	required string Content = 3;	
+	//will filled by UserServer, GuildServer need these infomation	
+	optional int32 GuildID = 4;	
+}
+
+message Response6230Pack
+{
+	//required uint32 Status = 1;
+}
+
+message Request6231Pack	//query guild user detail
+{
+	required uint32 UserID = 1;
+	optional int32 GuildID = 2;		
+}
+
+message Response6231Pack
+{
+	required Game.KingsMan.Model.GuildUserDetailInfo Detail = 1;
+}
+
+message Request6232Pack	//query guild
+{
+	//required uint32 UserID = 1;	
+	required int32 GuildID = 2;
+	required bool First = 3;	
+}
+
+message Response6232Pack
+{
+	required Game.KingsMan.Model.GuildEntity GuildData = 1;
+	required Game.KingsMan.Model.GuildMutableEntity GuildMutableData = 2;
+	required Game.KingsMan.Model.GuildMemberEntity GuildMemberData = 3;
+	required Game.KingsMan.Model.GuildUserInfoEntity GuildUserInfoData = 4;
+	repeated Game.KingsMan.Model.GuildUserInfo MembersUserInfo = 5;		
+}
+
+message Request6233Pack	//get guild chatlist
+{
+	required int32 GuildID = 1;
+	required int32 ChatIndex = 2;
+}
+
+message Response6233Pack
+{
+	repeated Game.KingsMan.Model.GuildChatInfo ChatList = 1;
+	required int32 ChatIndex = 2;
+}
+
+message Request6280Pack	//guild server report guild info to guild master	
+{
+	required int32 UserID = 1;
+	required int32 GuildID = 2;
+	required Game.KingsMan.Model.GuildLevel GuildLevel = 3;
+	required string GuildName = 4;
+	required int32 Contribution = 5;
+	required int32 Icon = 6;
+	repeated Game.KingsMan.Model.GuildDonate Donates = 7;	
+	required int32 RequestGuildID = 8;
+}
+
+message Response6280Pack
+{
+	//required Game.KingsMan.Model.GuildUserInfo UserInfo = 1;
+}
+
+message Request6281Pack	//guild server query user info from userserver
+{
+	repeated int32 UserList = 1;
+}
+
+message Response6281Pack
+{
+	repeated Game.KingsMan.Model.GuildUserInfo UserList = 1;	
+}
+
+message Request6282Pack	//guild server update userinfo to guild master, then to other guild server
+{
+	required Game.KingsMan.Model.GuildUserInfo UserInfo = 1;	
+}
+
+message Response6282Pack
+{
+}
+
+message Request6290Pack	//guild server report guild infto to guild master	
+{
+	repeated Game.KingsMan.Model.GuildInfo GuildList = 1;
+	repeated int32 DeletedGuildList = 2;
+	//required int32 Dummy = 1; //requestPack没有数据会导致服务端解析异常，see BaseAction:GetUrlElement()
+}
+
+message Response6290Pack
+{
+	repeated GuildRank RankList = 1;
+}
+
+message GuildRank
+{
+	required int32 GuildID = 1;
+	required int32 RankLevel = 2;
+	required int32 LastRankLevel = 3;
+}
+
+message Request6291Pack	//guild master update guild rank to guild server
+{
+	//required int32 ServerID = 1;
+	required int32 Dummy = 1; //requestPack没有数据会导致服务端解析异常，see BaseAction:GetUrlElement()	
+	repeated GuildRank RankList = 2;
+}
+
+message Response6291Pack
+{
+	//repeated GuildRank RankList = 1;
+}
+
+message Request6292Pack	//guild server report guild infto to guild master	
+{
+	//repeated Game.KingsMan.Model.GuildInfo GuildList = 1;
+	required int32 Dummy = 1; //requestPack没有数据会导致服务端解析异常，see BaseAction:GetUrlElement()
+}
+
+message Response6292Pack
+{
+	repeated Game.KingsMan.Model.GuildInfo GuildList = 1;
+}
+
+message Request6260Pack
+{
+	required string ParamStr = 1;
+}
+
+message Response6260Pack
+{
+	repeated Game.KingsMan.Model.GuildInfo GuildList = 1;
+}

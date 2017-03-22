@@ -1,0 +1,67 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+// 收获一张制作好的防御卡牌
+message Request3400Pack 		
+{
+	required uint32 UserID = 1;
+	required int32  Index = 2;   // 防御卡牌Maker的Index,从0开始
+}
+
+message Response3400Pack
+{
+	required int32	ErrorCode		= 1;  // 逻辑错误码
+}
+
+
+//解锁一个造卡卡槽
+message Request3401Pack 		
+{
+	required uint32 UserID = 1;
+}
+
+message Response3401Pack
+{
+	required int32	ErrorCode		= 1;  // 逻辑错误码
+}
+
+// 制作一张防御卡牌
+message Request3402Pack 		
+{
+	required uint32 UserID = 1;	
+	required int32 Index = 2;		//	Maker的索引
+	required string InventoryId = 3;	//卡牌的InventoryId
+	required bool IsCompletion = 4;		//是否使用VipGold补齐
+	required bool IsImm = 5; //是否立即完成
+}
+
+message Response3402Pack
+{
+	required int32	ErrorCode		= 1;  // 逻辑错误码
+	required Game.KingsMan.Cfg.PayPriceVec NeedPrice = 2;					    // 还差的资源
+	required int32 NeedVipGold = 3;					    // 还需要的VipGold
+	required bool IsCompletion = 4;					    // 是否使用VipGold	
+	required bool IsImm = 5; //是否立即完成
+}
+
+//升级一张防御卡牌
+message Request3403Pack 		
+{
+	required uint32 UserID = 1;
+	required int32 UUID = 2;	//卡牌UUID
+	required bool IsCompletion = 3;	//是否使用VipGold补齐
+	required bool IsImm = 4;	//是否立即生成 
+	required int32 MakerIndex = 5; //制作卡槽
+}
+
+message Response3403Pack
+{
+	required int32	ErrorCode		= 1;  // 逻辑错误码
+	required Game.KingsMan.Cfg.PayPriceVec NeedPrice = 2;					    // 还差的资源
+	required int32 NeedVipGold = 3;					    // 还需要的VipGold	
+	required bool IsCompletion = 4;	//是否使用VipGold补齐
+	required bool IsImm = 5;	//是否立即生成 	
+}

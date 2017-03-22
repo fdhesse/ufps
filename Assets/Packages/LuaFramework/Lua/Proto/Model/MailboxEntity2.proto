@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+import "MailEntity2.proto";
+
+package Game.KingsMan.Model;
+
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message MailDeletedInfo
+{
+    required int64 ID                                                  = 1;   
+    required int64 Time                                                = 2;   
+}
+
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+ 
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "MailboxEntity2", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message MailboxEntity2
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MailList", Disable = true, IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//map<int64, MailItem> MailList = 2;	
+			
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Mails", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated MailItem Mails = 2;		
+
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"DeletedMailList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated MailDeletedInfo DeletedMailList = 4;	
+}

@@ -1,0 +1,252 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+//!!!注意,不能使用10000-11000的错误码定议, 该区间被scut占用
+enum ErrorEnum
+{
+	ECE_OK = 0;
+    
+    ECE_ACTION_NOT_FOUND = 99;
+	
+	ECE_REQ_PARAMS_INVALID     = 100;
+	ECE_PCS_FINDKEY_EXCEPTION	 = 101;
+	
+	CommonRequestFailed   = 110; //通用错误
+	CommonServerIsBusy    = 111; //通用错误
+	
+	SessionIsInvalid 	  = 120; //无效session
+	UserLoginRepeat   	  = 121; //用户重复登录
+	LoginNoGate           = 150;     // login no avaliable gate
+	LoginEvilRegister     = 151;     // evil frequently register
+	LoginPasswordError		= 152; 		 // password is not correct
+	LoginAccountIsBanned  = 153;		 // account is banned
+	LoginAccountIsNotExist= 154;		 // account is not exist when setting nick name or banning account
+	LoginAccountNotMatch  = 155;		 // account id or token is not match
+	LoginNickNameIsSet		= 156;		 // only can set nick name once
+	LoginNickNameIsUsed		= 157;		 // nick name must be unique
+	
+	PlayerExpLevelInvalid  = 200;			// player has invalid exp level
+	
+	PrepareCardInvalidSlot  = 300;			// 准备卡牌的卡牌槽不合法
+	PrepareHeroCardOutMaxSlot = 301;		// 准备英雄卡牌超出卡牌槽的上限
+	PrepareSkillCardOutMaxSlot = 302;		// 准备技能卡牌超出卡牌槽的上限
+	PrepareCardOurMaxEnergy = 303;			// 准备卡牌的能量值超出能量上限
+	PrepareCardHasForbidden = 304;			// 准备了禁用的卡牌
+	PrepareCardSameCardIsFull = 305;			// 准备了禁用的卡牌
+	
+	
+	VipGoldIsNotEnough	 = 1000;		 // vip gold is not enough.
+	MoneyIsNotEnough		 = 1001;     // money is not enough.
+	TechnologyIsNotEnough = 1002;     // technology is not enough.
+	ResIsNotEnough        = 1003;     //Res is not enough
+	FragmentIsNotEnough   = 1004;
+	RecruitTicketIsNotEnough = 10005;  // 招募令不足
+    
+  ECE_LEVEL_NOTFOUND      = 5000;
+
+	
+	ExCodeIsNotExist	  = 300000;  // UseExchangeCode
+	ExCodeHasBeenUsed	  = 300001;  // UseExchangeCode
+	ExCodeIsOverdue	      = 300002;  // UseExchangeCode
+	ExCodeIsChannelNotMatch = 300003; //UseExchangeCode
+	
+	RTBattleOutMaxSlot				= 318000;		// 超出即时战斗卡牌的上限
+	RTBattleRepeated				= 318001;		// 卡牌重复
+			
+	
+	CDTimeIsNotOver				= 320000;		// get cards ...
+	TooManyTimesInOneDay	= 320001;		// free get card times in one day is overflow.
+	InvalidCard						= 320002;		// request card is invalid
+	HeigherThanPlayerLevel = 320003;	// level highter than player level
+	CardMaxLevel = 320004;						// lrequest card is max level
+	InvalidCardLevel = 320005;						// card level is invalid
+	HeroIsEmpty = 320006;						// Hero slot is empty
+	HeigherThanHeroLevel = 320007;	// level highter than player level
+	
+	DiscardNotCommonCard = 320008;	// 分解非通用卡牌	
+	
+	
+	InvalidCardGroup = 320009;		//无效的卡组
+	CardGroupHasUnlocked = 320010;		//重复解锁
+	HigherThanBaseLimitLevel = 320011;		//比基地限制的等级要高
+	HigherThanHeroLevel = 320012;		//比英雄的等级要高
+	
+	ActionCardNoHero = 320013;		//一个在阵上的职业技能没有对应的英雄
+	ActionCardIsLock = 320014;		//卡牌未解锁
+	
+	CurrentLevelIsMax = 340000;			//当前情况下，等级最大
+	InvalidGuardCardMaker = 340001;	//无效的Maker
+	GuardCardMakerIsBusy = 340002;	//Maker正在工作
+	GuardCardMakerIsEmpty = 340003;	//Maker是空的
+	SameGuardCardMaxCount = 340004;	//同类型的GuardCard的数量最大
+	MaxGuardCardMakerCount = 34008; //超过了Maker的数量上限
+	
+	CreateGuardCard_ERROR_LevelLimit = 34009; //超过了Maker的数量上限
+	
+	LevelNameError				= 35000;	//传入的关卡名称错误
+		
+	StaminaNotEnough      = 410001;   // ChooseLevel
+	LevelIsNotOpen        = 410201;   // finishLevel
+	LevelIsNotCross       = 410202;   // finishLevel
+	EliteLevelIsNotOpen       = 410203;   // finishLevel
+	TodayTimesNotEnough   = 410204;
+	SaoDangError_InvalidEvaluate     = 410210;   // 扫荡失败
+	
+	ChapterIsNotCross     = 410301;   // finishChapter
+	
+	
+	HeroIsMaxLevel        = 421001;
+	PlayerLevelHasNotArr  = 421002;
+	HeroIsInvalid         = 421003;
+	ExpBookTypeIsNotExist = 421004;
+	ExpBookNumIsNotEnough = 421005;
+	HeroLevelHasNotArr    = 421101;
+	RatityIsNotExist      = 421102;
+	RatityIsMaxLevel      = 421103;
+	TrainTypeIsNotExist   = 421201;
+	BuildLevelIsInvalid   = 421202;
+	BuildingStateIsError   = 421203;	//建筑的状态不正确
+	BuildingLevelIsMax     = 421204;	//建筑等级已达上限
+	BuildingIsInvalid      = 421205;  //无效的建筑
+	ResIsFull              = 421206;  //资源已达上限
+	BuildingIsCD           = 421207;  //刚收割完毕，还在冷却中
+	
+	OneFragmentIsNotEnough= 421301;//万能碎片不足够
+	FragmentTypeIsNotExist= 421302;//碎片类型不存在
+	
+	EquipTypeNotHas       = 431001;//不拥有该类型武器
+	EquipNotHas           = 431002;//不拥有该武器
+	EquipIsInvalid        = 431003;//无效的武器
+	EquipIsMaxLevel       = 431004;//武器已达最大等级
+	MaterialsIsNotEnough  = 431005;//材料不足
+	EquipExchangeUnlock   = 431006;//装备切换未解锁
+	BuildLevelNotArr      = 431007;//建筑等级不足
+	
+	InviteCodeErr         = 440000; //邀请码错误
+	InviteSetAlready      = 440001; //已经设置了邀请码
+	InviteCodeIsSelf      = 440002; //不可以输入自己的邀请码
+
+	VipLevelError					= 450000;//VIP等级达到上限
+	
+	UDIsNotExist          = 500100;  // DownloadUserData, UploadUserData, ...
+	
+	DailyTaskIsNotExist   = 510000;  // 日常任务已过期或不存在
+	DailyTaskIsCantGot		= 510001;  // 日常任务还未完成,不能领奖
+	DailyTaskHasGot       = 510002;  // 日常任务奖励已领取
+	
+	RewardHasGotten = 520001;				// 临时奖励无效	
+	
+	BuyProduceInvaid = 520002;				// 商品无效	
+	BuyProduceOverMaxCount = 520003;	// 超过购买次数
+	BuyProduceError = 520004;					// 购买商品失败	
+	
+	GetRewardError = 530001;					//获取奖励出错，奖励的状态是已经领取过的
+	MailOverflow          = 600000;  // SendMail
+	MailHasBeenAdded      = 600001;  // SendMail
+	MailIsNotExist        = 600100;  // ExeMail, SendMail, DeleteMail
+	MailIsExed            = 600200;  // ExeMail		
+	
+	GuildCreateFailed         = 600300;	
+	GuildUpdateFailed         = 600301;
+	GuildDeleteFailed         = 600302;
+	GuildCreateFailedNoGold   = 600303;	 //创建公会失败，金币不足
+	GuildCreateFailedHasGuild = 600304;	 //创建公会失败，已有公会
+	GuildCreateFailedRepeatedName = 600305;	 //创建公会失败，名字已存在
+	
+	GuildJoinJoined           = 600310;		//玩家已加入公会
+	GuildJoinDisabled         = 600311;	    //公会禁止玩家加入
+	GuildJoinTimeLimit        = 600312;  //超出最大申请加入次数
+	GuildJoinRequested        = 600313;  //已经申请加入该公会
+	GuildJoinMaxNumLimit      = 600314;  //公会人数已到上限	
+	GuildJoinScoreLimit       = 600315;  //玩家功勋未达到公会要求
+	
+	GuildAgreeJoinFailed      = 600320;
+	GuildAgreeJoinNotRequest  = 600321;
+	GuildAgreeJoinNoRights    = 600322;	
+	GuildAgreeJoinJoined      = 600323;	
+	
+	GuildLeaveFailed          = 600330;	
+	
+	GuildUpLevelFailed           = 600340;
+	GuildUpLevelFailedNoRights   = 600341;	
+	
+	GuildDownLevelFailed         = 600345;
+	GuildDownLevelFailedNoRights = 600346;	
+	
+	GuildAcceptChallengeFailed = 600347;	
+	GuildAcceptChallengeFailedNoTarget = 600348;	
+	GuildChallengeFailedTimeLimit= 600349;	
+	GuildChallengeFailedNoTarget = 600353;	
+	
+	GuildRequestDonateFailed      = 600350;	
+	GuildAgreeDonateFailed        = 600351;	
+	GuildAgreeDonateFailedNoTarget= 600352;	
+	
+	GuildShareRecordFailed    = 600360;	
+	GuildPlaybackRecordFailed = 600361;	
+	GuildLikeRecordFailed     = 600362;		
+	GuildShareRecordFailedAlready    = 600363;	
+	
+	GuildMailFailedTimeLimit  = 600370;
+	
+	GuildChatFailed           = 600380;		
+	
+	GuildNotExist             = 600400;		//公会不存在
+	GuildNotHaveGuild         = 600401;     //用户没有公会
+	GuildNotHaveUser          = 600402;		//用户不属于请求的公会
+	GuildNotHaveTarget        = 600403;		//目标不属于请求的公会
+	GuildInternalError        = 600500;     //内部错误，公会服务器没有启动等
+	
+	PvpBattle_NoData 	  = 601001; 
+	PvpBattle_NoResource  = 601002; //资源不足
+	PvpBattle_CantAttack  = 601003; //不能攻击
+	PvpBattle_AttackTimesNotEnough  = 601004; //攻击次数用完
+	
+
+	MatchFailedNoMission = 700001; //
+	MatchFailedExist = 700002; //
+	MatchFailedNonExist = 700003;
+	MatchFailedJoined = 700004;
+	MatchFailedMatching = 700005;
+	MatchFailedStartNotMaster = 70006;
+
+	ProgressQueueInvalid = 710000;		//无效的升级项目
+	ProgressQueueRepeated = 710001;		//重复的升级项目
+	ProgressQueueMax = 710002;		//升级项目数量已达最大
+	ProgressQueueIsWorking = 710003;		//升级项目还未结束
+	
+	
+	GetRewardBox_ErrorId = 730000;		//错误的顺序
+	GetRewardBox_ErrorTime = 730001;		//时间未到
+	GetRewardBox_ResIsNotEnough = 730002;		//资源不足
+	GetRewardBox_Error = 730003;		//未知错误	
+	RefreshBox_NotAllOpen = 730004;		//刷新RTBWinBox时，所有宝箱并未打开
+	RefreshBox_InCD = 730005; // 仍然在CD时间中
+	RefreshBox_NotEnoughVipGold = 730006; //刷新RTBWinBox时黄金不足
+	RefreshBox_Error = 730007; //刷新宝箱失败
+	GetRewardBox_ErrorState = 730008; //宝箱状态错误
+
+	
+	RTBWinBox_HasFull = 730009; //RTBWinBox宝箱已经没有空位了
+	RTBMedalBox_PointIsMax = 730010; //RTBMedalBox宝箱基点已满
+	GetRewardBox_NotEnoughMedalPoint = 730011; //点数不够
+	
+	OpenMunitionsBox_NotEnoughRes = 740000;	//资源不足
+	OpenMunitionsBox_ErrorState = 740001;	//状态不对
+	OpenMunitionsBox_Invalid = 740002; //无效的军需箱
+	
+
+	PurchaseOrderNotFound							= 800000;	// 充值订单不存在
+	PurchaseProductNotFound							= 800001;	// 商品不存在
+	PurchaseProductNotEnabled						= 800002;	// 商品未启用
+	PurchaseAlreadyDelivery							= 800003;	// 已经发过货
+	PurchaseProviderNotImplement					= 800004;	// 对应的充值方式未实现
+	PurchaseInvalidParams							= 800005;	// 参数无效
+	PurchaseVerifyFailed							= 800006;	// 后台校验未通过
+	
+	InventoryIdInvalid								= 900001;	//出售或者使用时，无效的InventoryId
+	CountInvalid											= 900002;	//出售或者使用时，无效的传入数量
+	CantFoundGuideID									= 900003;	//没有发现该指南的ID
+	GuidePosition											= 900004;	//指南的后置完成条件没有完成
+}

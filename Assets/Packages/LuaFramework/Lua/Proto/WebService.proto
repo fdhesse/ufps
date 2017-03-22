@@ -1,0 +1,131 @@
+syntax = "proto2";
+
+import "HeroCardEntity.proto";
+import "ItemEntity.proto";
+import "MailEntity2.proto";
+import "SkillCardEntity.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request99900Pack //查询玩家信息
+{
+	required uint32 UserID = 1;
+}
+
+message Response99900Pack
+{
+	required uint32 UserID = 1;
+	required string UserName = 2;
+	required int32 Level = 3;		
+	required string LoginTime = 4;			
+	required int32 PvpLevel = 5;		//pvp排名
+	required int32 PveLevel = 6;		//pve排名
+	
+	required int32 VipLevel = 10;		
+	required int32 VipGoldCharged = 11;	 //充值黄金累计
+	required int32 VipGold = 12;	 //黄金余额
+	required int32 Money = 13;	//钞票
+	
+	required int32 GuildID = 20;	//公会ID
+	required string GuildName = 21;	//公会名字
+	
+	repeated Game.KingsMan.Model.HeroCardEntity Heros = 30;
+	repeated Game.KingsMan.Model.ItemEntity Items = 31;
+	repeated Game.KingsMan.Model.SkillCardEntity Skills = 32;
+}
+
+message Request99901Pack //发奖
+{
+	repeated uint32 TargetID = 1;
+	
+	required string Title = 2;
+	required string Content = 3;
+	required string Sender = 4;	
+	
+	repeated Game.KingsMan.Model.MailAttachment Items = 6;
+	
+	repeated uint32 ServerID = 10;	
+}
+
+message Response99901Pack
+{	
+}
+
+message Request99902Pack //公告
+{
+	required int32 ServerID = 1;
+	required string Content = 2;
+}
+
+message Response99902Pack
+{	
+}
+
+message Request99903Pack //查询玩家信息
+{
+	required uint32 UserID = 2;
+}
+
+message Response99903Pack
+{
+	required uint32 UserID = 1;
+	required string DeviceID = 2;
+	required string CreateTime = 3;		
+}
+
+message Request99904Pack //活动更新
+{
+	required int32 ServerID = 1;
+	required string FileType = 2;
+	required string FileContent = 3;
+}
+
+message Response99904Pack
+{
+}
+
+message Request99910Pack //Ban玩家
+{
+	required string AccountName = 1;
+	required bool IsBan = 2; //
+	required uint32 BanTime = 3;
+}
+
+message Response99910Pack
+{	
+}
+
+message Request99911Pack //查询玩家Ban状态
+{
+	required string AccountName = 1;
+}
+
+message Response99911Pack
+{	
+	required string AccountName = 1;
+	required bool IsBan = 2; //
+	required string BanTime = 3;
+	required uint32 UserID = 4;
+}
+
+message Request99990Pack //gm指令
+{
+	required uint32 UserID = 1;
+	required string Command = 2;
+}
+
+message Response99990Pack
+{	
+	required string Result = 1;	
+}
+
+message Request99999Pack
+{
+	required int32 ServerID = 1;
+}
+
+message Response99999Pack
+{	
+	//required int32 ServerID = 1;
+}
+

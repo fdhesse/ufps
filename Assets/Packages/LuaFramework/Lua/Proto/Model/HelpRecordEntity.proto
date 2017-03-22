@@ -1,0 +1,30 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message HelpRewardEntity  // 帮助奖励实体实例
+{
+	required int32                              UUID      = 1;      // 本奖励的唯一ID
+	required Game.KingsMan.Cfg.RewardGotState   GotState  = 3;      // 本奖励的领取状态
+}
+
+/** @Inject
+ * public HelpRecordEntity()
+ * {
+ *     Rewards.PropertyName = "Rewards";
+ *     AddChildrenListener(Rewards);
+ * }
+ */
+ 
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message HelpRecordEntity  //
+{
+		required int32                  UUID      = 1;     							// 本帮助的唯一ID
+
+		// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+		repeated HelpRewardEntity   Rewards   = 2;      						// 本帮助奖励,每个标签对应一条
+}
+

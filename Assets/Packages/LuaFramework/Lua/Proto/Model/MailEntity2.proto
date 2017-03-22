@@ -1,0 +1,122 @@
+syntax = "proto2";
+
+import "ExtensionDefs.proto";
+import "CommonDefs.proto";
+import "GuildLevel.proto";
+
+package Game.KingsMan.Model;
+
+enum MailTargetType
+{
+    ALL                                       = 0;
+    GUILD                                     = 1;
+    USER                                      = 2; 
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message MailAttachment
+{
+    //required int32 ID                                                  = 1;   
+    required string ID                                                  = 1;   
+    required int32 Num                                                  = 2;  
+    required int32 Level                                                = 3;  
+    required Game.KingsMan.Cfg.EItemRarity Rarity                       = 4;
+}
+
+enum MailStatus
+{
+	New = 0;
+	Readed = 1;
+	Taked = 2;
+	Deleted = 3;
+}
+
+enum MailFlags
+{
+	None = 0;
+	TranslateTitle = 1;
+	TranslateContent = 2;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message MailResources
+{
+	required uint32 Num = 1;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message MailItem
+{
+	required int64 ID = 1;
+
+	required string Title = 2[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];
+	
+	required string Content = 3[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];		
+	
+	required string Sender = 4;
+
+	required uint64 SendTime = 5;
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	repeated MailAttachment Items = 6;
+		
+	required GuildLevel GuildLevel = 7;
+
+	required MailStatus Status = 10;
+		
+	required int32 Flags = 11;
+	//optional string LeftTime = 21[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];
+}
+	
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Mail", "Mail", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message MailEntity2
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Status")]
+	required int32 Status = 10000;	
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"TargetType")]
+	required MailTargetType TargetType = 10001;
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"TargetID", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated uint32 TargetID = 10002;
+		
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int64 ID = 1;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Title")]
+	required string Title = 2;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Content")]	
+	required string Content = 3;		
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Sender")]	
+	required string Sender = 4;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"SendTime")]	
+	required uint64 SendTime = 5;
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Items", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated MailAttachment Items = 6;
+			
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildLevel")]	
+	required GuildLevel GuildLevel = 7;
+		
+	///add more here
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CreateTime")]	
+	required uint64 CreateTime = 10;	
+}

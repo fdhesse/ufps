@@ -1,0 +1,145 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message PvpLevelItem //上传到服务器的pvp关卡entity数据
+{
+	required int32 UUID			= 1;
+	required float PosX 		= 4;
+	required float PosY 		= 5;
+	required float Angle 		= 6;
+	required int32 GroupId 		= 7;
+	optional int32 AreaId 		= 8;
+}
+
+message PvpLevelData //上传到服务器的pvp关卡数据
+{
+	required int32 LevelId 			= 1;
+	required int32 SceneId 			= 2;
+	repeated PvpLevelItem ItemList 	= 3;
+}
+
+
+
+message PvpCardEntity //pvp异步战斗entity数据
+{
+	required string InventoryId = 1;
+	required int32 Level 		= 2;	
+	required float PosX 		= 4;
+	required float PosY 		= 5;
+	required float Angle 		= 6;
+	required int32 GroupId 		= 7;
+	optional int32 AreaId 		= 8;
+}
+
+message PvpEditorCardEntity
+{
+	required int32 UUID 		= 1;
+	required string InventoryId = 2;
+	required int32 Level 		= 3;
+	required int32 Quality 		= 4;
+	required float PosX 		= 5;
+	required float PosY 		= 6;
+	required float Angle 		= 7;
+	required int32 GroupId 		= 8;
+	optional int32 AreaId 		= 9;
+}
+message PvpBattleReportHeroInf
+{
+	required string InventoryId = 1;
+	required int32 	Level 		= 2;
+	required int32  Quality 	= 3;
+}
+message PvpBattleReportInf
+{
+	required uint32 AttackerUserId 	= 2;	
+	required string AttackerNickname 	= 3;
+	required int32  AttackerLevel 		= 4;
+	required int32  AttackerCupNum 		= 5;
+	required string AttackerHeadIcon    = 6;
+	required uint64 PvpBattleId 		= 7;
+	required uint32 BeAttackedUserId 	= 8;
+	required int32 	PvpLevelId 			= 9;	
+	required bool  	IsWin 				= 10;
+	repeated PvpBattleReportHeroInf	 HeroList = 11;
+	required string ParamStr			= 12;
+	optional uint32 AttackerGuildId 	= 13;	
+	optional string AttackerGuildName 	= 14;	
+}
+
+message PvpAttackReportInf
+{
+	required string ResVersionCode 		= 1;
+	required uint32 EnemyUserId 		= 2;	
+	required string EnemyNickname 		= 3;
+	required int32  EnemyLevel 			= 4;
+	required int32  EnemyCupNum 		= 5;
+	required string EnemyHeadIcon	    = 6;
+	required uint64 PvpBattleId 		= 7;	
+	required int32 	PvpLevelId 			= 9;	
+	required bool  	IsWin 				= 10;
+	repeated PvpBattleReportHeroInf	 HeroList = 11;
+	required string ReplayFilePath 		= 12;
+	required int64  Time  				= 13;
+	required int32  Resource1  			= 14; //money
+	required int32  Resource2			= 15; //oil
+	required int32  Resource3			= 16; //TechnolgyEssence
+	required string ParamStr			= 20;
+	optional uint32 EnemyGuildId 		= 22;	
+	optional uint32 SelfCupNum	 		= 23;	
+	optional uint32 SelfLevel	 		= 24;	
+	optional string ReplayUrl	 		= 25;
+	optional string EnemyGuildName 		= 26;	
+}
+
+message PvpAttackReportList
+{
+	repeated PvpAttackReportInf ReportList = 1;
+}
+
+message PvpAttackReportData
+{
+	required string Version = 1;
+	required string Data = 2;
+}
+
+message PvpEditorLevelData
+{
+	repeated PvpEditorCardEntity ItemList 	= 1;
+}
+
+message PvpPlayerInfo
+{
+	required int32  PlayerLevel = 1;
+	required string NickName  	= 2;
+}
+
+message PvpLevelInfo
+{	
+	required int32 		  LevelId 		= 1;	
+	required int32        SceneId 		= 2;
+	repeated PvpCardEntity ItemList 	= 3;
+}
+
+message PvpReplayInfo
+{
+	required string ResVersionCode 	= 1;
+	required string ReplayCmdData 	= 2;
+	required string BattleData 		= 3;
+	required string ParamStr		= 4;
+}
+
+message PvpReplayData
+{
+	required string Version 	= 1;
+	required string ReplayData  = 2;
+	required string ParamStr    = 3;
+}
+
+message PvpBattleData
+{
+	required int32    		 ResVersion = 1;
+	required PvpPlayerInfo   PlayerInfo = 2;
+	required PvpLevelInfo  	 LevelData  = 3;	
+}
+

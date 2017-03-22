@@ -1,0 +1,117 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request1100Pack						// 登陆兼注册请求
+{
+  required string AccountName		= 1;	// 用户账户名称,暂时用整形代替
+  required string Password			= 2;	// 用户密码
+  
+  required string Channel			= 3;	// 该用户所属的渠道
+  required string Device			= 4;	// 改用户所使用的设备
+  required string Manufacturer		= 5;	// 改用户所使用的设备的生产商
+  
+  required string DeviceUUID		= 6;	// 可以唯一标识用户设备的号码，防止刷票或用于辅助找回账号
+  
+  optional string ClientIP			= 7;  // 客户端的IP, 客户端从CheckServer处获取
+	optional string OS            = 8;  // 用户使用的操作系统
+	optional string Operator      = 9; // 用户所属的手机运营商
+	optional string Language      = 10; // 用户使用的语言
+	optional string Publisher     = 11; // 用户版本所属的发行商
+}
+
+message Response1100Pack
+{
+  required bool   CanLogin			= 1;	// 现在是否可以登陆，false的话根据后续参数进入排队状态，稍后再连。
+  required int32  QueueUserCount	= 2;	// 在本用户之前排队的用户数。
+  required int32  NextLoginPeriod	= 3;	// 下次尝试登陆需要等待的秒数。
+  
+  required uint32 AccountID			= 4;	// 账号ID。
+  optional uint64 AccountToken0		= 5;	// 账号验证Token, 用于连接Gate。
+  optional uint64 AccountToken1		= 6;	// 两个8字节，共16字节
+  optional string NickName			= 7;	// 昵称若存在则不空，若为空，客户端需提示用户设置昵称
+  
+  optional string GateIP			= 8;	// 被分配的Gate IP
+  optional int32 GatePort			= 9;	// 被分配的Gate 端口
+  optional bool NewCreated			= 10;	// 是否新创建的账号
+  required string Session			= 11;   // 和gate通信所需
+  optional string GateDomain			= 12;	// 被分配的Gate Domain
+  
+  optional Game.KingsMan.Cfg.UserServerGroup UserServerGroups = 13;        // 用户数据业务服务器组
+	optional Game.KingsMan.Cfg.ServerGroupMapTable  ServerGroupMap = 14;     // 业务服务类型与业务服务器组的映射表
+  optional Game.KingsMan.Cfg.UserServerGroup GuildServerGroups = 15;        // 公会业务服务器组
+}
+
+message Request1101Pack						// 设置昵称，仅允许设置一次
+{
+	required string AccountName		= 1;	// 用户账户名称
+	required uint32 AccountID		= 2;	// 用户账户ID
+	required uint64 AccountToken0   = 3;	// 账号验证Token, 用于连接Gate。
+	required uint64 AccountToken1	= 4;	// 两个8字节，共16字节
+	required string NickName		= 5;	// 设置昵称
+}
+
+message Response1101Pack							
+{
+	required string NickName		= 1;	// 当前昵称
+}
+
+message Request1102Pack						// Ban掉某个账户
+{
+	required string AccountName		= 1;	// 用户账户名称
+	required uint32 AccountID		= 2;	// 用户账户ID
+	required uint64 AccountToken0   = 3;	// 账号验证Token, 用于连接Gate。
+	required uint64 AccountToken1	= 4;	// 两个8字节，共16字节
+	required bool   Banned			= 5;	// 是否Ban掉此账户
+}
+
+message Response1102Pack							
+{
+	required bool   Banned			= 1;	// 当前Ban状态
+}
+
+message Request1103Pack						// 根据昵称查询用户ID
+{
+	required string NickName		= 1;	// 用户昵称
+}
+
+message Response1103Pack							
+{
+  required string  NickName		= 1;	// 用户昵称
+  required bool    IsOnline   = 2;  // 该用户是否在线
+	required uint32  UserID			= 3;	// 该用户ID
+}
+
+message Request1104Pack						// 更新用户昵称
+{
+	required uint32  UserID			= 1;	// 该用户ID
+	required string  NickName		= 2;	// 用户昵称
+}
+
+message Response1104Pack							
+{
+	required uint32  UserID			= 1;	// 该用户ID
+}
+
+message Request1105Pack						// 通知gate用户login成功　
+{
+	required string AccountName		= 1;	// 用户账户名称
+	required uint32 AccountID		= 2;	// 用户账户ID
+	required uint64 AccountToken0   = 3;	// 账号验证Token, 用于连接Gate。
+	required uint64 AccountToken1	= 4;	// 两个8字节，共16字节
+	required string Session         = 5; 
+	required bool   Banned			= 6;	// 是否Ban掉此账户
+}
+
+message Response1105Pack							
+{
+	required string AccountName		= 1;	// 用户账户名称
+	required uint32 AccountID		= 2;	// 用户账户ID
+	required uint64 AccountToken0   = 3;	// 账号验证Token, 用于连接Gate。
+	required uint64 AccountToken1	= 4;	// 两个8字节，共16字节
+	required string Session         = 5; 
+	required bool   Banned			= 6;	// 是否Ban掉此账户
+}
+

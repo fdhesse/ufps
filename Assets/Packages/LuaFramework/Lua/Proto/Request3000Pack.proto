@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message Request3000Pack
+{
+	required string ExchangeCode = 1;//输入兑换码
+	required uint32 Channel = 2;//兑换渠道
+}

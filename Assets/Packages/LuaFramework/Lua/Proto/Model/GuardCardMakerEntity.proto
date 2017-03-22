@@ -1,0 +1,13 @@
+syntax = "proto2";
+package Game.KingsMan.Model;
+import "CommonDefs.proto";
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuardCardMakerEntity
+{
+	required int32 UUID = 1;	
+	required Game.KingsMan.Cfg.GuardCardMakerState State = 2;				//卡槽的状态
+	required int32 EntityUUID = 3[default=-1];		//当前存放在这里面的 ProgressUUID
+	required Game.KingsMan.Cfg.EProgressType ProgressType = 4; //progress type
+
+}

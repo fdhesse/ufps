@@ -1,0 +1,45 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "CardManager", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message CardManager
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastFreeGetNormalCardTime")]
+	required sint64 LastFreeGetNormalCardTime				= 3;				// 上次免费抽取精锐卡的时间
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"TodayFreeGetNormalCardTimes")]
+	required int32 TodayFreeGetNormalCardTimes		  = 4;				// 今日免费抽取精锐卡的次数
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GetNormalCardTimes")]
+	required int32  GetNormalCardTimes		  				= 5;				// 抽取抽取精锐卡的总次数
+	
+  // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastFreeGetSuperCardTime")]
+	required sint64 LastFreeGetSuperCardTime				= 6;				// 上次免费抽取王牌卡的时间
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GetCardRandomSeed")]
+	required uint32	GetCardRandomSeed								= 7;				// 选卡的随机种子
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GetSuperCardTimes")]
+	required int32	GetSuperCardTimes								= 8;				// 抽取王牌卡的总次数
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"TodayFreeRefreshExchangeCardTimes")]
+	required int32 TodayFreeRefreshExchangeCardTimes		  = 20;				// 今日免费刷新兑换卡的次数
+	
+	
+}

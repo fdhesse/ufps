@@ -1,0 +1,63 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+//排行榜用户数据
+message PvpUserMatchInf
+{
+	required uint32 UserId    = 1;
+	required string Nickname =  2;	
+	required int32  Level =  3;	
+	required int32  CupNum =  4;	
+	required string HeadIconId = 5;
+	required int32  Activity = 6; //活跃度
+	required bool   EnableAttack = 7;
+	optional string ParamStr = 8;	
+	required int32  Resource1 = 9;	//money
+	required int32  Resource2 = 10;	//oil
+	required int32  Resource3 = 11;	//TechnolgyEssence
+	required int32  Resource4 = 12;
+	optional int32 	GuildId = 13;
+	optional int32  AreaId  = 14; //所属服务器组标识,保留给全球同服使用
+	optional bool   NeedUpdateTime = 15;//是否更新时间
+	optional string	GuildName = 16;
+}
+
+message PvpUserMatchInfEx
+{
+	required PvpUserMatchInf Inf = 1;
+	required int64 UpdateTime = 2;
+	required int64 LastCheckTime = 3;
+}
+
+message PvpUserMatchInfExList
+{
+	repeated PvpUserMatchInfEx  ItemList = 1;
+}
+
+message PvpUserMatchInfList
+{
+	repeated PvpUserMatchInf  ItemList = 1;
+}
+
+message PvpMatchUser
+{
+	required int32 AttackedTimes = 1;
+	required int32 AttackedWinTimes = 2;
+	required int64 LastAttackTime = 3;
+	required PvpUserMatchInf MatchInf = 4;
+}
+
+message PvpLocalMatchData
+{
+	required int32 Version 						= 1;
+	repeated PvpUserMatchInf CacheList			= 2;	
+	required PvpUserMatchInfList CurMatchedUserList = 4; //当前匹配的user列表
+	required int32  CupNum 						= 5; //当前请求匹配的基准奖杯数
+	required int64  UpdateTime					= 6; //更新时间
+	required string	ParamStr 					= 7;
+	repeated PvpMatchUser AttakcedUserStat	    = 8; //已经攻击过的用户统计信息
+}
+
+
+

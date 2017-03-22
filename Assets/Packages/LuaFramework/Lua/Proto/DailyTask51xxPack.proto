@@ -1,0 +1,53 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request5100Pack 		// GetDailyTaskReward
+{
+	required uint32 UserID = 1;
+	required int32  TaskID = 2;   // 任务UUID
+	
+	required Game.KingsMan.Cfg.TaskGroupType TaskType = 3; // 获取的任务组类型
+}
+
+message Response5100Pack
+{
+	required uint32	ErrorCode		= 1;  // 逻辑错误码
+	required uint32 UserID			= 2;
+	repeated Reward RewardList  = 3;	// 奖励列表
+	required Game.KingsMan.Cfg.TaskGroupType TaskType      = 5; // 获取的任务组类型与请求对应
+}
+
+message Reward
+{
+	required Game.KingsMan.Cfg.EResourceType RewardResType = 1; // 奖励的资源类型
+	required int32 RewardNum                               = 2; // 奖励的数量
+}
+
+message DailyTaskEvent // 日常任务事件
+{
+	required Game.KingsMan.Cfg.DailyTaskType TaskType = 1;      // 日常任务类型
+	required string InventoryID = 2;                            // 任务参数，有关卡牌类型
+	required int32  Times = 3;                                  // 本事件贡献的日常任务触发次数
+}
+
+message DailyTaskEvents // 日常任务事件列表
+{
+	repeated Game.KingsMan.MessagePack.DailyTaskEvent TaskEvents = 2;
+}
+
+message Request5101Pack 		// 上传客户端产生的日常任务行为数据，只发一次丢失不再补发
+{
+	required uint32 UserID = 1;
+		
+	repeated Game.KingsMan.MessagePack.DailyTaskEvent TaskEvents = 2; // 获取的任务组类型
+}
+
+message Response5101Pack     // 回馈上传客户端的日常任务行为数据
+{
+	required uint32	ErrorCode		= 1;  // 逻辑错误码
+	required uint32 UserID			= 2;
+}
+

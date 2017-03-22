@@ -1,0 +1,14 @@
+syntax = "proto2";
+import "ExtensionDefs.proto";
+import "CommonDefs.proto";
+package Game.KingsMan.Model; 
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message BlackMarketRecordEntity  // 黑市商品
+{
+	required int32									UUID = 1;																//卡牌在黑市里的唯一ID	
+	required string                 InventoryID      =2;     								//黑市里在售的卡牌ID
+	required int32                  BuyCount      = 3;     									//这张卡已经购买的次数
+	required Game.KingsMan.Cfg.BlackMarketCardeState cardeState	    = 4;		//卡牌是明牌还是暗牌
+	required int32									CardLocalitionID = 5;										//卡牌的位置ID
+}
+

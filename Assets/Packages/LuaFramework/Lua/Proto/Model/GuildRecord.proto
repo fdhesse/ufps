@@ -1,0 +1,63 @@
+syntax = "proto2";
+
+import "ExtensionDefs.proto";
+import "GuildLevel.proto";
+//import "Guild.proto";
+
+package Game.KingsMan.Model;
+
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+ 
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "GuildRecord", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message GuildRecord
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildID")]
+	required int32 GuildID = 2;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildLevel")]
+	required GuildLevel GuildLevel = 3;
+							
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildsRequestJoined", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated int32 GuildsRequestJoined = 4;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildData", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//optional GuildEntity GuildData = 5;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildMailTime")]
+	required uint64 GuildMailTime = 6;	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildName")]
+	required string GuildName = 7[default=""];
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildContribution")]
+	required int32 GuildContribution = 8;	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildChallengeNum")]
+	required int32 GuildChallengeNum = 9;	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildRefreshTime")]
+	required uint64 GuildRefreshTime = 10;	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildIcon")]	
+	required int32 GuildIcon = 11;				
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildDonateTime")]
+	required uint64 GuildDonateTime = 12;		
+}
+

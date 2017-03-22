@@ -1,0 +1,77 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+//队列中用来描述一个项目
+message ProgressItemInfo 											// 队列中用来描述一个项目的属性
+{
+	required Game.KingsMan.Cfg.EProgressType	ProgressType = 1;				// 升级的类型	building or card
+	required int32 EntityUUID     = 2;  						// 项目ID
+	required string InventoryId     = 3;  						// 项目InventoryId
+}
+
+//队列中用来描述一个项目
+message ProgressItemInfoVec 											// 队列中用来描述一个项目的属性
+{
+	repeated ProgressItemInfo	FinishedVec = 1;
+}
+
+//加速队列中的一个项目
+message Request7100Pack 											// 加速队列中的一个项目
+{
+	required uint32 UserID     = 1;  						// 用户ID
+	required Game.KingsMan.Cfg.EProgressType	ProgressType = 2;				// 升级的类型	building or card
+	required int32 UUID = 3;										// 加速进程的UUID
+	
+}
+
+message Response7100Pack 											// 加速队列中的一个项目
+{
+	required int32 ErrorCode = 1;																	//返回结果
+	required Game.KingsMan.Cfg.PayPriceVec NeedPrice = 2;					// 还差的资源
+	
+}
+
+
+//取消队列中的一个项目
+message Request7101Pack 																						// 取消队列中的一个项目
+{
+	required uint32 UserID     = 1;  																	// 用户ID
+	required Game.KingsMan.Cfg.EProgressType	ProgressType = 2;				// 升级的类型	building or card
+	required int32 UUID = 3;																		// 进程UUID
+}
+
+message Response7101Pack											// 取消队列中的一个项目
+{
+	required int32 ErrorCode = 1;								// 错误原因
+
+}
+
+//刷新所有的项目
+message Request7104Pack 											                      // 刷新所有的项目
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+}
+
+message Response7104Pack																						// 确定一个项目完毕
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目
+	
+}
+
+
+//确定一个已经结束的项目
+message Request7105Pack 											                      // 刷新所有的项目
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+	required Game.KingsMan.Cfg.EProgressType	ProgressType = 2;				// 项目类型
+	required int32 UUID = 3;				// 项目ID
+}
+
+message Response7105Pack																						// 确定一个项目完毕
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目
+	
+}

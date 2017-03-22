@@ -1,0 +1,31 @@
+syntax = "proto2";
+
+import "TCommonDefs.proto";
+
+package Game.KingsMan.Cfg;
+
+
+// 资源公用属性集合，所有的资源共享
+message InventoryDef
+{
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string InventoryId                         = 1[default="INVALID"];    // 唯一ID
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required EInventoryClass InventoryClass       = 2;    // 资源类别
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string Name                                = 3;    // 名称
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string Description                         = 4;    // 描述
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string LongDescription                     = 5;    // 长描述
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string Image                               = 6;    // 图片路径    
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string ExternalRef                         = 7;    // 扩展配置路径
+}
+
+// 道具列表
+message InventoryDefTable
+{
+    repeated InventoryDef InventorysData     = 1;    // InventoryID Vs InventoryDescriptor
+}

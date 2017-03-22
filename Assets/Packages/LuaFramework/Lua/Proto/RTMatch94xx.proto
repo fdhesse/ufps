@@ -1,0 +1,266 @@
+syntax = "proto2";
+
+//import "RuntimePVP.proto";
+
+package Game.KingsMan.MessagePack;
+
+message RTMatchInf
+{
+	required int32 UserId = 1;	
+	required int32 ExpLevel = 2;
+	required int32 RTCupNum = 3;	
+	required string NickName = 4;	
+	required int32 GuildId = 5;
+	required string GuildName = 6;
+	//map<int32, int32> ExcludedUserList = 7; //不允许被匹配上的userId list
+	required int32 MatchCupBaseNum = 8;//指定匹配奖杯的基数
+	required float RateOfWinning = 9; //胜率
+	required string HeadIcon = 10;	
+	optional int32  TeamId = 11;
+	optional int32  CardStrength  = 12; 
+	optional int32  AreaId = 13;
+	required int32 GuildIcon = 14;
+}
+
+message RTMatchInfEx
+{
+	required RTMatchInf Inf = 1;
+	required int32 MatchState = 2;
+	required bool  IsRoomMaster = 3;	
+	required int64 UpdateTime = 4;
+	repeated RTMatchInfEx MatchedInfList = 5;
+	required int32 RoomServerId = 6;
+}
+
+message RTMatchResult
+{
+	required int32 State = 1;	
+	required string RoomServerUrl = 2;
+	required bool  IsRoomMaster = 3;
+	optional RTMatchInf MatchedUser = 4;
+}
+
+message RTMatchResultEx
+{
+	required int32 State = 1;	
+	required string RoomServerUrl = 2;
+	required bool  IsRoomMaster = 3;	
+	repeated RTMatchInf MatchedUserList = 4;
+	required int32 TeamId = 5;
+	required int32 MasterUserId = 6;
+}
+
+message Request9400Pack //RTMatchStart
+{
+	required RTMatchInf MatchInf = 1;		
+	required int32 PlayerNum = 2;	
+	optional int32 TeamPlayerId = 3;
+}
+
+message Response9400Pack
+{	
+	required RTMatchResultEx resultEx = 1;
+}
+
+message Request9401Pack //RTMatchUpdate
+{
+	required int32 UserId = 1;
+	required int32 PlayerNum = 2;
+}
+
+message Response9401Pack
+{	
+	required RTMatchResultEx resultEx = 1;
+}
+
+
+message Request9402Pack //RTMatchCancel
+{
+	required int32 UserId = 1;
+	required int32 PlayerNum = 2;
+}
+
+message Response9402Pack
+{	
+	required RTMatchResultEx resultEx = 1;
+}
+
+message Request9403Pack //RTMatchAddToList
+{
+	required RTMatchInf MatchInf = 1;	
+	required bool RemoveFromList = 2;
+	required int32 PlayerNums = 3;
+}
+
+message Response9403Pack
+{	
+	required int32 State = 1;	
+}
+
+message Request9404Pack //RTMatchGetUserList
+{
+	required int32 UserId = 1;
+}
+
+message Response9404Pack //RTMatchGetUserList
+{	
+	required int32 State = 1;	
+	repeated RTMatchInf UserList = 2;	
+	required RTMatchResultEx resultEx = 3;
+}
+
+message Request9405Pack //RTMatchUser
+{
+	required int32 UserId = 1;
+	required int32 OtherUserId = 2;
+}
+
+message Response9405Pack //RTMatchUser
+{	
+	required int32 State = 1;		
+}
+
+message Request9406Pack //RTMatchGetRoomUrl
+{
+	required int32 UserId = 1;	
+	required int32 UserServerId = 2;
+}
+
+message Response9406Pack
+{	
+	required string RoomUrl = 1;
+	required string Params = 2;
+}
+
+message RT2V2Desk
+{
+    required int32 Index = 1;
+    repeated RTMatchInf Users = 2;
+}
+
+message RT2V2RoomInf
+{
+    repeated RT2V2Desk Desks = 1;
+}
+
+message Request9410Pack // RT2V2JoinDesk
+{
+    required RTMatchInf MatchInf = 1;
+    required int32 DeskIdx = 2;
+    required int32 SeatId = 3;
+    required int32 PlayerNum = 4;
+}
+
+message Response9410Pack
+{
+    required bool Success = 1;
+    required RT2V2RoomInf RoomInf = 2;
+    required RTMatchResultEx MatchResult = 3;
+}
+
+message Request9411Pack // RT2V2LeaveDesk
+{
+    required int32 UserId = 1;
+}
+
+message Response9411Pack
+{
+}
+
+message Request9412Pack // RT2V2GetDesksInf
+{
+    required int32 UserId = 1;
+}
+
+message Response9412Pack
+{
+    required RT2V2RoomInf RoomInf = 1;
+    required RTMatchResultEx MatchResult = 2;
+}
+
+message Request9420Pack //MatchStart
+{
+	required RTMatchInf MatchInf = 1;	
+	required int32 MissionId = 2;	
+	required bool IsCreate = 3;	
+}
+
+message Response9420Pack
+{	
+	required RTMatchResultEx resultEx = 1;
+}
+
+message Request9421Pack //MatchUpdate
+{
+	required int32 UserId = 1;
+	required int32 MissionId = 2;	
+}
+
+message Response9421Pack
+{	
+	required RTMatchResultEx resultEx = 1;
+}
+
+
+message Request9422Pack //MatchCancel
+{
+	required int32 UserId = 1;
+	required int32 MissionId = 2;	
+	required int32 MatchId = 3;		
+}
+
+message Response9422Pack
+{	
+	//required RTMatchResultEx resultEx = 1;
+}
+
+message Request9423Pack //MatchBegin
+{
+	required int32 UserId = 1;
+	required int32 MissionId = 2;	
+	required int32 MatchId = 3;		
+}
+
+message Response9423Pack
+{	
+	//required RTMatchResultEx resultEx = 1;
+}
+
+message Request9450Pack //RTSendBattleReport
+{
+	required int32 					UserId = 1;	
+    required bool  					IsMyHostServer = 2;
+	//required Game.KingsMan.RuntimePVP.RTBattleReportInf 		BattleInf = 3;
+}
+
+message Response9450Pack
+{	
+	required string Value = 1;	
+}
+
+message Request9451Pack //RTGetBattleUploadInf
+{
+	required int32 					UserId = 1;	    
+	required string 				Platform = 2;
+	required string                 BattleIdent = 3;
+}
+
+message Response9451Pack
+{	
+	required uint64 	BattleId = 1;
+	required string BattleIdent = 2;
+	required string ReplayToken = 3;	
+	required string UploadUrl = 4;
+	required string DownloadUrl = 5;	
+	required string ParamStr = 6;
+}
+
+message Request9452Pack
+{
+    required int32 UserId = 1;
+}
+
+message Response9452Pack
+{
+    required bool CanBattle = 1;
+}

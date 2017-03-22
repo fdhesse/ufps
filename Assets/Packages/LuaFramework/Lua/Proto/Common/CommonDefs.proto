@@ -1,0 +1,774 @@
+syntax = "proto2";
+
+package Game.KingsMan.Cfg;
+
+// 整形二维向量
+message Vector2I
+{
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required int32 X                                = 1;
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required int32 Y                                = 2;
+}
+
+// 字符串名值对
+message KeyValuePair
+{
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string Key                             = 1;    // 键
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string Value                           = 2;    // 值
+}
+
+// 道具属性
+message SPropertyOverride
+{
+	// @Tag: 
+	//map<string, string> Properties					= 1;	// 属性键值对
+}
+
+// 道具类别
+enum EInventoryCategory
+{
+    Currency                                        = 0;    // 资源类型
+    ActionCard                                      = 1;    // 主动技能卡
+    HeroCard                                        = 2;	// 英雄卡牌
+    GearCard                                        = 3;	// 被动技
+    EnemyCard                                       = 4;	// 敌人卡牌
+    EnemyGrunt                                      = 5;	// 占位符
+    FusionComponent                                 = 6;	// 占位符
+    PVPComponent                                    = 7;	// 占位符
+    PVPArmy                                         = 8;	// 占位符
+    Extra                                           = 9;	// 占位符
+    GuardCard                                       = 10;	// 防御卡牌
+    Building                                        = 11;	// 建筑
+    PassiveCard                                     = 12;   // 被动技卡牌
+    SpecialHuntingCount															= 13;	//活动关卡挑战次数
+    
+    RTBSpecialCard                                     = 14;	//特殊卡牌， 使用碎片升级，属性与被动卡牌一致
+    
+    Invalid                                         = 1000;
+}
+
+// 道具品质
+enum EItemRarity
+{
+    COMMON                                          = 0;	// 白
+    RARE                                            = 1;	// 绿
+    EPIC                                            = 2;	// 蓝
+    UNIQUE                                          = 3;	// 紫
+    LEGENDARY                                       = 4;	// 橙
+    SPECIALIST                                      = 5;
+    MYTHICAL                                        = 6;
+	SYMBLE                                          = 7;//用于任务，获取途径图标背景显示
+}
+
+// 货币类型	---- TODO: 替换成EResourceType
+enum ECurrencyType
+{
+    Gold                                            = 0;    // 钞票
+    VipGold                                         = 1;    // 金条
+}
+
+// 资源类型
+enum EResourceType
+{
+    RTGold                      = 0;    // 钞票
+    RTVipGold                   = 1;    // 金条
+    RTOil                       = 2;		// 石油
+    RTStamina                  	= 3;		// 体力
+    RTRecruitTicket             = 4;		// 招募令
+    RTGoldenTicket             	= 5;		// 金券
+    RTTechnolgyEssence          = 6;		// 科技精华
+    RTTalentPoint               = 7;		// 天赋点
+    RTExploitPoint              = 8;		// 功勋值
+    RTHeroFragment              = 9;    // 英雄碎片
+    
+    RTCount              = 10;
+}
+
+
+// 职业枚举
+enum EOccupation
+{
+    Doctor                                          = 0;    // 医生
+    Assault                                         = 1;    // 突击
+    Special                                         = 2;    // 特种
+    Engineer                                        = 3;    // 工程 
+    Blaster                                         = 4;    // 爆破
+    Defender                                        = 5;    // 重装
+}
+
+// 技能类型
+enum ESkillCardType
+{
+    ESCT_Occupation                                = 0;			//职业技能
+    ESCT_Common					 												 = 1;			//通用技能
+    ESCT_Passive																		 = 2;			//被动技能
+    ESCT_PVP = 3; 			//PVP专用
+}
+
+// 挑战模式
+enum EChallengeMode
+{
+    TutorialMode                                    = 0;    // 教学模式
+    NormalMode                                      = 1;    // 普通模式
+    SuperMode                                       = 2;    // 精英模式
+	PvpMode											= 3;	// PVP模式
+	KillZombieMode									= 4;	// 僵尸防守模式
+	DefendZombieMode								= 5;	// 僵尸进攻模式
+	CardShowMode									= 6;	// 卡牌展示模式
+	SkyLadderMode									= 7;	// 天梯模式
+    RuntimePVP                                      = 8;    // 实时PVP
+}
+
+// 卡牌类别	---- TODO: 替换成InventoryCategory
+enum ECardCategory
+{
+		CCResCard																				= 0;     // 资源卡
+    CCSkillCard                                     = 1;     // 技能卡
+    CCHeroCard                                      = 2;     // 特工卡
+    CCInvalid                                       = 1000;
+}
+
+// 背包道具品种	---- TODO: 替换成InventoryCategory
+enum	EBagItemCategory
+{
+	EBIC_Consume	= 0;								//消耗
+	EBIC_Fragments = 1;								//碎片
+	EBIC_Materials = 2;								//材料
+	EBIC_MissionItems = 3;						//任务道具
+}
+
+// 背包材料类道具详细分类	---- TODO: 替换成InventoryCategory
+enum	EBagItemClass
+{
+	EBICC_ResCard	= 0;											//消耗品
+	EBICC_Fragment = 1;											//碎片
+	EBICC_Material = 2;											//武器装备材料
+	EBICC_TrainingBook = 3;									//训练书
+	EBICC_ExpBook = 4;											//经验书
+	EBICC_GoldenTicket = 5;									//金卷
+	EBICC_RecruitTicket = 6;								//招募令
+	EBICC_Drawing = 7;											//图纸
+}
+
+// 特工属性枚举 -- 可以废弃，用不上
+enum EHeroPropertyType
+{
+	EHPT_Health                                     = 1;// 生命
+	EHPT_Attack                                     = 2;// 攻击
+	EHPT_Defence                                    = 3;// 防御
+	EHPT_Critical                                   = 4;// 暴击
+	EHPT_Miss                                       = 5;// 闪避
+}
+
+//装备类型枚举
+enum EEquipType
+{
+	Firearm                                         = 0;//枪械
+	Bulletproof                                     = 1;//防弹衣
+	Boot                                            = 2;//军靴
+	Headset                                         = 3;//耳麦
+}
+
+// 物品描述(用于奖励、消耗等场景)
+message AssetDescriptor
+{
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string InventoryId                     = 1;    // 道具唯一ID
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required int32 Count                            = 2;    // 数量
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    optional int32 Level                            = 3;    // 等级
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    optional EItemRarity Rarity                     = 4;    // 品质
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	optional double Poss                             = 5;    // 掉落概率
+}
+
+// 各种购买的资源价格结构
+message PayPrice                     
+{	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required EResourceType	 ResClass	= 1;          // 购买需要的资源类型
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32	Price	= 2;                	// 购买需要的资源数量
+}
+
+// 资源列表
+message PayPriceVec
+{
+    repeated PayPrice PayPriceList                     = 1;    // 资源列表
+}
+
+// 资源列表
+message ResourceValueTable
+{
+		//map<string,int32> ResourceTable									= 1;    // 资源列表
+}
+
+// 特工五项属性值
+message HeroBattleProperties
+{
+	//map<string,float>		Properties = 1;							//属性表
+}
+
+//生产类型
+enum EProgressType
+{
+	EPT_BuildingUpgrade = 0;                               //升级建筑
+	EPT_SkillCardUpgrade = 1;															 //升级卡牌
+	EPT_CreateGuardCard = 2;															 //制作防御卡牌
+	EPT_GuardCardUpgrade = 3;															 //升级防御卡牌
+	
+	EPT_OccupationSkillUpgrade = 4;												 //升级英雄职业技能
+	EPT_PassiveSkillUpgrade = 5;													 //升级英雄被动技能
+	
+	EPT_Unknown = 6;													 //升级英雄被动技能
+}
+
+//设置名称的类型
+enum ESetNameType
+{
+	ESNT_OneButton = 0;                               //一个按钮
+	ESNT_TwoButton = 1;															 //俩个按钮
+}
+
+enum EBuildingName
+{
+	BuBase = 0;			 	//基地(限制其它建筑的升级上限)
+	BuBank = 1; 			 	//银行(钞票上限)
+	BuOilt = 2; 		//油库（石油上限）
+	BuLabb = 3;					//数据中心（科技精华上限）
+	BuStrm = 4;	//保险库（掠夺修正）
+	BuGov1 = 5;	//交易所（钞票产出）
+	BuRef1 = 6;		//炼油厂（石油产出）
+	BuRes1 = 7;		//实验室（科技精华产出）
+	BuGov2 = 8;	//交易所2
+	BuRef2 = 9;		//炼油厂2
+	BuRes2 = 10;	//实验室2
+	
+	BuTecr = 11; //科研中心(用来解锁防御卡牌以及限制它们的等级和数量)
+	
+	Building_INVALID = 12;	//无效的建筑
+}
+
+
+//建筑枚举
+enum EBuildingType
+{
+	EBT_BASE	= 0;		//基础设施
+	EBT_PRODUCER = 1; //生产者
+}
+
+//建筑状态枚举
+enum EBuildingState
+{
+	EBS_STOP = 0;	//停止状态
+	EBS_LevelUp = 1;	//升级
+	EBS_WORKING = 2;	//工作中，其实满仓了任然处于工作状态
+}
+
+//卡牌格子的属性
+message CardSlotProperty
+{
+	required string InventoryId	= 1;		// 卡的类型	
+	required string CardClass	= 2;			// 卡的类别，hero or skill	
+	required int32 UUID	= 5;						//卡UIID
+}
+
+message RTBattleCardSlotProperty
+{
+	required string InventoryId	= 1;		// 卡的类型	
+	required EInventoryCategory CardType	= 2;			// 卡的类别
+	required int32 UUID	= 5;						//卡UIID
+}
+
+
+message UID2CardSlotInfo
+{
+		//map<int32, CardSlotProperty> CardSlotTable = 1; //卡牌格子的列表   CardID vs CardSlotProperty
+}
+
+// 日常任务类型
+enum DailyTaskFormatVersion
+{
+	DTT_V0 = 0;
+	DTT_V1 = 1;
+}
+
+enum DailyTaskType
+{
+  DTT_GETCARDS = 0;                   // 累计招募次数.
+	DTT_USESKILLCARD = 1;               // 使用某种技能卡片，  在客户端战斗中采集数据.
+	DTT_KILLENEMY    = 2;               // 杀死指定类型的敌人，在客户端战斗中采集数据.
+	
+	DTT_SKILLCARDUPGRADE = 3;           // 技能强化.
+	DTT_HEROCARDLEVELUP = 4;            // 特工升级.
+	
+	DTT_PASSNORMALLEVEL = 5;            // 通过普通关卡次数.
+	DTT_PASSSUPERLEVEL = 6;             // 通过精英关卡.
+	
+	DTT_COSTRES = 7;                    // 消耗某种资源.
+	
+	DTT_ASKHELPCARDS = 8;               // 请求捐赠卡片
+	DTT_GIVEHELPCARDS = 9;              // 给予捐赠卡片
+	DTT_PVPGUILDMEMBER = 10;            // 挑战盟友
+	DTT_BUYCARDSINSHOP = 11;            // 在商店中购买卡片.
+	DTT_BUYRESINSHOP = 12;              // 在商店中购买某种资源，例如钞票.
+	DTT_BUYANYTHINGINSHOP = 13;         // 在商店中购买任何东西.
+	DTT_RESPVP = 14;                    // 发动资源战争.
+	DTT_RESPVPWIN = 15;                 // 赢得一次资源战争.
+	DTT_KILLANYENEMY = 16;              // 在战斗中杀死任何敌人.
+	DTT_SPECIALHUNT = 17;               // 参与特殊狩猎
+	DTT_REFRESHEQUIP = 18;              // 刷新装备            
+	
+	DTT_COMPLETENOMALCHAPTER = 19;      // 完成普通模式的章节.
+	DTT_COMPLETESUPERCHAPTER = 20;      // 完成精英模式的章节.
+	
+	DTT_EQUIPUPGRADE = 21;              // 升级装备
+	DTT_BASEUPGRADE = 22;               // 升级基地
+	DTT_COLLECTBASERES = 23;            // 收割基地某种资源
+	DTT_COLLECTANYTHING = 24;           // 收割基地任何资源
+	
+	DTT_BUILDINGUPGRADE = 25;           // 任意一种建筑升级，政府，科研中心
+	DTT_PVPEDITING = 26;                // 完成一次PVP场景编辑.
+	
+	DTT_BUILDDEFENSE = 27;              // 建造一个防御兵种
+	DTT_DEFENSEUPGRADE = 28;            // 防御兵种升级
+	DTT_PLAYBACKPVPREPORT = 29;         // 回放PVP战报.
+	DTT_SHAREPVPREPORT = 30;            // 分享PVP战报
+	
+	DTT_GETHEROCARD = 31;               // 获取英雄卡片.
+	DTT_GETSKILLCARD = 32;              // 获取技能卡片.
+	
+	DTT_PASSLEVEL3S = 33;               // 以3S评价过关.
+	
+	DTT_EQUIP_MAXLEVEL = 34;            // 获取一个满级装备.
+	DTT_HERO_MAXLEVEL = 35;             // 获取一个满级英雄.
+	DTT_SKILL_MAXLEVEL = 36;            // 获取一个满级技能. 
+	DTT_ROLEUPLEVEL = 37;								// 玩家升级
+	DTT_EXPLOIT = 38;										// 玩家获得功勋
+	DTT_CONTRIBUTION = 39;							// 玩家获得工会贡献
+	DTT_PVP_DEFENSECOUNT = 40;					// PVP防御成功次数
+	DTT_OPENBOXCOUNT = 41;							// 玩家开启宝箱的数量
+	
+	DTT_BUYSTAMINA = 42;                // 购买体力
+	DTT_CREATEORJOINGUILD = 43;					// 创建或者加入工会
+	DTT_EQUIP_MAXRAITY = 44;						// 获取一个满品质的装备
+	
+	DTT_WATCHPEAKEDNESS = 45;				 // 观看巅峰对决
+  DTT_PVPWIN					= 46;					//累计胜场（PVP）
+  DTT_ATTENDPVP = 47;								//参与PVP
+  DTT_PREFECTWIN = 48;							//完美获胜
+  DTT_LAUNCHPVP = 49;								//发起模拟战
+  DTT_ONRANKTOPEAKEDNESS = 50;		 	//入榜巅峰对决
+  DTT_DOUBLECHALLENGE = 51;					//2v2竞技胜利
+}
+
+// 任务组类型
+enum TaskGroupType
+{
+	TGT_DAILYTASK = 0;                 // 日常任务
+	TGT_MAINTASK = 1;									 // 主线任务
+	TGT_ACHIEVETASK = 2;               // 成就任务
+	TGT_PVPACHIEVETASK = 3;               // 成就任务
+}
+
+// 活动版式类型
+enum ActivityType
+{
+  AT_ONEBIGREWARD = 0;               // 只展示一种大奖的版式，比如单机版登陆即送的
+	AT_MULTREWARDS  = 1;               // 多种奖励列表的的版式，比如登陆七天循环奖励
+	AT_BILLBOARD    = 2;               // 公告版式
+}
+
+//帮助版式类型
+enum HelpType
+{
+	HE_HAVETITLE = 0;
+	HE_NOTITLE = 1;
+}
+
+//  奖品领取状态
+enum RewardGotState
+{
+	RGS_CANT_GOT = 0;				// 不能领取
+	RGS_CAN_GOT  = 1;       // 可领取而未领取
+	RGS_HAS_GOT  = 2;       // 已领取
+}
+
+// 定时刷新的任务种类
+enum RoutineTaskType
+{
+	ROTT_ALL							= 1;      // 刷新所有例行任务
+	ROTT_DAILYTASK 				= 2;			// 每日任务
+	ROTT_ONLINEREWARD 		= 3;			// 在线奖励，每10分钟刷新一次
+	ROTT_PASSLEVELNUM     = 4;      //过关次数每日刷新
+	ROTT_PASSLEVELSTAMINA = 5;      //过关体力每五分钟刷新
+	ROTT_BLACKMARKET			= 6;		  //刷新黑市商品
+	ROTT_ACTIVITY 				= 7;			//刷新活动
+}
+
+// 指南类型
+enum GuidType
+{
+	GT_SWITCH2UISTATE		= 0;			// 切换至某个UI状态的指南
+	GT_DIALOG           = 1;      // 纯对话式帮助
+	GT_GUIDHAND					= 2;      // 在某个UI指导用户点击按钮的指南
+}
+
+// 指南状态
+enum GuideState
+{
+	GS_LOCK      = 0;     // 指南被锁住
+	GS_RUN   		 = 1;			// 指南可以允许
+	GS_DONE			 = 2;     // 指南已经完成
+}
+
+// 页面切换
+enum PageChange
+{
+	PC_SwitchTo      = 0;     // Switch类型窗口
+	PC_Popup 		 		 = 1;			// Popup类型窗口
+}
+
+// 指南的运行条件
+enum GuideOpenType
+{
+	GOT_NONE						= 0;			//没有检查条件
+	GOT_CHECKLEVEL      = 1;      //检查通关条件
+	GOT_CHECKNICKNAME   = 2;		 	//检查有没有取名
+	GOT_FINISHGUIDE			= 3;			//完成指南
+	GOT_UPLEVEL   			= 4;			//玩家升级
+	GOT_OPENBOX					= 5;			//开启宝箱
+}
+
+// 指南的完成条件
+enum GuideFinishType
+{
+	GFT_NONE						= 0;			//没有完成条件
+	GFT_CHECKLEVEL      = 1;      //检查通关条件
+	GFT_CHECKNICKNAME   = 2;      //取名称条件
+	GFT_GETCARD					= 3;			//获取卡牌
+	GFT_CHANGECARD			= 4;			//上阵卡牌
+	GFT_UPBUILD					= 5;			//升级建筑
+	GFT_PREPAREUPBUILD  = 6;			//准备升级
+	GFT_UPCARD					= 7;			//升级卡牌
+	GFT_PREPAREUPCARD   = 8;			//准备升级卡牌
+	GFT_OPENBOX					= 9;			//开启宝箱
+}
+
+// 卡组状态
+enum CardGroupState
+{
+	CGS_LOCK      = 0;     // 卡组未解锁
+	CGS_UNLOCK   		 = 1;			// 卡组解锁
+	CGS_COUNT			 = 2;     
+}
+
+enum GuideFormatVersion		//技能背包的Model格式
+{
+		G_FV_Version0 = 0;				//初始格式
+		G_FV_Version1 = 1;				//去掉老用户的数据
+		G_FV_Count = 2;						//版本数量
+}
+
+enum BlackMarketCardeState //黑市卡牌的状态
+{
+	BMC_HEROCARDSHOW = 0;						//英雄卡牌明牌
+	BMC_HEROCARDHIDDEN = 1;					//英雄卡牌暗牌
+	BMC_SKILLCARDSHOW = 2;						//技能明牌
+	BMC_SKILLCARDHIDDEN = 3;					//技能暗牌
+}
+message SoundInfo
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string EventName = 1;				// 对应的事件名称
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string SoundName = 2;				// 对应的声音名称
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required float Length					 = 3;				// 时间长度	
+
+}
+
+message UserGroup   // 用户ID范围组，同一范围组的用户由同一台用户数据业务服务器提供单用户数据业务的服务, 前闭后开[UserMin, UserMax)
+{
+  required int32  UserServerID = 1;   // 服务于该组用户的用户数据业务服务器ID
+	required uint32 UserMin      = 2;		// 该范围的最小UserID
+	required uint32 UserMax      = 3;		// 该范围的最大UserID
+}
+
+message UserServerGroup  // 用户数据业务服务器组
+{
+	repeated UserGroup Servers  = 1; // 用户数据业务服务器列表
+}
+
+message ServerGroup  // 某种业务服务器的列表
+{
+	repeated int32 Servers  = 1;  // 属于该种类型的服务器的ID列表
+}
+
+message ServerGroupMapTable  // 业务服务类型与业务服务器组的映射表
+{
+	//map<int32, ServerGroup> ServerGroupMap = 1;   
+}
+
+enum GuardCardMakerState //防御卡牌制作卡槽状态
+{
+	EGCMS_EMPTY = 0;				//空状态
+	EGCMS_MAKING = 1;				//制作中
+	EGCMS_FINISH = 2;				//已经制作完成
+	
+	EGCMS_UNKNOWN = 3;				//未知
+	
+}
+
+enum SpecialHunntingMode //特殊狩猎玩法的模式
+{
+	SHM_J_CORPSE = 0;				//进击的僵尸
+	SHM_C_CORPSE = 1;				//清楚僵尸
+}
+
+enum SpecialHunntingOpenType //特殊狩猎玩法的模式
+{
+	SHOT_WEEK = 0;			//周为周期
+	SHOT_DAY = 1;				//天为周期
+	SHOT_TIMEPOINT = 2;				//时间点为周期（几月几号到几月几号）
+}
+
+enum GuildMessageType
+{
+	GMT_MOCKBATTLE = 0;	//模拟战战报
+	GMT_SHAREREPLAY = 1; //资源掠夺战战报
+	GMT_DONATE = 2;
+	GMT_REQUESTJOIN = 3;
+	GMT_JOIN = 4;
+	GMT_LEAVE = 5;
+	GMT_CHALLANGE = 6;
+	GMT_MYCHAT = 7;
+	GMT_OTHERCHAT = 8;
+	GMT_PVPBATTLE = 9;	//pvp战报
+}
+
+enum GuildUserPosition //工会玩家的职位
+{
+	GUP_LEADER = 0; //总指挥
+	GUP_VICELEADER = 1;//副指挥
+	GUP_CAPTION = 2;//队长
+	GUP_MEMBER = 3;//成员
+}
+
+enum VipPrivilegeEnum //Vip特权枚举
+{
+	VIPE_MATERIALS	 = 0;		//物资 + Ex
+	VIPE_PLUNDER		 = 1;		//掠夺次数  + Ex
+	VIPE_STRENGTH		 = 2;		//体力 + Ex
+	VIPE_MILITARYEXPENDITURE = 3; //军费上限
+	VIPE_BUILD			 = 4;		//建造队列 + Ex
+	VIPE_COOLING		 = 5;	//宝箱冷却时间 * Ex / 100.0
+	VIPE_EXTRARES		 = 6;	//生产资源 * Ex / 100.0
+	VIPE_BUILDTIME	 = 7;	//建造时长 - Ex 分钟
+	VIPE_RECRUIT		 = 8;	//招募次数 + Ex
+	VIPE_PLUNDERRES  = 9;	//掠夺资源 * Ex / 100.0
+}
+
+// vip 条件类型
+enum VipConditionType
+{
+	VCT_NONE = 0;										 // 空条件
+	
+  VCT_SHAREFRIEND = 1;             // 分享给朋友 (比如微信朋友圈)
+  
+  VCT_PASS_A_LEVEL = 2;            // 通过某个模式的某个关卡
+
+  VCT_ROLELEVEL = 3;            	 // 角色达到某个等级
+  
+  VCT_GETSCOUNT = 4;             	 // 获得s评价的数量
+  
+  VCT_GETSKILLCARD_PURPLE = 5;     // 获得紫色品质的技能卡的数量
+  
+  VCT_PLUNDERSUCCESS = 6;          // 掠夺成功次数
+  
+  VCT_GETSKILLCARD = 7;            // 获得技能卡的数量
+  
+  VCT_GETHEROCARD = 8;             // 获得英雄卡的数量
+  
+  VCT_HEROCARDTOLEVEL = 9;         // 英雄卡牌达到某个等级的数量
+  
+  VCT_EXPLOIT = 10;            		 // 功勋
+  
+  VCT_PVE_KILLENEMY = 11;        	 // 杀死敌人
+  
+  VCT_GETSSSCOUNT	= 12;						 // 获得3S数量
+  
+  VCT_PVP_KILLENEMYCOUNT	= 13;		 // PVP杀死敌人
+  
+  VCT_PVPWINCOUNT	= 14;						 // PVP胜利次数
+  
+  VCT_CONTRIBUTION	= 15;					 // 工会贡献
+  
+  VCT_PVP_DEFENSECOUNT	= 16;			 // PVP防御成功
+  
+  VCT_OPENBOXCOUNT	= 17;					 // 开启每日宝箱
+    
+  VCT_BUILDLEVELCOUNT	= 18;				 // 建筑达到某个等级
+  
+  VCT_CONSUMEGOLD	= 19;						 // 消耗黄金
+}
+
+
+// 宝箱类别
+enum ETreasureBoxType
+{
+		ETBT_PVPBox = 0;			//PVP宝箱
+		ETBT_TimeBox	= 1;		//时间宝箱
+		ETBT_RTBMedalBox = 2; //徽章宝箱(皇冠宝箱)
+		ETBT_RTBWinBox = 3;   //奖励宝箱		
+		
+		ETBT_RTBMedalBox2V2 = 4;
+		ETBT_RTBWinBox2V2 = 5;
+		
+    ETBT_Invalid                                         = 1000;
+}
+
+// RTBBox宝箱的分类
+enum ERTBBoxClass	
+{
+	ERTBC_1V1 = 0;		//1V1
+	ERTBC_2V2 = 1; 		//2V2
+}
+
+//英雄主动技能分类
+enum EHeroActiveCardType
+{
+	EHACT_Main = 0; //主要技能
+	EHACT_Sub = 1; //辅助技能	
+}
+
+
+//主动技能卡牌的状态
+enum EActiveCardState
+{
+	EACS_NoCard = 0;			//没有任何卡牌
+	EACS_HasNotMade = 1;		//有卡牌但是没有制造
+	EACS_HasMadeButNoHero = 2;	//制造完毕但是没对应英雄
+	EACS_Normal = 3;	//正常
+}
+
+// 游戏系统功能开放屏蔽位，用于记录是否开放
+enum GameSystemMaskBit
+{
+	GSMB_GAMEISONPEN  = 0;    // 游戏开启缺省打开，用于占位
+	
+	GSMB_GUILDISOPEN  = 1;    // 公会开启标记位 
+	GSMB_PVP_RESOURCE = 2;    // 资源战争开启标记位
+	GSMB_HUNTTING = 3;				// 特殊狩猎是否开启
+}
+
+//商店类型，钞票还是黑市
+enum ShopType
+{
+	ST_BLACKMARKET = 0;
+	ST_RTGOLDSHOP =1;
+}
+
+enum ActivityStyle
+{
+	AS_NONE = 0;			//无风格
+	AS_DADLINE = 1;   //限时
+	AS_HOT = 2;       //热门
+}
+
+
+enum EPVPTreasureBoxState
+{
+	EPVPTBS_Close = 0; //没有打开
+	EPVPTBS_Open = 1;	//已经打开了
+}
+
+enum ERTBWinBoxSlotState
+{
+	ERTBWSS_None = 0; //没有宝箱
+	ERTBWSS_New = 1;	//有新的宝箱
+	ERTBWSS_Opened = 2;	//有个打开的宝箱
+}
+
+
+enum ProductType
+{
+	PT_VIPGOLD = 0;			//黄金
+	PT_MONTHCARD1 = 1;  //初级月卡
+	PT_MONTHCARD2 = 2;  //中级月卡
+	PT_MONTHCARD3 = 3;  //高级月卡
+}
+
+enum GuildPageType		//联盟标签页面
+{
+	GPT_GUILDNONE = 0;	//空
+	GPT_GUILDLIST = 1;	//联盟推荐
+	GPT_GUILDCREATE = 2; //联盟创建
+	GPT_GUILDSEARCH = 3;	//联盟搜索
+	GPT_GUILDDETAILINFO = 4;	//联盟详细信息
+	GPT_GUILDMYDETAILINFO = 5;	//自己联盟详细信息
+	GPT_GUILDCHAT = 6;	//聊天
+	GPT_GUILDJOIN = 7;	//申请加入
+	GPT_SETTING = 8;		//设置
+}
+
+enum PushType
+{
+	PT_BLACKMARKET = 0;
+}
+
+message CardAttackTargetInfo
+{
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required bool EnableAir                             = 1;    // 能否对空
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required bool EnableGround                           = 2;    // 能否对地
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    required bool EnableStructure                           = 3;    // 能否攻击建筑
+}
+
+enum GameSystemMaskType
+{
+	GSMT_PVP1 = 0;							//实时对战
+	GSMT_ACTIVITYLEVEL = 1;			//活动关卡
+	GSMT_SCENARIOCAMPAIGN = 2;	//剧情战役
+	GSMT_RESOURCEPLUNDER = 3;		//资源掠夺
+	GSMT_PVP2 = 4;							//组队2v2
+	GSMT_SHOP = 5;							//商城
+	GSMT_RECRUIT = 6;						//招募
+	GSMT_BASE = 7;							//基地
+	GSMT_ARMY = 8;							//部队
+	GSMT_GUILD = 9;							//联盟
+	GSMT_SETUP = 10;						//设置
+	GSMT_BACKPACK = 11;					//背包
+	GSMT_MAIL = 12;							//邮件
+	GSMT_TASK = 13;							//任务
+	GSMT_VIP	= 14;							//VIP
+	GSMT_RECHARGE = 15;					//充值
+	GSMT_ONLINETREASURE = 16;		//在线宝箱
+	GSMT_RANK = 17;							//排行榜
+	GSMT_ICON = 18;							//主界面头像的功能
+}
+
+//军需箱状态
+enum EMunitionsBoxState
+{
+	EMBS_Hide = 0; //隐藏状态
+	EMBS_WaitOpen = 1;	//等待打开状态
+	EMBS_Opened = 2;		//已打开状态	
+}
+
+//军需箱分类
+enum EMunitionsBoxClass
+{
+	EMBC_Always = 0; //永远有
+	EMBC_Circle = 1; //周期
+	EMBC_Option = 2; //运维设置
+}

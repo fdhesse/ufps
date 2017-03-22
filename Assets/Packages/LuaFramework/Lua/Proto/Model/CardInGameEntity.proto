@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message CardInGameEntity                  // 上阵卡片实例实体, 同一技能卡片可多次上阵
+{
+	required string InventoryID = 1[default=""];        // 上阵卡片实例的卡片类型
+	
+	required int32 UUID = 2;//卡片的唯一标识
+	
+}

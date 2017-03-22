@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+import "google/protobuf/descriptor.proto";
+
+package Game.KingsMan.Cfg;
+
+extend google.protobuf.FieldOptions
+{
+	optional string MemAttrib = 20000;
+    optional bool ChangeTracker = 20001[default=false];
+	optional bool Encrypted = 20002[default=false];
+}

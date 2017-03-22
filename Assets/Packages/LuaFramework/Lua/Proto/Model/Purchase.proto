@@ -1,0 +1,109 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+enum EOrderStatus
+{
+    NewCreated                                      = 0;    // 新创建
+    Payed                                           = 1;    // 已支付未发货
+    Delivered                                       = 2;    // 已支付已发货
+    Validating                                      = 3;    // 正在确认订单支付状态
+    ValidateFail                                    = 4;    // 确认订单过程发生异常
+    ValidateInvalid                                 = 5;    // 订单确认参数无效(假定单等)
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return OrderNO;
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Purchase", "PurchaseOrder", 0, "OrderNO")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名                                                                        
+message PurchaseOrder
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"OrderNO", IsKey = true)]
+	required string OrderNO = 1;				// 游戏生成版本号
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"UserId")]
+	required int32 UserId = 2;					// 用户ID
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ProductId")]
+	required int32 ProductId = 4;				// 充值产品ID
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"PayStatus")]
+	required int32 PayStatus = 5;				// 订单状态(1:新创建，2:已支付未发货,3:已支付已发货,4:查询中，5:查询失败, 6:无效订单)
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Amount")]
+	required float Amount = 6;					// 支付金额(元)
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Currency")]
+	required string Currency = 7;				// 货币代码
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ThirdpartyNo")]
+	required string ThirdpartyNo = 8;			// 第三方订单号
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"PlatformUserId")]
+	required string PlatformUserId = 9;			// 平台用户ID
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Platment")]
+	required string Platment = 10;				// 充值平台
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CreateTime")]
+	required int64 CreateTime = 11;				// 创建时间
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"PurchaseTime")]
+	required int64 PurchaseTime = 12;			// 支付时间
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"DeliveryTime")]
+	required int64 DeliveryTime = 13;			// 发货时间
+    
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ValidateContext", ColumnLength = 40960)]
+    required string ValidateContext = 14[default=""];      // 苹果支付校验参数
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Device")]
+	required string Device = 50;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Manufacturer")]
+	required string Manufacturer = 51;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"DeviceUUID")]
+	required string DeviceUUID = 52;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Operator")]
+	required string Operator = 53;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message DeliveryItem
+{
+	required string OrderNO = 1;
+	required int64 DeliveryTime = 2;
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+ // @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+ // @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "DeliveryOrders", 0, "ID")]
+ message DeliveryEntity
+ {
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Entitys", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	map<string, DeliveryItem> Entitys = 2;
+ }

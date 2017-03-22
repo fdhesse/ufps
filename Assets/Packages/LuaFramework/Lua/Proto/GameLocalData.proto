@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message GameLocalData
+{
+    required int32                                  Version = 1;        // 存档格式版本号
+    required bool                                   AlreadyRan = 2;     // 判断是否首次运行
+    map<int32, bytes>                               UserEntitys = 3;    // 实体类型 vs 用户实体pb数据
+    optional bool																		isVoice			= 4[default=true];		// 声音是否打开
+    optional bool																		isMusic			= 5[default=true];		// 音效是否打开
+    optional string 																AccountName  = 6[default=""];
+    optional string 																AccountPassWord = 7[default=""];
+    optional string 																SoundVolume = 8;
+    optional string                                 MusicVolume = 9;
+}

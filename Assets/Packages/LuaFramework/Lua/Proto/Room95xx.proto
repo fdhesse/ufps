@@ -1,0 +1,172 @@
+syntax = "proto2";
+
+//import "RuntimePVP.proto";
+
+package Game.KingsMan.MessagePack;
+
+message RobotInf
+{
+	required int32 UserId = 1;
+	required int32 ServerId = 3;
+	required int32 TeamId = 5;
+}
+message Request9500Pack //RoomCreate
+{
+	required int32 UserId = 1;		
+	required int32 SlaveUserId = 2;
+	required int32 ServerId = 3;
+	required bool IsFriendlyBattle = 4;
+	required int32 TeamId = 5;
+	repeated RobotInf RobotList = 6;
+	required int32 PlayerNums = 7;
+}
+
+message Response9500Pack
+{	
+	required int32 State = 1;
+	required int32 RoomId = 2;
+	required string Value = 3;
+}
+
+message Request9501Pack //RoomJoin
+{
+	required int32 UserId = 1;	
+	required int32 MasterUserId = 2;
+	required int32 ServerId = 3;
+	required int32 TeamId = 5;
+	repeated RobotInf RobotList = 6;
+}
+
+message Response9501Pack
+{	
+	required int32 State = 1;
+	required int32 RoomId = 2;
+	required string Value = 3;
+}
+
+
+message RoomSendCmd9502 //client发送指令给server
+{	
+	required int32 UserId = 1;
+	required int32 RoomId = 2;	
+	required int32 FrameId = 3;
+	required bytes Data = 4;
+}
+
+message RoomSyncCmds9503 //server同步指令给clients
+{	
+	required int32 FrameId  = 1;
+	required bytes Data 	= 2;
+    required int32 RoomId   = 3;
+}
+
+message Request9504Pack // client发送同步状态到server
+{
+    required int32 RoomId   = 1;
+    required int32 UserId   = 2;
+    required int32 FrameId  = 3;
+}
+
+message RoomPlayerExitMsg
+{
+    required int32 RoomId = 1;
+    required int32 UserId = 2;
+}
+
+message Request9550Pack // 断线重连后请求重新加入房间
+{
+    required int32 UserId = 1;
+	required int32 RoomId = 2;
+	required int32 ServerId = 3;
+	required int32 TeamId = 5;
+	repeated RobotInf RobotList = 6;
+}
+
+message Response9550Pack    // 重加入房间回馈
+{
+    required int32 RoomId = 1;      // 加入的房间ID
+    //required Game.KingsMan.RuntimePVP.ERoomStage RoomStage = 2; // 房间当前状态	
+}
+
+message Response9551Pack  //RoomSyncLoading
+{
+    required int32 RoomId = 1;
+    //required Game.KingsMan.RuntimePVP.ReplayPVP ReplayPVP = 2;
+	repeated RTPlayerBaseInf PlayerList = 3;
+}
+
+message Request9552Pack
+{
+    required int32 UserId = 1;
+    required int32 RoomId = 2;
+}
+
+message Response9553Pack
+{
+    required int32 RoomId = 1;
+}
+
+message Request9554Pack // RoomReportPlayer
+{
+    required int32 RoomId = 1;
+    required int32 UserId = 2;
+    //required Game.KingsMan.RuntimePVP.PVPPlayer Player = 3;
+    //required Game.KingsMan.RuntimePVP.PVPCardArray CardArray = 4;
+	required int32 CardStrength = 5;
+	required int32 ExpLevel = 6;
+	required int32 RTCupsNum = 7;
+}
+
+message Request9559Pack //RoomRequestFinished
+{
+    required int32 UserId = 1;
+    required int32 RoomId = 2;
+	required bool  IsWin  = 3;
+	required string ParamStr = 4;
+	
+    //map<int32, int32> Crowns = 8;   // 双方皇冠数
+    required bool IsExit = 9;
+}
+
+message RTPlayerBaseInf
+{
+	required int32 UserId = 1;
+	required int32 ExpLevel = 2;
+	required int32 RTCupsNum = 3;
+	required int32 TeamId   = 4;
+	required int32 CardStrength   = 5;
+	optional bool  IsWin = 6;
+}
+
+message Request9570Pack //RoomSendGameResult
+{
+	required int32 UserId = 1;			
+	required bool  IsWin = 3;
+	repeated RTPlayerBaseInf PlayerList = 4;
+	required int32 CardStrength = 5;	
+	required bool  IsFriendlyBattle = 6;
+    required int32 Crown = 7;
+}
+
+message Response9570Pack
+{	
+	required int32 Cups = 1;
+	required string ParamStr = 2;
+}
+
+message Request9571Pack // RoomSendUserExit
+{
+    required int32 UserId = 1;
+    required sint64 NextRTBattleTime = 2;
+}
+
+message Response9571Pack
+{
+}
+
+message Response9505Pack
+{
+    required int32 RoomId = 1;
+    required int32 FrameId = 2;
+    //required Game.KingsMan.RuntimePVP.ReplayPVP ReplayPVP = 3;
+}

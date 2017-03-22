@@ -1,0 +1,176 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request2001Pack     // SyncUtcNow
+{
+    required int64 ClientUtcNow                     = 1;
+}
+
+message Response2001Pack    // SyncUtcNow
+{
+    required int64 ClientUtcNow                     = 1;
+    required int64 ServerUtcNow                     = 2;
+}
+
+message Request5000Pack // CheckUserData
+{
+	required string AccountName = 1;
+	required uint32 AccountID = 2;
+	required string AuthorToken = 3;
+	
+	required string NickName = 4;
+	required string CharacterType = 5;
+}
+
+message Response5000Pack
+{
+	required uint32	ErrorCode		= 1;
+	required uint32 UserID			= 2;
+	
+	required Game.KingsMan.Cfg.UserServerGroup UserServerGroups = 3;        // 用户数据业务服务器组
+	required Game.KingsMan.Cfg.ServerGroupMapTable  ServerGroupMap = 4;     // 业务服务类型与业务服务器组的映射表
+}
+
+
+
+message Request5001Pack // DownloadUserData
+{
+	required uint32 UserID = 1;
+	repeated string ModelNames = 2;
+}
+
+message UDModelXml
+{
+	required string ModelName = 1;
+	required string ModelXml = 2;
+}
+
+message Response5001Pack
+{
+	required uint32 UserID = 1;
+	repeated Game.KingsMan.MessagePack.UDModelXml ModelXmls = 2;
+}
+
+
+
+message Request5002Pack // UploadUserData
+{
+	required uint32 UserID = 1;
+	required uint32 VersionNum = 2;
+}
+
+message Response5002Pack
+{
+	required int32 UserID 		= 1;
+	required int32 VersioNum 	= 2;
+}
+
+message Request5003Pack // ModifyUserData
+{
+	required uint32 UserID = 1;
+	required string OpType = 2;//操作对象
+	required string OpMethod = 3;//操作方法
+	required string InventoryId = 4;//
+	required int32 Count = 5;//数量设置
+	required string Des = 6;//文字设置
+	optional int32 GroupIndex = 7;//指导组的序号
+}
+
+message Response5003Pack
+{
+	required int32 UserID 		= 1;
+	required string ErrStr      = 3;
+}
+
+message Request5004Pack // OutputUserData
+{
+	required uint32 UserID = 1;
+}
+
+message Response5004Pack
+{
+	required uint32 UserID 		= 1;
+}
+
+message Request5005Pack // RoutineUserData, 执行用户数据的定期任务，比如日常任务等
+{
+	required uint32 UserID = 1;
+	required Game.KingsMan.Cfg.RoutineTaskType RoutineType = 2;  // 例行刷新的任务类型
+}
+
+message Response5005Pack
+{
+	required uint32 UserID 		= 1;
+}
+
+
+message Request5006Pack //领取临时奖励
+{
+	required uint32 UserID = 1;	
+	required uint32 RewardID = 2;		//奖励的ID
+}
+
+message Response5006Pack
+{
+	required uint32 UserID 		= 1;
+	required Game.KingsMan.Cfg.PayPriceVec Rewards = 2;					// 奖励的资源 
+		
+}
+
+message Request5007Pack //更换头像
+{
+	required uint32 UserID = 1;	
+	required string InventoryId = 2;		//英雄唯一ID
+}
+
+message Response5007Pack
+{
+	required uint32 UserID 		= 1;
+}
+
+message Request5008Pack //更换地区
+{
+	required uint32 UserID = 1;	
+	required bool UserSet = 2;   // false = 系统自动指定， true = 用户人为修改
+	required int32 RegionID = 3; // 地区ID 
+}
+
+message Response5008Pack
+{
+	required uint32 UserID 		= 1;
+}
+ 
+ 
+message Request5020Pack //邀请码兑换
+{
+	required string InviteCode = 1;
+}
+
+message Response5020Pack
+{
+}
+
+message Request5050Pack //刷新用户数据
+{
+	required uint32 UserID = 1;	
+}
+
+message Response5050Pack
+{
+}
+
+message Request5060Pack //获取用户实时战相关统计数据
+{
+	required uint32 UserID = 1;	
+	required int32 Mode = 2;
+}
+
+message Response5060Pack
+{
+	required string ParamStr = 1;
+}
+
+ 

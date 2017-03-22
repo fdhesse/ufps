@@ -1,0 +1,58 @@
+syntax = "proto2";
+
+package Game.KingsMan.Cfg;
+
+
+// 资源类型
+enum EInventoryClass
+{
+    EIC_Currency      = 0;    // 货币类型资源,金币，银币，荣誉点
+    EIC_VipGold       = 1;    // 充值货币
+    EIC_Hero          = 2;    // 英雄类型资源
+    
+    
+    EIC_Weapon        = 3;    // 武器基础件
+    EIC_WeaponPart    = 4;    // 武器配件
+    EIC_WeaponModule  = 5;    // 武器模块
+    EIC_WeaponDrawing = 6;    // 武器图纸
+    
+    EIC_Invalid       = 1000;
+}
+
+// 资源品质
+enum EInventoryRarity
+{
+    EIR_COMMON                                          = 0;	// 白
+    EIR_RARE                                            = 1;	// 绿
+    EIR_EPIC                                            = 2;	// 蓝
+    EIR_UNIQUE                                          = 3;	// 紫
+    EIR_LEGENDARY                                       = 4;	// 橙
+    EIR_SPECIALIST                                      = 5;
+    EIR_MYTHICAL                                        = 6;
+	  EIR_SYMBLE                                          = 7;//用于任务，获取途径图标背景显示
+}
+
+// 资源转换类型
+enum EInventoryExchangeType
+{
+	EIET_SHOP			= 0; 
+	EIET_WEAPON		= 1;
+}
+
+// 奖励
+message InventoryReward                     
+{	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string	InventoryID	= 1;        // 资源ID
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32	Count	= 2;              // 资源数量
+}
+
+//  奖品领取状态
+enum InventoryRewardGotState
+{
+	IRGS_CANT_GOT = 0;			// 不能领取
+	IRGS_CAN_GOT  = 1;      // 可领取而未领取
+	IRGS_HAS_GOT  = 2;      // 已领取
+}

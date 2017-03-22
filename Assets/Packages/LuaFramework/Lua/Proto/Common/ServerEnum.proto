@@ -1,0 +1,24 @@
+syntax = "proto2";
+package Game.KingsMan.MessagePack;
+
+enum ServerEnum
+{
+	Gate											= 1;
+	Center											= 2;
+	UserBusiness									= 3;
+	PublicInfo   									= 4;
+	Cfg												= 5;
+	
+	LGate											= 6;
+	Login											= 7;
+
+	Purchase										= 8;
+	Mail											= 9;
+	PvpMatcher										= 10;
+	Guild											= 11;
+	GuildMaster										= 12;
+	Room											= 13;
+	RoomMaster										= 14;
+	SkyLadder										= 15;
+	WebProxy                                        = 16;
+}

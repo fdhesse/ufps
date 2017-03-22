@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message DailyTaskRecordEntity  // 任务实体实例, 每天激活3个
+{
+	required int32                              UUID      = 1;      // 本任务的唯一ID
+	required int32                              Times     = 2;      // 本任务实例今日累计的动作次数(对于动作次数)或数量(对于消耗资源)
+	required Game.KingsMan.Cfg.RewardGotState   GotState  = 3;      // 本任务奖励领取状态
+	required bool																Open      = 4;      // 本任务的开启状态
+}
+

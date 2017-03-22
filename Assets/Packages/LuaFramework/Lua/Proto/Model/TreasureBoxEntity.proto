@@ -1,0 +1,10 @@
+syntax = "proto2";
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message TreasureBoxEntity
+{
+	required int32 UUID = 1;										//UUID
+	required int32 Rarity = 2;		//Æ·ÖÊ
+	required int32 State = 3; //×´Ì¬
+}

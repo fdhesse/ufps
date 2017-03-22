@@ -1,0 +1,35 @@
+syntax = "proto2";
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message SpecialHuntingLevelEntity  // 某个狩猎模式的某一关的数据
+{
+	required int32                              UUID      = 1;      // 本关卡的唯一ID
+	required string                             LevelName     = 2;      // 本关卡的名称
+	required int32   														Evaluate  = 3;      // 本关卡的评价
+	required bool   														isLock  = 4;      // 本关卡是否解锁
+}
+
+/** @Inject
+ * public SpecialHuntingRecordEntity()
+ * {
+ *     Levels.PropertyName = "Levels";
+ *     AddChildrenListener(Levels);
+ * }
+ */
+ 
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message SpecialHuntingRecordEntity  // 狩猎模式,是否激活
+{
+	required int32                  UUID      = 1;     							// 本模式的ID
+	
+	required int32								  Mode  =2;//是那种模式
+		
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated SpecialHuntingLevelEntity   Levels   = 3;      						// 本模式的关卡通关情况
+	
+	required bool   isOpen   = 4;      						// 本模式的开放情况
+	
+	required int32  challengeTime   = 5;      						// 本模式挑战次数
+}
+

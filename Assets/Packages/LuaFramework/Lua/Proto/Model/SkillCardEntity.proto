@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message SkillCardEntity
+{
+	required int32 UUID = 1;	
+	required string InventoryId = 2;				// 技能卡片类型
+	required int32  Quality = 3;	  // 技能卡片的当前品质
+	required int32  Level = 4;      // 技能卡片的当前等级
+	required int32  CardStateMask = 5;			// 技能卡片的状态 参考CardStateMask(已废弃)
+	required int32  CardSlotID = 6;					// 技能卡片的位置ID 从0开始（已废弃）
+	required sint64 UpgradeDate	= 7;				// 开始升级的时间，如果为0，则表示当前没有升级（已废弃）
+	required int32 UseTimes           = 15;//使用次数
+	required int32 Fragment = 16;			//当前碎片的数量
+	required int32 RTPVPUseTimes = 17;
+}

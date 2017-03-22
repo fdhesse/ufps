@@ -1,0 +1,220 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.RuntimePVP;
+
+//=============================================================================
+
+enum ERoomStage
+{
+    Join                                            = 0;    // 等待玩家加入
+    Ready                                           = 1;    // 等待玩家加载
+    Play                                            = 2;    // 对战中
+    Result                                          = 3;    // 游戏结算
+    Count                                           = 4;
+}
+
+enum EInstructID
+{
+    ActiveCard                                      = 1;    // 施放卡牌
+    Emotion                                         = 2;    // 发送表情
+}
+
+message RTMatchInf
+{
+	required int32 UserId = 1;	
+	required int32 ExpLevel = 2;
+	required int32 RTCupNum = 3;	
+	required string NickName = 4;	
+	required int32 GuildId = 5;
+	required string GuildName = 6;
+	map<int32, int32> ExcludedUserList = 7; //不允许被匹配上的userId list
+	required int32 MatchCupBaseNum = 8;//指定匹配奖杯的基数
+	required float RateOfWinning = 9; //胜率
+	required string HeadIcon = 10;	
+	optional int32  TeamId = 11;
+	optional int32  CardStrength  = 12; 
+	optional int32  AreaId = 13;
+	required int32 GuildIcon = 14;
+}
+message RTDemoMatchInf
+{
+	required RTMatchInf Inf = 1;
+	required int32 PlayerNums = 2;
+}
+message RTMatchInfEx
+{
+	required RTMatchInf Inf = 1;
+	required int32 MatchState = 2;
+	required bool  IsRoomMaster = 3;	
+	required int64 UpdateTime = 4;
+	repeated RTMatchInfEx MatchedInfList = 5;
+	required int32 RoomServerId = 6;
+}
+
+message RTMatchAttackRecord
+{
+	required int32 UserId = 1;
+	required int64 AttackTime = 2;	
+}
+
+message RTMatchAttackData
+{
+	required string Version = 1;
+	repeated RTMatchAttackRecord AttackRecordList = 2;
+}
+
+message RTPlayerCardInfo
+{
+	required string InventoryId = 1;
+	required int32  Level = 2;
+}
+message RTPlayerInfo
+{
+  required int32          UserId 	    = 3;  
+  required string 		   NickName 	= 4;  
+  required int32  		   ExpLevel		= 5;  
+  required int32  		   RTCupNum		= 6;    
+  required string          HeadIcon		= 7;  
+  required int32  		   GuildId 		= 8;    
+  required string  		   GuildName   	= 9;    
+  required int32  		   TeamId 		= 10;   
+  optional int32           CupsChange   = 11; //得到或丢掉的奖杯数量
+  optional int32           CardStrength   = 12;  
+  optional bool            IsRobot        = 13;
+  required int32           GuildIcon    = 14;
+} 
+message RTPlayerInfoEx
+{
+	required RTPlayerInfo PlayerInfo = 1;
+	repeated RTPlayerCardInfo CardList = 2;
+}
+
+message RTBattleReportInf
+{  
+  required uint64          PvpBattleId	  	= 1;     //battle id  
+  required string          BattleIdent	  	= 2;  
+  repeated RTPlayerInfoEx  PlayerInfos      = 3;  
+  required int32           Cups			   	= 5;  
+  required int32           Resource1	   	= 6;    
+  required int32           Resource2	   	= 7;
+  required bool            IsWin  			= 11; 
+  required string          PlaybackUrl 		= 13;  
+  required string          PlaybackToken 	= 14;  
+  required string          ResVersionCode 	= 15;  
+  required string          ParamStr  		= 16;  
+  required string          BattleResult 	= 17;
+  optional float           Evaluate         = 18;
+  required int32           UserId 			= 20;
+}
+
+message RTReplayInfo
+{
+	required string ResVersionCode 	= 1;	
+	required string ReplayData 		= 2;
+	repeated RTPlayerInfo UserInfs	= 3;	
+	required string ParamStr		= 6;
+	required int32  MasterUserId = 7;	
+}
+
+message RTReplayData
+{
+	required string Version 	= 1;
+	required string ReplayData  = 2;
+	required string ParamStr    = 3;
+}
+
+// 卡牌携带的装备信息
+message PVPEquipCard
+{
+    required string InventoryId                     = 1[default="INVALID"];
+    required int32 Level                            = 2;
+    required Game.KingsMan.Cfg.EItemRarity Rarity   = 3;
+}
+
+// 卡牌携带的被动技信息
+message PVPPassiveCard
+{
+    required string InventoryId                     = 1[default="INVALID"];
+    required int32 Level                            = 2;
+}
+
+// 卡牌携带的技能信息
+message PVPActionCard
+{
+    required string InventoryId                     = 1[default="INVALID"];
+    required int32 Level                            = 2;
+}
+
+message PVPCard
+{
+    required string InventoryId                     = 1[default="INVALID"];
+    required int32 Level                            = 2[default=1];
+    optional string Weapon                          = 3[default=""];
+    repeated PVPEquipCard EquipCards                = 4;
+    repeated PVPPassiveCard PassiveCards            = 5;
+    repeated PVPActionCard ActionCards              = 6;
+}
+
+message PVPCardArray
+{
+    repeated PVPCard Cards                          = 1;
+}
+
+message InstructPVP
+{
+    required int32 SequenceSID                      = 1[default=-1];    // 由服务器分配的一场战斗中的唯一指令序号
+    required int32 SequenceCID                      = 2[default=-1];    // 由客户端自己分配的本场战斗中的唯一指令序号，用来做请求和确认数据的映射
+    required int32 LogicFrameID                     = 3[default=-1];    // 由服务器统计的产生此指令的帧号
+    required int32 UserId                           = 4;    // 哪一方发出的指令
+    required EInstructID InstructID                 = 5;    // 指令ID
+    required bytes InstructData                     = 6;    // 指令数据
+    required int32 EntityCount                      = 7;    // 本指令会创建的实体单位数量
+    repeated int32 EntityIDs                        = 8;    // 由服务器分配的新创建实体的唯一ID
+}
+
+message InstructPVPArray
+{
+    repeated InstructPVP InstructPVPs               = 1;
+}
+
+message ResponseSync
+{
+    required int32 DesiredFPS                       = 1;
+    repeated InstructPVP InstructPVPs               = 2;
+    required int64 Date                             = 3;
+}
+
+message PVPPlayer
+{
+    required int32 PlayerLevel                      = 1[default=1];
+    required int32 MainTownerLevel                  = 2[default=1];
+    optional bool Bot                               = 3[default=false];
+}
+
+message ReplayPVP
+{
+    repeated int32 UserIDs                          = 1;
+    required int32 Random4Game                      = 2;    // 游戏逻辑的随机数种子
+    map<int32, int32> Random4Card                   = 3;    // 刷新卡牌的随机数种子
+    map<int32, PVPCardArray> PVPCards               = 4;    // 各角色携带的卡牌
+    repeated InstructPVP InstructPVPs               = 5;    // 游戏指令序列
+    map<int32, PVPPlayer> Players                   = 6;    // 对战玩家信息
+}
+
+//=============================================================================
+
+message ActiveCardInstructArg
+{
+    required int32 Index                            = 1;
+	required string InventoryId						= 2;
+	required float PosX								= 3;
+	required float PosY								= 4;
+    optional int32 RPGSelectedEntity                = 5[default=-1];
+}
+
+message EmotionInstructArg
+{
+    required int32 ID                               = 1;
+}

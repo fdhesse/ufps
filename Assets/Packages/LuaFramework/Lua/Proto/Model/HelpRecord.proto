@@ -1,0 +1,34 @@
+syntax = "proto2";
+
+import "HelpRecordEntity.proto";
+
+package Game.KingsMan.Model;
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "HelpRecord", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message HelpRecord
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+    
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastRefreshHelpTime")]
+	//required sint64 LastRefreshHelpTime	= 2;				// 上次刷新活动的时间点
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"HelpList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated HelpRecordEntity HelpList = 3;     // 帮助列表
+}
+
+     

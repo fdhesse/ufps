@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuardCardEntity
+{
+	required int32 UUID = 1[default=-1];	
+	required string InventoryId = 2;				// 技能卡片类型
+	required int32  Level = 3[default=0];      // 技能卡片的当前等级
+	required int32 RTPVPUseTimes = 4[default=0];
+}

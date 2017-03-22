@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message RequestHead
+{
+	required int32 MsgId = 1;
+	required int32 ActionId = 2;
+	required string Session = 3;
+	required int32 ServerId = 4;
+	required int32 EncodeMode = 5;
+}

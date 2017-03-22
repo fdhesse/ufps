@@ -1,0 +1,81 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+enum EntityType 
+{
+    ET_PLAYER            = 0;
+    ET_CARDMANAGER       = 1;  // 抽卡信息记录
+    ET_HEROCARDBAG       = 2;  // 英雄卡包
+    ET_SKILLCARDBAG      = 3;  // 技能卡包
+    ET_MAILBOX           = 4;  // 邮箱
+    ET_LEVELBAG          = 5;  // 过关记录
+    ET_EXCHANGECARDBAG   = 6;
+	  
+    ET_PROGRESSQUEUE     = 7;
+    ET_BUILDINGS         = 8;
+    ET_ITEMBAG           = 9;  // 道具背包
+    ET_DELIVERYORDERS    = 10; // 发货记录
+    ET_DAILYTASKRECORD   = 11; // 日常任务记录
+    ET_ACTIVITYRECORD 	 = 12; // 活动记录
+
+    ET_GUIDERECORD			 = 13; // 用户指南记录
+    
+    ET_HELPRECORD 	 		 = 14; // 帮助记录
+    
+    ET_PRODUCE 	 		 = 15; // 商品
+   
+    ET_MAILBOX2         = 16;  // 邮箱
+    ET_BLACKMARKET 			= 17;  //黑市商品记
+		ET_PVPLEVELBAG		= 18;  //pvp关卡数据
+	
+		ET_GUARDCARDBAG = 19;	//防御卡牌包
+		ET_GUARDCARDMAKERS = 20;	//防御卡牌卡槽
+		
+		
+		ET_GUILD            = 21;	//公会
+		ET_SPECIALHUNTING  = 22;	//特殊狩猎
+		ET_PVPBATTLE		= 23;  //pvp关卡数据
+		
+		ET_VIP							= 24; //vip解锁条件数据
+
+    
+    ET_TREASUREBOXMGR = 25;	//宝箱相关
+
+
+    ET_RTBATTLECARDBAG      = 26;  // 技能卡包
+    ET_RTBATTLE         = 27; //实时pvp
+		
+		ET_GAMESYSTEMMASK 	= 28;	//游戏系统开放
+		
+		ET_MUNITIONSBOXMGR 	= 29;	//游戏系统开放
+		
+	ET_TINVENTORYSET = 30;//资源集合
+	ET_USERENTITYCOUNT  = 31;  // 军需箱枚举
+    
+    //entity type used for guild
+    GT_GUILD 				= 50;
+    GT_GUILDMUTABLE 		= 51;
+    GT_GUILDMEMBER 			= 52;
+    GT_GUILDLEAVE			= 53;
+    GT_GUILDDONATE			= 54;
+    GT_GUILDACTIVITYDONATE  = 55;
+    GT_GUILDCOMBAT			= 56;
+    GT_GUILDLEVELCHANGE		= 57;
+    GT_GUILDUSERINFO	    = 58;
+    
+    GT_GUILDENTITYCOUNT = 59;
+}
+
+message EntityPack   // 回传客户端的实体数据
+{
+  required EntityType Type        = 1;  // 实体类型
+	optional bytes CompletePack			= 2;	// 完整数据包
+	optional bytes ChangedPack			= 3;	// 变化数据包
+}
+
+message EntityVer   // 实体数据的版本号
+{
+    required EntityType Type                        = 1;
+    required int32 Version                          = 2;
+}

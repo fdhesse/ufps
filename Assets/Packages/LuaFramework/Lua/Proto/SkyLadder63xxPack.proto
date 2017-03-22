@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+import "SkyLadderEntity.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request6300Pack	//update skyladder user
+{
+	repeated Game.KingsMan.Model.SkyLadderUserInfo Users = 1;	
+}
+
+message Response6300Pack
+{
+}
+
+message Request6301Pack	//get matched skyladder user
+{
+	required uint32 UserID = 1;
+}
+
+message Response6301Pack
+{
+	repeated Game.KingsMan.Model.SkyLadderUserInfo Users = 1;	
+}
+

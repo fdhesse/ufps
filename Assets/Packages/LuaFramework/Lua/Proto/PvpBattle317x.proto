@@ -1,0 +1,122 @@
+syntax = "proto2";
+
+import "PvpBattleInf.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request3170Pack //UploadPvpLevelData, 保存编辑的pvp关卡数据
+{
+	required PvpLevelData LevelData = 1;
+}
+
+message Response3170Pack
+{	
+	required string Value = 1;
+}
+
+message Request3171Pack //GetPvpLevelData, 获取其它玩家的pvp关卡数据
+{
+	required uint32 AttackerUserId   = 1;
+	required uint32 UserId 			= 2;
+	required int32 	PvpLevelId 		= 3;		
+	required bool	IsSpying		= 4;
+}
+
+message Response3171Pack
+{	
+	required bytes BattleData = 1; //PvpBattleData to bytes
+}
+
+message Request3172Pack //UploadPvpBattleResult, 推送pvp战斗结果, 这条消息会分别发给AttackerUserId和BeAttackedUserId所在的服务器
+{
+	required bool   			IsAttackerServer    = 1; //是否是攻击者的服务器
+	required PvpBattleReportInf BattleReportInf 	= 2;
+	required bool               GenPlaybackToken    = 3; //是否返回playback上传地址
+	required string				ResVersionCode		= 12;
+	required string 			Platform			= 13;
+	required string 			ParamList			= 14;
+	required int32 				Resource1			= 15; //money
+	required int32 				Resource2			= 16; //oil
+	required int32 				Resource3			= 17; //TechnolgyEssence
+	required int32 				Resource4			= 18;
+	required int32 				EnemyCupNum			= 19;
+	required int32 				EnemyLevel			= 20;
+}
+
+message Response3172Pack
+{	
+	required string PlaybackToken  = 1; //返回客户端要上传的回放数据token	
+	required string UploadUrl 	   = 2;
+	required string DownloadUrl	   = 3;
+	required string PlaybackParams = 4;
+}
+
+message Request3173Pack //SendPvpBattleReport，发给BeAttackedUserId所在的服务器
+{	
+	required uint32 BeAttackedUserId    = 1;
+	required uint64 PvpBattleId 		= 3;
+	required string PlaybackToken 		= 5;
+	required string ParamStr			= 7;		
+	required string PlaybackUrl 		= 8;
+}
+
+message Response3173Pack
+{	
+	required string Value = 1;
+}
+
+message Request3174Pack //BeginPvpBattle 分别发送给AttackerUserId 和BeAttackedUserId所在的服务器
+{
+	required uint32 AttackerUserId 		= 1;
+	required int32 AttackerLevel 		= 2;
+	required int32 AttackerCupNum 		= 3;
+	required bool  IsAttackerServer    = 5; //是否是攻击者的服务器
+	required uint32 BeAttackedUserId 	= 6;
+	required int32 LevelId 				= 7;
+	required string ParamStr 			= 8;
+	
+	required int32 CardGroupIndex = 9;  //使用的卡组
+}
+
+message Response3174Pack
+{	
+	required bool   CanAttack = 1;
+	required uint64  PvpBattleId = 2;
+	required string Result 	= 3;
+}
+
+message Request3175Pack //BeginPvpSpying 发送给AttackerUserId 所在的服务器
+{
+	required uint32 AttackerUserId 		= 1;	
+	required bool  IsAttackerServer    = 5; //是否是攻击者的服务器
+	required uint32 BeAttackedUserId 	= 6;
+	required int32 LevelId 				= 7;
+	required string ParamStr 			= 8;
+}
+
+message Response3175Pack
+{	
+	required bool   CanSpying = 1;	
+	required string Result 	= 3;
+}
+
+message Request3176Pack // 手动刷新消耗
+{	
+	required string ParamStr			= 1;	
+}
+
+message Response3176Pack
+{	
+	required string Value = 1;
+}
+
+message Request3177Pack // 增加掠夺次数
+{	
+	required string ParamStr			= 1;	
+}
+
+message Response3177Pack
+{	
+	required string Value = 1;
+}
+

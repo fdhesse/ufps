@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message MunitionsBoxEntity
+{
+	required string BoxType = 1;								//宝箱类型
+	required Game.KingsMan.Cfg.EMunitionsBoxState BoxState = 2; //状态
+	required int32 BuyCount = 3; //购买的次数
+	required int64 LastOpenTime = 4; //上次打开宝箱的时间
+	
+	required int32 TotalBuyCount = 5; //累计值
+}

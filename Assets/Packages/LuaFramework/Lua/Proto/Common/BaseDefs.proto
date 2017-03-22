@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package Game.KingsMan.Cfg;
+
+message SkinInfo
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string Name = 1;//皮肤名称，或inventoryID唯一标识
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32 Poss = 2;//获得该皮肤的概率
+}
+
+message SkinsInfo
+{
+	repeated SkinInfo SkinInfoList = 1;//可能获得皮肤列表
+}
+
+message ModifyPro
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string ModifyProName 			= 1;//加成属性名称
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required float Value 					= 2; //加成属性值
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string ModifyWay               = 3;//加成方式add：加，mul：乘
+}

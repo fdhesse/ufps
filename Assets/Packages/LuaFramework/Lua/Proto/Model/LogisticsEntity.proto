@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message LogisticsEntity
+{
+	required string ID = 1;					// 后勤ID
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated string InventoryIDList = 2;		//参与该项后勤工作的特工列表	
+		
+}

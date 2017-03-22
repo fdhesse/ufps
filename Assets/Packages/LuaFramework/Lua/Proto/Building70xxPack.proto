@@ -1,0 +1,47 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+//领取一个建筑中的资源
+message Request7000Pack 											// 领取一个建筑中的资源
+{
+	required uint32 UserID     = 1;  						// 用户ID
+	required string BuildingID = 2;							// 建筑ID
+}
+
+message Response7000Pack 											// 领取一个建筑中的资源
+{
+	required int32	ErrorCode		= 1;  // 逻辑错误码
+	required Game.KingsMan.Cfg.PayPrice Resource = 2;					// 资源列表
+}
+
+//升级一个建筑
+message Request7001Pack 											
+{
+	required uint32 UserID     = 1;  						// 用户ID
+	required string BuildingID = 2;							// 建筑ID
+	required bool IsCompletion = 3;	//是否使用VipGold补齐
+	required bool IsImm = 4;	//是否立即生成 	
+}
+
+message Response7001Pack 											
+{
+	required int32	ErrorCode		= 1;  // 逻辑错误码
+	required Game.KingsMan.Cfg.PayPriceVec NeedPrice = 2;					    // 还差的资源
+	required int32 NeedVipGold = 3;					    // 还需要的VipGold	
+	required bool IsCompletion = 4;	//是否使用VipGold补齐
+	required bool IsImm = 5;	//是否立即生成 	
+}
+
+//被掠夺
+message Request7002Pack 											
+{
+	required uint32 UserID     = 1;  						// 用户ID
+}
+
+message Response7002Pack 											
+{
+	required int32	ErrorCode		= 1;  // 逻辑错误码
+}

@@ -1,0 +1,49 @@
+syntax = "proto2";
+
+import "DailyTaskRecordEntity.proto";
+
+package Game.KingsMan.Model;
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "DailyTaskRecord", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message DailyTaskRecord
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+    
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastRefreshDailyTaskTime")]
+	required sint64 LastRefreshDailyTaskTime	= 2;				// 上次刷新每日任务的时间
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"TaskList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated DailyTaskRecordEntity TaskList = 3; // 今日任务
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MainTaskList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated DailyTaskRecordEntity MainTaskList = 4; // 主线任务
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"AchieveTaskList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated DailyTaskRecordEntity AchieveTaskList = 5; // 成就任务
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"FormatVersion" )]
+	required int32 FormatVersion = 6;			//Modle格式的版本，用来保证新旧版本的兼容性	
+	
+		// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"PVPAchieveTaskList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated DailyTaskRecordEntity PVPAchieveTaskList = 7; // 成就任务
+}
+
+     

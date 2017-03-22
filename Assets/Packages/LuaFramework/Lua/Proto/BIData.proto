@@ -1,0 +1,35 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message BIUserData
+{
+	required int32 m_uid = 1;											//用户ID
+	required int32 role_lv = 9;										//角色等级
+	required int32 remain_amount = 15;						//剩余总钻石
+	required int32 gold = 18;											//剩余游戏币数量
+	
+}
+
+message BILoginData
+{
+	required uint32 accountID = 1;											//用户ID
+	required string CurTime = 2;										//登录时间
+	required string serverID = 3;										//服务器ID
+}
+
+message BILevelData
+{
+	required uint32 accountID = 1;								//用户ID
+	required string mode = 2;											//模式
+	required string levelName = 3;								//通关关卡
+	required string nowTime = 4;										//通关时的时间
+	required int32 passTime = 5;									//通关所用的时间
+	required int32 evaluate = 6;									//评价
+}
+
+message BIPaseCountData
+{
+	required string levelName = 2;									//通关关卡
+	required int32 passCount = 3;								//通关总人数
+}

@@ -1,0 +1,54 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+
+message Request4210Pack           // 特工升级
+{
+	required string InventoryId    = 1;  // 特工ID
+	required string ItemID		   = 2;  // 经验书ID
+	required int32 UserId         = 3; //用户ID
+	required int32 Num            = 4;//经验书数量
+	required bool IsCostVipGold   = 5;//是否立即完成
+}
+
+message Response4210Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}
+
+message Request4211Pack           // 特工升品
+{
+	required string InventoryId    = 1;  // 特工ID
+	required int32 UserId         = 2; //用户ID
+}
+
+message Response4211Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}
+
+message Request4212Pack            //特工训练
+{
+	required string InventoryId    = 1;  // 特工ID
+	required int32 TrainType    = 2;  // 训练等级
+	required int32 TrainNum    = 3;  // 训练次数
+	required int32 UserId         = 4; //用户ID
+}
+message Response4212Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}
+
+message Request4213Pack            //万能碎片使用
+{
+	required string ItemId    		= 1;  // 转换后的碎片ID
+	required int32 UserId         = 2; //用户ID
+	required int32 Num            = 3;//需要转换的数量
+}
+message Response4213Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}
+
+

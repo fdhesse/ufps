@@ -1,0 +1,33 @@
+syntax = "proto2";
+
+import "UserData.proto";
+
+package Game.KingsMan.MessagePack;
+
+message SystemNoticeMsg
+{
+    required int32 Version                          = 1;    // 版本号
+    required string Msg                             = 2;    // 系统公告内容
+}
+
+message DynamicFile
+{
+    required int32 ID                               = 1;    // ID
+    required int32 Version                          = 2;    // 版本号
+	required string Type                            = 3;    // 文件类型
+	required bytes Content                          = 4;    // 文件内容
+}
+
+message RequestExtensionPack    // 请求的扩展包，上传客户端实体数据的版本号
+{
+    repeated EntityVer UserEntityVers               = 1;    // 客户端实体版本号
+    optional int32 SysNoticeVer                     = 2;    // 客户端保存的系统消息版本号
+    repeated int32 DynamicVers                      = 3;    
+}
+
+message ResponseExtensionPack   // 回馈的扩展包，用于取回变化的实体数据
+{
+    repeated EntityPack UserEntityPacks             = 1;    // 回馈的实体数据
+    optional SystemNoticeMsg SysNoticeMsg           = 2;    // 回馈系统消息
+    repeated DynamicFile DynamicFiles               = 3;    // 动态文件
+}

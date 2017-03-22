@@ -1,0 +1,10 @@
+syntax = "proto2";
+package Game.KingsMan.MessagePack;
+
+message ExchangeCodeInfo
+{
+	optional string ExchangeCode					= 1;//兑换码
+	optional int32 Channel							= 2;//领取渠道
+	optional int32 Reward							= 3;//奖励类型,为0表示已兑换
+	optional int32 EndTime							= 4;//结束时间
+}

@@ -1,0 +1,18 @@
+syntax = "proto2";
+import "CommonDefs.proto";
+package Game.KingsMan.MessagePack;
+
+//使用道具的请求
+message Request9001Pack          
+{
+	required int32 UserId									= 1;	// 用户ID
+	required string InventoryId 					= 2;	// 道具ID
+	required int32 Count 									= 3;	// 使用数量	
+}
+
+//使用道具的回馈
+message Response9001Pack				
+{
+	required int32  ResCount 	= 1;    //获取的总的资源数量
+	required Game.KingsMan.Cfg.EResourceType ResType = 6;						//资源类型
+}

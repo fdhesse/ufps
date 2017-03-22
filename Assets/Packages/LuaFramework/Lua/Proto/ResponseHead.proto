@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message ResponseHead
+{
+	required int32 MsgId = 1;
+	required int32 ActionId = 2;
+	required int32 ErrorCode = 3;
+	required int32 EncodeMode = 4;
+}

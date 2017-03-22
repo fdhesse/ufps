@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message StringToUUIDList
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+    required string Key = 1;
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	required UUIDList UUIDListValue = 2;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message UUIDList
+{
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated int32 UUID                  = 1;//英雄卡的唯一标识
+}

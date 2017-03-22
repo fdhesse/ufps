@@ -1,0 +1,129 @@
+syntax = "proto2";
+
+import "Activity.proto";
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+//刷新PVPBox
+message Request7300Pack 											                      // 
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+}
+
+message Response7300Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目
+	
+}
+
+
+//领取PVP奖励
+message Request7301Pack 											                      // 
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+	required int32 Index = 2; 	//选择的宝箱索引
+}
+
+message Response7301Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        //错误原因目:未知，错误的顺序，资源不足
+	repeated Game.KingsMan.Cfg.ActivityRewardDef Rewards = 2;					//奖励列表
+}
+
+
+
+//刷新TimeBox
+message Request7310Pack 											                      // 
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+}
+
+message Response7310Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目
+	
+}
+
+//领取Time奖励
+message Request7311Pack 											                      // 
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+}
+
+message Response7311Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目：未知，错误的顺序，时间未到
+	
+	repeated Game.KingsMan.Cfg.ActivityRewardDef Rewards = 2;					//奖励列表
+}
+
+
+//刷新RTBMedalBox
+message Request7312Pack 											                      // 
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+	
+	required Game.KingsMan.Cfg.ERTBBoxClass BoxClass = 2;		//宝箱来源类型 1v1 2v2
+}
+
+message Response7312Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目
+	required Game.KingsMan.Cfg.ERTBBoxClass BoxClass = 2;
+	
+}
+
+//领取RTBMedalBox
+message Request7313Pack 											                      // 
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+	required Game.KingsMan.Cfg.ERTBBoxClass BoxClass = 2;
+}
+
+message Response7313Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目：未知，错误的顺序，时间未到	
+	repeated Game.KingsMan.Cfg.ActivityRewardDef Rewards = 2;					// 奖励列表
+	
+	required Game.KingsMan.Cfg.ERTBBoxClass BoxClass = 3;
+}
+
+
+
+//刷新RTBWinBox
+message Request7314Pack 											                      // 
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+	required bool IsUseVipGold = 2;			//是否使用VipGold
+	
+	required Game.KingsMan.Cfg.ERTBBoxClass BoxClass = 3; //RTB宝箱来源
+}
+
+message Response7314Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目
+	required bool IsUseVipGold = 2;			//是否使用VipGold
+	required int32 NeedVipGold = 3; 		//需要的VipGold
+	
+	required Game.KingsMan.Cfg.ERTBBoxClass BoxClass = 4;
+	
+}
+
+//领取RTBWinBox
+message Request7315Pack 											                      // 
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+	required int32 Index = 2;		//打开宝箱的索引从0开始
+	
+	required Game.KingsMan.Cfg.ERTBBoxClass BoxClass = 3;
+}
+
+message Response7315Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目：未知，错误的顺序，时间未到	
+	required int32 Index =2 ; //打开宝箱的索引
+	repeated Game.KingsMan.Cfg.ActivityRewardDef Rewards = 3;					//奖励列表	
+	required Game.KingsMan.Cfg.ERTBBoxClass BoxClass = 4;			
+}
+

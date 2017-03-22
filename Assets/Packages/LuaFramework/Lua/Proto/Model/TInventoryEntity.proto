@@ -1,0 +1,42 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message TProKeyValue
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string Key = 1;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string Value = 2;
+}
+
+ /** @Inject
+ * public TInventoryEntity()
+ * {
+ *		 ChildUUID.PropertyName = "ChildUUID";
+ *     AddChildrenListener(ChildUUID);
+ *		 TProKeyValueList.PropertyName = "TProKeyValueList";
+ *     AddChildrenListener(TProKeyValueList);
+ * }
+ */
+ 
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message TInventoryEntity
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32 UUID  				= 1; // 资源实体唯一ID
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string InventoryID = 2[default=""];
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32 Count        = 3; // 资源数量或等级
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32 ParentUUID   = 4; // 父亲资源实体的ID, <1表示该资源实体没有父亲实体
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string Rarity = 5;//品质
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated int32 ChildUUID = 6;	//儿子资源实体的ID
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated TProKeyValue TProKeyValueList = 7;
+}
+

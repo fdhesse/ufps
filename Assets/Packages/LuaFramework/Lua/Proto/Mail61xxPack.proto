@@ -1,0 +1,95 @@
+syntax = "proto2";
+
+import "MailEntity2.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request6100Pack	//MailServer notify UserServer maillist
+{
+	repeated Game.KingsMan.Model.MailEntity2 MailList = 1;
+}
+
+message Response6100Pack
+{
+}
+
+message Request6101Pack	//MailServer notify UserServer mail added
+{
+	repeated Game.KingsMan.Model.MailEntity2 MailList = 1;
+}
+
+message Response6101Pack
+{
+}
+
+message Request6102Pack	//MailServer notify UserServer mail deleted
+{
+	repeated int64 MailList = 1;
+}
+
+message Response6102Pack
+{
+}
+
+
+message Request6103Pack	//userserver tell mailserver send mail
+{
+	required Game.KingsMan.Model.MailTargetType Type = 1;
+	repeated uint32 TargetID = 10002;
+	
+	required string Title = 2;
+	required string Content = 3;
+	required string Sender = 4;	
+	required uint32 Flags = 5;
+	
+	repeated Game.KingsMan.Model.MailAttachment Items = 6;
+}
+
+message Response6103Pack
+{
+}
+
+
+message Request6110Pack	//client request read mail
+{
+	//required uint32 UserID = 1;
+	required int64 ID = 2;
+}
+
+message Response6110Pack
+{
+	//required uint32 Status = 1;
+	optional Game.KingsMan.Model.MailEntity2 Mail = 2;
+}
+
+message Request6111Pack	//client request take mail item
+{
+	//required uint32 UserID = 1;
+	required int64 ID = 2;
+}
+
+message Response6111Pack
+{
+	//required uint32 Status = 1;
+}
+
+message Request6112Pack	//client request delete mail
+{
+	//required uint32 UserID = 1;
+	required int64 ID = 2;
+}
+
+message Response6112Pack
+{
+	//required uint32 Status = 1;
+}
+
+message Request6120Pack	//client request mails
+{
+	optional int32 GuildID = 1;
+}
+
+message Response6120Pack
+{
+	repeated Game.KingsMan.Model.MailEntity2 MailList = 1;
+}

@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message Request3300Pack
+{
+	required string GiftCode = 1;
+	required string ChannelIdent = 2;
+}
+
+message Response3300Pack
+{	
+	required string Value = 1; 	
+}
+
+

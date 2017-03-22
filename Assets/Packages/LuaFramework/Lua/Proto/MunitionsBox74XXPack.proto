@@ -1,0 +1,34 @@
+syntax = "proto2";
+
+import "Activity.proto";
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+//刷新所有军需箱信息
+message Request7400Pack 											                      // 
+{
+	required uint32 UserID     = 1;  						                      // 用户ID
+}
+
+message Response7400Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        // 错误原因目
+	
+}
+
+
+//领取一个军需箱
+message Request7401Pack 											                      // 
+{
+	required uint32 UserID = 1;  						                      // 用户ID
+	required string BoxType = 2; 	//选择的类型
+}
+
+message Response7401Pack																						// 
+{
+	required int32 ErrorCode = 1;							                        //错误原因目:未知，错误的顺序，资源不足
+	repeated Game.KingsMan.Cfg.ActivityRewardDef Rewards = 2;					//奖励列表
+	required Game.KingsMan.Cfg.PayPriceVec RewardRes = 3;		//奖励的资源
+	required Game.KingsMan.Cfg.PayPrice NeedRes = 4;		//需要的资源
+}

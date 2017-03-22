@@ -1,0 +1,9 @@
+syntax = "proto2";
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message TalentNode
+{
+	required string TalentID = 1;                     // 天赋ID
+	required int32 TalentPoint = 2;										// 加过的天赋点	
+}

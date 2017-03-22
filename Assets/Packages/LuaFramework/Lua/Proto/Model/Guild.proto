@@ -1,0 +1,537 @@
+syntax = "proto2";
+
+import "ExtensionDefs.proto";
+import "GuildLevel.proto";
+import "MailEntity2.proto";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuildMember
+{
+	required uint32 ID = 1;
+	//required string Name = 2;
+	//required int32 Level = 3;	
+	required int32 Contribution = 4;	
+	//required int32 Score = 5;	
+	//required uint64 LoginTime = 6;
+	required GuildLevel GuildLevel = 7;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuildDonateUser
+{
+	required uint32 UserID = 1;
+	required uint32 ItemNum = 2;	
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuildDonate
+{
+	required string ItemID = 1;
+	required uint32 ItemNum = 2;
+	required uint64 RequestTime = 3;
+	required uint32 DonatedItemNum = 4;
+
+	required uint32 UserID = 5;
+	//required string UserName = 6;
+	required uint32 GotItemNum = 6;
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated GuildDonateUser DonatedUsers = 7;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuildCombatRecord
+{
+	required uint32 UserA = 1;
+	required uint32 UserB = 2;
+	required uint64 CombatID = 3;
+	required uint64 StartTime = 4;
+	required uint32 LookedTimes = 5;	
+	required uint32 LikedTimes = 6;	
+	required bool   Win = 7;
+	required string VersionCode = 8[default=""];
+	required string Url 			= 9[default=""];
+	required bool IsOnlinePvp = 11;		
+	required int32 CombatType = 12;			
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuildChallengeRecord
+{
+	required uint32 UserID = 1;
+	required uint32 TargetID = 2;
+	required string Desc = 3;
+	required uint64 RequestTime = 4;
+	required string RoomUrl = 5[default=""];
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuildJoinInfo
+{
+	required uint32 ID = 1;
+	required uint64 Time = 3;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuildAgreeInfo
+{
+	required uint32 OperatorID = 1;
+	required uint32 TargetID = 2;
+	required uint64 Time = 3;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuildLeaveInfo
+{
+	required uint32 UserID = 1;
+	required uint64 Time = 2;
+	required uint32 OperatorID = 3;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuildLevelChangeInfo
+{
+	required uint32 OperatorID = 1;
+	required uint32 TargetID = 2;	
+	required uint64 Time = 3;
+	required GuildLevel GuildLevel = 4; //成员职位	
+}
+
+
+/////// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.None, true, "Guild", "GuildUserInfo", 0, "UserID")]
+message GuildUserInfo
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	//required int32 Version = 20000;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"UserID", IsKey = true)]
+	required uint32 UserID = 1;
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"UserName")]	
+	required string UserName = 2[default="", (Game.KingsMan.Cfg.MemAttrib)="Localize=false"];
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Level")]	
+	required int32 Level = 3;	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildID")]	
+	required int32 GuildID = 4;	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildName")]	
+	required string GuildName = 5[default="", (Game.KingsMan.Cfg.MemAttrib)="Localize=false"];	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Score")]	
+	required int32 Score = 6;//功勋值
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Icon")]	
+	required string Icon	 = 7[default=""];
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Contribution")]	
+	required int32 contribution = 8;//贡献值,也就是捐赠数
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GuildLevel")]	
+	required GuildLevel GuildLevel = 9; //成员职位
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LoginTime")]	
+	required uint64 LoginTime = 20;
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastActiveTime")]	
+	required uint64 LastActiveTime = 21;		
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent	
+message GuildChatInfo
+{
+	required uint32 UserID = 1;
+	required string Content = 2[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];
+	required uint64 Time = 3;
+}
+
+//message GuildMemberInfo
+//{
+	//required uint32 UserID = 2;
+	//required int32 Level = 3;	
+	//required int32 Contribution = 4;	
+	//required int32 Score = 5;	
+	//required uint64 LoginTime = 6;
+	//required GuildLevel GuildLevel = 7;
+//}
+
+message GuildUserDetailInfo
+{
+	required uint32 UserID = 1;
+	required string UserName = 2[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];
+	required int32 Level = 3;	
+	required int32 GuildID = 4;		
+	required string GuildName = 5[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];	
+	required int32 Score = 6;//功勋值
+	required string Icon	 = 7;
+	required int32 Contribution = 8; //贡献值,也就是捐赠数
+	required GuildLevel GuildLevel = 9; //成员职位
+	repeated string Heros = 10; //常用英雄
+	repeated string Skills = 11; //常用技能
+	
+	required int32 PvpWinNum = 12;	 //pvp胜利次数
+	required int32 PvpLoseNum = 13;	//pvp全灭次数
+	required int32 HeroNum = 14;	//英雄数量
+	required int32 SkillNum = 15;	//技能数量		
+
+	required uint64 LoginTime = 20;
+}
+
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.None, true, "GuildMaster", "GuildInfo", 0, "ID")]
+//    
+message GuildInfo
+{
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Name")]	
+	required string Name = 2[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Desc")]	
+	required string Desc = 3[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Icon")]	
+	required int32 Icon = 4;			
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Score")]	
+	required int32 Score = 5;
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Location")]	
+	required int32 Location = 6;
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MemberNum")]	
+	required int32 MemberNum = 7;
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RankLevel")]	
+	required int32 RankLevel = 8; //公会排名
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastRankLevel")]	
+	required int32 LastRankLevel = 9;		//刷新前上次公会排名	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"JoinScore")]	
+	required int32 JoinScore = 10;
+		// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LeaderName")]	
+	required string LeaderName = 11;
+		// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Flags")]	
+	required uint32 Flags = 12;	
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Guild", "GuildMember", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message GuildMemberEntity
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Members", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	map<uint32, GuildMember> Members = 2;
+						
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MemberRequestJoinedList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]		
+	repeated GuildJoinInfo MemberRequestJoinedList = 3;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersAgreeJoined", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated GuildAgreeInfo MembersAgreeJoined = 4;			
+}
+	
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Guild", "GuildDonate", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message GuildDonateEntity
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MemberRequestDonateList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated GuildDonate MemberRequestDonateList = 2;		
+
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CompletedDonateList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated GuildDonate CompletedDonateList = 3;		
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Guild", "GuildActivityDonate", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message GuildActivityDonateEntity
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ActivityRequestDonateList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated GuildDonate ActivityRequestDonateList = 2;	
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Guild", "GuildLeave", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message GuildLeaveEntity
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersLeaved", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated GuildLeaveInfo MembersLeaved = 2;	
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Guild", "GuildCombat", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message GuildCombatEntity
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CombatRecordList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated GuildCombatRecord CombatRecordList = 2;	
+
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ChallengeRecordList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated GuildChallengeRecord ChallengeRecordList = 3;	
+}
+
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Guild", "GuildLevelChange", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message GuildLevelChangeEntity
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersChanged", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated GuildLevelChangeInfo MembersChanged = 2;	
+}
+
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Guild", "GuildUserInfoDeprecated", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message GuildUserInfoEntity
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersUserInfo", Disable = true, IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//repeated GuildUserInfo MembersUserInfo = 2;		
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Guild", "GuildMutable", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message GuildMutableEntity
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Score")]	
+	required int32 Score = 2;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RankLevel")]	
+	required int32 RankLevel = 3[default=-1]; //公会排名
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastRankLevel")]	
+	required int32 LastRankLevel = 4[default=-1];		//刷新前上次公会排名	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"DonateNumPerWeek")]	
+	required int32 DonateNumPerWeek = 5;	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RefreshDonateTime", Disable = true)]
+	required uint64 RefreshDonateTime = 6; //公会每周贡献刷新时间		
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "Guild", "Guild", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒, 0为缺省), 绑定表中主键字段名 
+message GuildEntity
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+		
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Name")]
+	required string Name = 2[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Desc")]	
+	required string Desc = 3[(Game.KingsMan.Cfg.MemAttrib)="Localize=false"];
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Icon")]	
+	required int32 Icon = 4;		
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Score")]	
+	//required int32 Score = 5;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Location")]	
+	required int32 Location = 6;
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Members", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//map<uint32, GuildMember> Members = 7;
+				
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersRequestJoined", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//map<uint32, GuildJoinInfo> MembersRequestJoined = 8;
+		
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MemberRequestJoinedList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]		
+	//repeated GuildJoinInfo MemberRequestJoinedList = 8;	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Creator")]	
+	required uint32 Creator = 9;	
+			
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CreateTime")]	
+	required uint64 CreateTime = 10;	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Flags")]	
+	required uint32 Flags = 11;	
+	
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"JoinScore")]	
+	required int32 JoinScore = 12;
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersRequestDonate", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//map<uint32, GuildDonate> MembersRequestDonate = 13;	
+
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MemberRequestDonateList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//repeated GuildDonate MemberRequestDonateList = 13;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ActivitysRequestDonate", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//map<string, GuildDonate> ActivitysRequestDonate = 14;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ActivityRequestDonateList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//repeated GuildDonate ActivityRequestDonateList = 14;	
+		
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CombatRecords", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//map<uint64, GuildCombatRecord> CombatRecords = 15;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CombatRecordList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//repeated GuildCombatRecord CombatRecordList = 15;	
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RankLevel")]	
+	//required int32 RankLevel = 16; //公会排名
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastRankLevel")]	
+	//required int32 LastRankLevel = 17;		//刷新前上次公会排名
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersAgreeJoined", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//repeated GuildAgreeInfo MembersAgreeJoined = 18;	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersLeaved", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//repeated GuildLeaveInfo MembersLeaved = 19;	
+		
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ChatList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//repeated GuildChatInfo ChatList = 20;		
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersChanged", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//repeated GuildLevelChangeInfo MembersChanged = 21;	
+		
+	//TODO:add more here
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"DonateNumPerWeek")]	
+	//required int32 DonateNumPerWeek = 22;
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MembersUserInfo", Disable = true, IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	//repeated GuildUserInfo MembersUserInfo = 40;	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RefreshUserTime", Disable = true)]
+	//required uint64 RefreshUserTime = 41; //公会玩家信息刷新时间，服务器内部使用	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Mails", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated MailEntity2 Mails = 42;		
+}
+

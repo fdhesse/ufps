@@ -1,0 +1,85 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+
+message Request4310Pack           // 装备改良
+{
+	required int32 UUID    = 1;  // 特工ID
+	required Game.KingsMan.Cfg.EEquipType	CurrEquipType	   = 2;  // 当前武器类型
+	required string EquipName = 3;//武器名字
+	required string InventoryID		= 4;  // 要兑换的卡片
+	required int32 UserId     = 5;
+	required bool IsCostVipGold = 6;//是否立即完成
+}
+
+message Response4310Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}
+
+message Request4311Pack           // 挂件获取刷新
+{
+	required int32 UUID    = 1;  // 特工ID
+	required Game.KingsMan.Cfg.EEquipType	CurrEquipType	   = 2;  // 当前武器类型
+	required string EquipName = 3;//武器名字
+	required string InventoryID		= 4;  // 要兑换的卡片
+}
+
+message Response4311Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}
+
+message Request4312Pack           // 挂件耐久修复
+{
+	required int32 UUID    = 1;  // 特工ID
+	required Game.KingsMan.Cfg.EEquipType	CurrEquipType	   = 2;  // 当前武器类型
+	required string EquipName = 3;//武器名字
+	required string PentandName = 4;//挂件名字
+	required Game.KingsMan.Cfg.EItemRarity PentandRatity = 5;//挂件品质
+	required string InventoryID		= 6;  // 要兑换的卡片
+}
+
+message Response4312Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}
+
+message Request4313Pack           // 装备刷新
+{
+	required int32 UUID    = 1;  // 特工ID
+	required Game.KingsMan.Cfg.EEquipType	CurrEquipType	   = 2;  // 当前武器类型
+	required string InventoryID		= 3;  // 要兑换的卡片
+}
+
+message Response4313Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}
+
+message Request4314Pack           // 装备交换
+{
+	required int32 UUID    = 1;  // 特工ID
+	required Game.KingsMan.Cfg.EEquipType	CurrEquipType	   = 2;  // 当前武器类型
+	required string InventoryID		= 3;  // 要兑换的卡片
+}
+
+message Response4314Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}
+
+message Request4315Pack           // 装备替换换使用
+{
+	required int32 UUID    = 1;  // 特工ID
+	required Game.KingsMan.Cfg.EEquipType	CurrEquipType	   = 2;  // 当前武器类型
+	required string InventoryID		= 3;  // 要兑换的卡片
+}
+
+message Response4315Pack
+{
+	required uint32 ErrCode    = 1;  // 返回消息
+}

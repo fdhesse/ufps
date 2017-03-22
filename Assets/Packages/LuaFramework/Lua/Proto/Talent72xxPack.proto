@@ -1,0 +1,31 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.MessagePack;
+
+//为一个天赋加点
+message Request7200Pack 											// 为一个天赋加点
+{
+	required uint32 UserID     = 1;  						// 用户ID
+	required string TalentID   = 2;							// 天赋ID
+	required int32  TalentPoints = 3;						// 天赋点
+}
+
+message Response7200Pack 											// 为一个天赋加点
+{
+	required int32 ErrorCode = 1;					// 错误信息
+}
+
+
+//洗天赋
+message Request7201Pack 											// 洗天赋
+{
+	required uint32 UserID     = 1;  						// 用户ID
+}
+
+message Response7201Pack 											// 洗天赋
+{
+	required int32 TalentPoints     = 1;  												// 得到的天赋点
+	required Game.KingsMan.Cfg.PayPriceVec NeedPrice = 2;					// 资源不足时需要的资源
+}

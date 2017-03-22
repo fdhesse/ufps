@@ -1,0 +1,30 @@
+syntax = "proto2";
+import "PvpUserMatchInf.proto";
+package Game.KingsMan.MessagePack;
+
+message Request3160Pack
+{
+	repeated PvpUserMatchInf  ItemList = 1;
+}
+
+message Response3160Pack
+{	
+	required string Value = 1;
+}
+
+message Request3161Pack
+{
+	required int32 UserId 		= 1;
+	required int32 CupNum 		= 2;
+	required int32 Level 		= 3;	
+	required string ParamStr 	= 4;
+	required int32 	MaxNum 		= 5; //请求返回的最大数量
+	required int32  RequestType = 6; //请求类型,0：自动 1：手动
+}
+
+message Response3161Pack
+{	
+	required string Value = 1;
+	repeated PvpUserMatchInf  ItemList = 2;
+	
+}

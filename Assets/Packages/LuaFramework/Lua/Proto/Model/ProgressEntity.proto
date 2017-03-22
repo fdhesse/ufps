@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+import "CommonDefs.proto";
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message ProgressEntity
+{
+		required Game.KingsMan.Cfg.EProgressType	ProgressType = 1;								//进行中的项目类型
+		
+		required int32 UUID = 2;																//进程UUID			
+		required sint64 StartTime = 3;                          //升级的开始时间
+		
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Price", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+		map<string, int32> Price = 4;														//升级消耗的资源列表，用于取消时返回
+			
+		required string InventoryId = 5;								//进行中的项目InventroyId
+		
+		required int32 EntityUUID = 6[default=-1];								//进行中的项目ID
+		
+		required bool IsAutoFinish = 7[default=true];	//是否自动结束，否则的话需要玩家那边确认后才执行结束逻辑					
+		
+		required int32 NeedFragment = 8;	//使用的fragment
+}

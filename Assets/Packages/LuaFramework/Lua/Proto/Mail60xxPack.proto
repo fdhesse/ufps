@@ -1,0 +1,54 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message Request6000Pack		// SendMail
+{
+	required uint32 SenderUserID = 1;
+	required uint32 ReceiverUserID = 2;
+	
+	required uint32 UUID			= 3;
+	required uint32 Type			= 4;
+	required uint32 SubjectID	= 5;
+	required uint32 BodyID		= 6;
+	required uint32	RewardID	= 7;
+}
+
+message Response6000Pack
+{
+	required int32 MailCount = 1;	// 当前邮件的数目包括标记为删除的邮件数目
+}
+
+message Request6001Pack // ExeMail
+{
+	required uint32 UserID = 1;
+	repeated uint32 UUIDS = 2;
+}
+
+message Response6001Pack
+{
+	required int32 Index = 1;
+	repeated string Msgs = 3;
+}
+ 
+message Request6002Pack // DeleteMail
+{
+	required uint32 UserID = 1;
+	repeated uint32 UUIDS = 2;
+}
+
+message Response6002Pack
+{
+	required int32 Index = 1;
+}
+
+message Request6003Pack // GetMails
+{
+	required uint32 UserID = 1;
+	repeated uint32 UUIDS = 2;
+}
+
+message Response6003Pack
+{
+	required int32 Index = 1;
+}

@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+enum EncodeMode
+{
+    EM_None  = 0;
+	EM_QuickLz    = 10;
+	EM_XorNormal  = 11;
+	EM_XorMode1   = 12;
+	EM_XorMode2   = 13;
+	EM_XorMode3   = 14;
+	EM_XorMode4   = 15;
+	EM_XorMode5   = 16;	
+	EM_XorMode6   = 17;
+	EM_XorMode7   = 18;		
+	EM_XorMode8   = 19;
+	EM_XorMode9   = 20;
+	EM_XorMode10  = 21;
+}

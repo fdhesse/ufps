@@ -1,0 +1,35 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message Request5500Pack 		// CompleteGuide, 完成一个指南
+{
+	required uint32 UserID  = 1;   // 
+	required int32  GroupID = 3;   // 指南组ID
+	required int32  GuideID = 2;   // 指南UUID
+}
+
+message Response5500Pack
+{
+	required uint32	ErrorCode		= 1;  // 逻辑错误码
+	required uint32 UserID			= 2;
+}
+
+message Request5501Pack 		// UnLockAllGuide, 解锁全部的指南
+{
+	required uint32 UserID  = 1;   // 
+}
+
+message Response5501Pack
+{
+
+}
+
+message Request5502Pack 		// UnlockAllGameSystem, 解锁全部的游戏系统
+{
+	required uint32 UserID  = 1;   // 
+}
+
+message Response5502Pack
+{
+}

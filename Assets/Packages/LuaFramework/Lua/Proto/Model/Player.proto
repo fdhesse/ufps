@@ -1,0 +1,291 @@
+syntax = "proto2";
+import "CommonDefs.proto";
+
+package Game.KingsMan.Model;
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "Player", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message Player
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+    
+	// @Tag: [global::YAXLib.YAXAttributeForClass]    
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID         				= 1;
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"NickName")]
+	required string NickName					= 2;         // 玩家昵称
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ExpLevel")]
+	required int32 ExpLevel						= 3;         // 玩家经验等级
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Exp")]
+	required int64 Exp								= 4;         // 玩家经验
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipGoldRecharge")]
+	required int32 VipGoldRecharge		= 5;         // 充值的黄金
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipGoldGift")]
+	required int32 VipGoldGift		= 6;             // 赠送的黄金
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipGoldPick")]
+	required int32 VipGoldPick		= 7;             // 捡到的黄金
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipGoldCost")]
+	required int32 VipGoldCost		= 8;             // 花费的黄金
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MoneyPick")]
+	required int32 MoneyPick		= 9;               // 得到的钞票
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MoneyCost")]
+	required int32 MoneyCost		= 10;              // 花费的钞票
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Money")]
+	required int32 Money    		= 11;              // 钞票总额， 
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"TechnolgyEssence")]
+	required int32 TechnolgyEssence		= 12;        // 科技精华
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Stamina")]
+	required int32 Stamina		= 13;                // 体力
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipGold")]
+	required int32 VipGold 		= 14;                // 黄金总额， 来自于充值，过关，用于建筑升级资源补齐，招募-高级招募等。
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Oil")]
+	required int32 Oil 		= 15;                    // 石油总额，来自于抽卡，
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RecruitTicket")]
+	required int32 RecruitTicket 		= 16;         // 招募令 
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GoldTicket")]
+	required int32 GoldTicket 		= 17;            // 金券， 人才市场买东西
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"TalentPoint")]
+	required int32 TalentPoint 		= 18;             // 天赋点，来自于科研所和玩家等级变化，用于天赋树系统
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ExploitPoint")]
+	required int32 ExploitPoint 		= 19;
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Medal")]
+	required int32 Medal 		= 20;                   // 奖章
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipLevel")]
+	required int32 VipLevel					= 21;           // vip 等级
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CodeName")]
+	required string CodeName					= 22;		
+						
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"HeadIcon")]
+	required string HeadIcon					= 23;	
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"BuyProgressCount")]
+	required int32 BuyProgressCount					= 24;	
+	
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RewardGotState")]	
+	required Game.KingsMan.Cfg.RewardGotState   RewardGotState  = 25[default=RGS_CAN_GOT];
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastRecoverStaminaTime")]
+	required sint64 LastRecoverStaminaTime					= 26;	 // 上次服务器恢复体力的时间点
+
+    // @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"PurchasedProductIds", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated int32 PurchasedProductIds						= 27;
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"SetNickNameTimes")]
+	required int32 SetNickNameTimes					= 28[default=0];	 // 用户改变名字的次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CardGroupCount")]
+	required int32 CardGroupCount					= 29[default=1];	 // 解锁的卡组数量
+		
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CurrentCardGroupIndex")]
+	required int32 CurrentCardGroupIndex					= 30[default=0];	 // 当前使用的卡组索引（从0开始）	
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CupNum")]
+	required int32 CupNum					            = 34[default=0];	 // 玩家奖牌数量
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"EquipFlushDayTimes")]
+	required int32 EquipFlushDayTimes					            = 35[default=0];	 // 今日刷新装备次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"EquipFlushTimes")]
+	required int32 EquipFlushTimes					            = 36[default=0];	 // 刷新装备次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastFlushEquipDayTimesRecover")]
+	required sint64 LastFlushEquipDayTimesRecover					            = 37[default=0];	 // 上一次装备刷新今日次数恢复时间点
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LoginTime")]
+	required sint64 LoginTime					            = 38[default=0];	 // 登陆时间
+	
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastActiveTime")]
+	required sint64 LastActiveTime					            = 39[default=0];	 // 最后活动时间，用于判断是否在线
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastPlayerCupRank")]
+	required int32 LastPlayerCupRank					            = 40[default=0];	 // 昨日奖杯排行
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastPlayerCupRankGlobal")]
+	required int32 LastPlayerCupRankGlobal					            = 41[default=0];	 // 昨日全球奖杯排行
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastFlushPlayerCupRankTime")]
+	required sint64 LastFlushPlayerCupRankTime					            = 42[default=0];	 // 上一次刷新奖杯排行时间点
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"PlayerLocation")]
+	required int32 PlayerLocation					            = 43[default=0];	 // 玩家所在地区
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ChangePlayerLocationTimes")]
+	required int32 ChangePlayerLocationTimes					= 44[default=0];	 // 玩家所在地区改变的次数
+	
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"InviteCode")]
+	required string InviteCode               					= 45[default=""];	 // 邀请码	
+
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"InviteID")]
+	required int32 InviteID                   					= 46[default=0];	 // 邀请码所有人	
+	
+		// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MonthCardContinueTime1")]
+	required sint64 MonthCardContinueTime1               					= 47[default=0];	 // 初级月卡到期时间	
+	
+		// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MonthCardContinueTime2")]
+	required sint64 MonthCardContinueTime2               					= 48[default=0];	 // 中级月卡到期时间	
+	
+		// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"MonthCardContinueTime3")]
+	required sint64 MonthCardContinueTime3               					= 49[default=0];	 // 高级月卡到期时间	
+	
+		// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GiveGoldLastTime1")]
+	required sint64 GiveGoldLastTime1               					= 50[default=0];	 // 初级月卡上次发黄金的时间	
+	
+		// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GiveGoldLastTime2")]
+	required sint64 GiveGoldLastTime2               					= 51[default=0];	 // 中级月卡上次发黄金的时间
+	
+		// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"GiveGoldLastTime3")]
+	required sint64 GiveGoldLastTime3               					= 52[default=0];	 // 高级月卡上次发黄金的时间
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"CurrentRTBattleCardGroup")]
+	required int32 CurrentRTBattleCardGroup					= 53[default=0];	 // 当前选中的即时战斗卡组	
+	
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTCupNum")]
+	required int32 RTCupNum					            = 54[default=0];	 // 玩家实时pvp奖牌数量
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTSuccessCount")]
+	required int32 RTSuccessCount					            = 55[default=0];	 // 玩家实时pvp胜利次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTFailCount")]
+	required int32 RTFailCount					            = 56[default=0];	 // 玩家实时pvp失败次数
+
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTCrown")]
+    required int32 RTCrown                                  = 57[default=0];    // 玩家已获得的实时PVP皇冠数
+
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastAddRTCrownTime")]
+    required sint64 LastAddRTCrownTime                      = 58[default=0];    // 玩家上次获得实时PVP皇冠的时间
+
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTCorwnToday")]
+    required int32 RTCorwnToday                             = 59[default=0];    // 玩家当天获得的实时PVP皇冠数
+
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"")]
+    required sint64 NextRTBattleTime                        = 60[default=0];
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTBTallestUseCardTimes")]
+    required int32 RTBTallestUseCardTimes                        = 61[default=0];   //实时站卡的最高使用次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTBTallestUseCard")]
+    required string RTBTallestUseCard                        = 62[default=""];   //实时战使用最频繁的卡
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"TallestRTCupNum")]
+    required int32 TallestRTCupNum                        = 63[default=0];  //实时战最高功勋
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTBAllDeadSuccessTimes")]
+    required int32 RTBAllDeadSuccessTimes                        = 64[default=0];  //实时战全破胜利次数
+	
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RT2V2CupNum")]
+	required int32 RT2V2CupNum					            = 65[default=0];	 // 玩家实时2v2 pvp奖牌数量
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RT2V2SuccessCount")]
+	required int32 RT2V2SuccessCount					            = 66[default=0];	 // 玩家实时2v2pvp胜利次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RT2V2FailCount")]
+	required int32 RT2V2FailCount					            = 67[default=0];	 // 玩家实时2v2pvp失败次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"TallestRT2V2CupNum")]
+    required int32 TallestRT2V2CupNum                        = 70[default=0];  //实时战2V2最高功勋
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+    // @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RT2V2BAllDeadSuccessTimes")]
+    required int32 RT2V2BAllDeadSuccessTimes                        = 71[default=0];  //实时战2V2全破胜利次数
+}

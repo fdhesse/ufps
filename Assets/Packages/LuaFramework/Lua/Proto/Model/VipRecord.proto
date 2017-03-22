@@ -1,0 +1,36 @@
+syntax = "proto2";
+import "VipRecordEntity.proto";
+package Game.KingsMan.Model;
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "VipRecord", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message VipRecord   // 该用户的VIP等级集合
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+    
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipLevel")]
+	required int32 VipLevel	= 2;				// 玩家当前Vip等级
+	
+		// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipLevelEntity", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	map<int32, VipRecordEntity> VipLevelEntity = 3;//Vip等级实体表（包含所有等级VIP的所有解锁条件的数据）
+	
+		// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VipLevelE", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated VipRecordEntity VipLevelE = 4;     // Vip等级实体表（包含所有等级VIP的所有解锁条件的数据）
+}
+
+     

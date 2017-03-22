@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+import "RankInf.proto";
+
+package Game.KingsMan.MessagePack;
+
+message Request3150Pack
+{
+	required UserRankInf RankInf = 1;
+}
+
+message Request3151Pack
+{
+	required int32 UserId = 1;
+	repeated string RankListNames = 2;//排行榜名列表
+}
+
+message Response3150Pack
+{
+	required int32 value = 1;
+}
+
+message Response3151Pack
+{
+	map<string, UserRankListData> RankItemList = 1; //key:排行榜名，　value:UserRankListData
+	map<string, UserRankingData>  SelfRankingData = 2;//用户自己在排行榜的数据
+}

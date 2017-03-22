@@ -1,0 +1,9 @@
+syntax = "proto2";
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message ItemEntity
+{
+	required string InventoryId = 1;					  // 道具ID
+	required int32 Count = 2;										// 数量	
+}

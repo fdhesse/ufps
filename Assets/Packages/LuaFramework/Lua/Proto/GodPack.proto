@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+package Game.KingsMan.MessagePack;
+
+message Request9999Pack     //上帝发来的请求
+{
+    required string Token                     = 1;//鉴别是谁发来的请求，只有我们的机器人请求才让通过
+    required string ModelName									= 2;//要修改的model的名称
+    required string PropertyName							= 3;//要修改的属性的名称
+    required int32 UserId											= 4;//用户ID
+		required int32 Level											= 5;//卡牌等级
+  	required Game.KingsMan.Cfg.EItemRarity Rarity  = 6;//品质
+    required string InventoryId								= 7;//道具ID
+    required int32 number											= 8;//数量
+}
+
+message Response9999Pack    //给上帝的回馈
+{
+		required uint32 ErrCode    = 1;  // 返回消息
+		required string InventoryId    = 2;  //卡牌的唯一ID
+}

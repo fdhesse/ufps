@@ -1,0 +1,53 @@
+syntax = "proto2";
+import "ExtensionDefs.proto";
+import "CommonDefs.proto";
+package Game.KingsMan.MessagePack;
+
+message Request5204Pack 		// 黑市商品购买请求
+{
+	required uint32 UserID = 1;
+	required int32 UUID = 2;			//商品的唯一ID
+	required int32 CardLocalitionID = 3;					 //model中卡牌位置
+	required string InventoryId = 4;   // 商品ID
+	required Game.KingsMan.Cfg.BlackMarketCardeState cardeState	    = 5;		//卡牌是明牌还是暗牌
+	required bool BuyAll = 6;				//是否购买全部
+	required Game.KingsMan.Cfg.PayPrice NeedRes		= 7;        // 兑换一次需要的资源
+}
+
+message Response5204Pack	//黑市商品购买回馈
+{
+	required uint32	ErrorCode		= 1;  // 逻辑错误码
+
+	required string InventoryID	    = 2;       		// 奖励的资产ID
+	
+
+	required int32  Count = 3;                    // 奖励的数量
+
+	required int32  Level = 4;                    // 奖励的等级
+	
+	required Game.KingsMan.Cfg.BlackMarketCardeState cardeState	    = 5;		//卡牌是明牌还是暗牌
+
+  optional Game.KingsMan.Cfg.EItemRarity Rarity                         = 6;    // 品质
+  
+  
+}
+
+message Request5205Pack 		//商店钞票兑换请求
+{
+	required uint32 UserID = 1;
+	required string  InventoryId = 2;   // 要兑换的钞票的ID
+	required int32  price = 3;   // 钞票的价格
+}
+
+message Response5205Pack   //商店钞票兑换回馈
+{
+	required uint32	ErrorCode		= 1;  // 逻辑错误码
+	
+	required string InventoryID	    = 2;       		// 奖励的资产ID
+
+	required int32  Count = 3;                    // 奖励的数量
+
+	required int32  Level = 4;                    // 奖励的等级
+
+  optional Game.KingsMan.Cfg.EItemRarity Rarity                         = 5;    // 品质
+}

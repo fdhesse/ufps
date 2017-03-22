@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GuideRecordEntity  // 活动实体实例
+{
+  required int32                           Index  = 1;                // 本指南对应的定义的下标
+    
+  required int32                           DefUUID  = 2;              // 本指南对应的定义UUID
+
+  required Game.KingsMan.Cfg.GuideState    State    = 3;              // 本指南是否已完成
+  
+  required Game.KingsMan.Cfg.GuideState    Time    = 4;              // 本指南是否已完成
+}

@@ -1,0 +1,11 @@
+syntax = "proto2";
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message GameSystemMaskRecordEntity  // 系统开启实例
+{
+	required int32                              UUID      = 1;      // 本系统的唯一ID
+	required int32                              Times     = 2;      // 本系统实例今日累计的动作次数(对于动作次数)或数量(对于消耗资源)
+	required bool																Open      = 4;      // 本系统的开启状态
+}
+

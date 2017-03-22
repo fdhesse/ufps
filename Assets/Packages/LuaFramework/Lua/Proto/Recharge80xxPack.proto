@@ -1,0 +1,118 @@
+syntax = "proto2";
+
+import "Purchase.proto";
+import "PurchaseTable.proto";
+
+package Game.KingsMan.MessagePack;
+
+// 用户业务服务器上创建订单请求
+message Request8000Pack
+{
+	required int32 UserId									= 1;	// 用户ID
+	required string ChannelId								= 2;	// 渠道号
+	required int32 ProductId								= 4;	// 代充值产品ID
+
+    required string PlatformUserId                          = 10;   // 平台用户ID
+    required string Platment                                = 11;   // 重置平台
+
+	optional string Device									= 30;	// 运行游戏的设备类型
+	optional string Manufacturer							= 31;	// 运行游戏的设备生产商
+	optional string DeviceUUID								= 32;	// 运行游戏的设备唯一ID
+	optional string Operator								= 33;	// 运行游戏的手机运营商
+}
+
+// 用户业务服务器上创建订单回馈
+message Response8000Pack
+{
+	required Game.KingsMan.Model.PurchaseOrder Order		= 1;	// 充值订单信息
+}
+
+// 用户业务服务器上查询单条订单请求
+message Request8001Pack
+{
+	required int32 UserId									= 1;
+	required string OrderNO									= 2;	// 充值订单编号(注:游戏自己产生的编号)
+}
+
+// 用户业务服务器上查询单条订单回馈
+message Response8001Pack
+{
+	required Game.KingsMan.Model.PurchaseOrder Order		= 1;	// 充值订单信息
+}
+
+// 用户业务服务器上发货
+message Request8002Pack
+{
+	required int32 UserId									= 1;
+	required Game.KingsMan.Model.PurchaseOrder Order		= 2;	// 订单信息
+	required Game.KingsMan.Cfg.PurchaseProduct Product		= 3;	// 商品信息
+}
+
+// 用户业务服务器上发货回馈
+message Response8002Pack
+{
+	required string OrderNO									= 1;	// 订单号
+}
+
+// 用户业务上校验订单请求
+message Request8003Pack
+{
+	required int32 UserId									= 1;	// 用户ID
+	required string OrderNO									= 2;	// 订单号
+	required string Context									= 3;	// 支付接口回馈的支付结果json字符串
+}
+
+// 用户业务上校验订单回馈
+message Response8003Pack
+{
+	required Game.KingsMan.Model.PurchaseOrder Order		= 1;	// 充值订单信息
+}
+
+// 充值业务服务器上创建订单请求
+message Request8030Pack
+{
+	required int32 UserId									= 1;	// 用户ID
+	required string ChannelId								= 2;	// 渠道号
+	required int32 ProductId								= 4;	// 代充值产品ID
+
+    required string PlatformUserId                          = 10;   // 平台用户ID
+    required string Platment                                = 11;   // 重置平台
+
+	optional string Device									= 30;	// 运行游戏的设备类型
+	optional string Manufacturer							= 31;	// 运行游戏的设备生产商
+	optional string DeviceUUID								= 32;	// 运行游戏的设备唯一ID
+	optional string Operator								= 33;	// 运行游戏的手机运营商
+}
+
+// 充值业务服务器上创建订单回馈
+message Response8030Pack
+{
+	required Game.KingsMan.Model.PurchaseOrder Order		= 1;	// 充值订单信息
+}
+
+// 充值业务服务器上查询单条订单请求
+message Request8031Pack
+{
+	required int32 UserId									= 1;
+	required string OrderNO									= 2;	// 充值订单编号(注:游戏自己产生的编号)
+}
+
+// 充值业务服务器上查询单条订单回馈
+message Response8031Pack
+{
+	required Game.KingsMan.Model.PurchaseOrder Order		= 1;	// 充值订单信息
+}
+
+// 充值业务服务器上校验订单请求
+message Request8033Pack
+{
+	required int32 UserId									= 1;	// 用户ID
+	required string OrderNO									= 2;	// 订单号
+	required string Context									= 3;	// 支付接口回馈的支付结果json字符串
+}
+
+// 充值服务器上校验订单回馈
+message Response8033Pack
+{
+	required Game.KingsMan.Model.PurchaseOrder Order		= 1;	// 充值订单信息
+}

@@ -1,0 +1,68 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message PvpLevelObj  // pvp场景内的对象
+{
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32          UUID  	= 1;  //guard card uuid
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required float		  PosX 		= 2;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required float 		  PosY 		= 3;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required float          Angle 	= 4;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32          GroupId 	= 5;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32 		  AreaId 	= 6;
+}
+
+/** @Inject
+ * public PvpLevelEntity()
+ * {
+ *     ObjList.PropertyName = "ObjList";
+ *     AddChildrenListener(ObjList);
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message PvpLevelEntity  // pvp level
+{
+// @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32          LevelId  	= 1;     //level id
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32          SceneId  	= 2;     //scene id
+  // @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+  repeated PvpLevelObj    ObjList 	= 3;
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "PvpLevelBag", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message PvpLevelBag  // 
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+    
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"FormatVersion" )]
+	required int32 FormatVersion = 2;			//Modle格式的版本，用来保证新旧版本的兼容性	
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LevelList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated PvpLevelEntity LevelList = 3;    // pvp 关卡列表
+	
+}
+
+     

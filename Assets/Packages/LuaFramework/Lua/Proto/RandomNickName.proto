@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message Request9100Pack 
+{
+	required uint32 AccountID = 1;
+}
+
+message Response9100Pack
+{
+	required uint32	ErrorCode		= 1;
+	required uint32 Adjective			= 2;  //形容词
+	required uint32 Surname			= 3;  //姓
+	required uint32 Name			= 4;  //名
+}

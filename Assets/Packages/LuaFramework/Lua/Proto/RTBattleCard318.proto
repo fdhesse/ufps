@@ -1,0 +1,25 @@
+syntax = "proto2";
+import "CommonDefs.proto";
+package Game.KingsMan.MessagePack;
+
+
+//出错的卡牌
+message ErrorRTBattleCardInfo
+{	
+	required int32 UUID    = 1;  				  	        // UUID
+	required int32 Reason    = 2;											//出错的原因
+	required Game.KingsMan.Cfg.EInventoryCategory Category = 3; //卡牌的类型
+}
+
+message Request3180Pack           						        // 更换携带上阵的卡牌
+{
+	required uint32 UserID    = 1;  				  	        // 用户ID
+	repeated Game.KingsMan.Cfg.RTBattleCardSlotProperty CardSlotInfos = 5;				// 上阵的卡牌信息	
+	required int32 CardGroupIndex = 3;			//当前操作的卡组Index，从0开始 
+}
+
+
+message Response3180Pack
+{
+	repeated ErrorRTBattleCardInfo ErrorCards = 1;	//出错的卡牌
+}

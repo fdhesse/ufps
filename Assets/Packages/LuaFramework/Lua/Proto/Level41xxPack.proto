@@ -1,0 +1,125 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+import "KillCards.proto";
+import "LootTable.proto";
+
+package Game.KingsMan.MessagePack;
+
+// 进入关卡请求数据
+message Request4100Pack
+{
+	required Game.KingsMan.Cfg.EChallengeMode ChallengeMode  = 1;   // 模式
+    required string LevelName = 2;   // 关卡名称
+	required int32 UserID = 3;
+	
+	required int32 CardGroupIndex = 4;	// 进入关卡携带的卡组Index，从0开始
+}
+
+// 进入关卡回馈数据
+message Response4100Pack
+{
+	required Game.KingsMan.Cfg.PayPriceVec Tip = 1;//资源不足
+}
+
+// 过关请求数据
+message Request4101Pack
+{
+    required Game.KingsMan.Cfg.EChallengeMode ChallengeMode  = 1;   // 模式
+    required string LevelName = 2;   // 关卡名称
+    required int32 Evaluate = 3;    // 关卡评价
+	required int32 UserID = 4;
+	required int32 SelfTime = 5;//全灭时间
+	optional int32 PickVipGold = 6;	// 关卡中宝箱掉落的黄金数
+	optional bool IsSaoDang = 7;		//是否是扫荡
+	required bool IsNotDead					        = 8;	// 是否没有英雄死亡
+	required bool IsArrKillEnemyPercent				= 9;	// 是否满足杀敌率
+	required bool IsArrPassLevelTime				= 10;	// 是否达到全灭时间
+    repeated Game.KingsMan.Cfg.LootItem LootDatas = 11;
+	required int32 SaodangCount             = 12;//扫荡次数
+    
+    
+}
+
+message GiftCardInfo
+{
+	required Game.KingsMan.Cfg.EInventoryCategory CardClass	= 1;	// 卡的类别，hero or skill or currency
+	required string InventoryId	= 2;	             // 卡的类型, 就是InventoryID;	
+	required int32 Count = 3;										//得卡的数量
+	required int32 Level = 4;										//得卡的等级
+	required Game.KingsMan.Cfg.EItemRarity Rarity = 5;									//得卡的品质
+
+	required bool		IsKilled	= 6;              // true 表明由于卡类型重复而被直接祭天		
+repeated Game.KingsMan.Cfg.KillCardRes KillGotResList = 7;//超出上限的技能卡和重复的英雄卡会兑换为资源
+
+}
+
+
+// 过关回馈数据
+message Response4101Pack
+{
+    required int32 Evaluate = 1;    // 评价(S数量)
+	required Game.KingsMan.Cfg.PayPriceVec Tip = 2;//资源不足
+	required int32 AddExp = 3;
+	
+	repeated GiftCardInfo CardVec = 4;	//奖励列表															
+	required bool IsSaoDang = 5;		//是否是扫荡	
+	required int32 ErrorCode = 6;			//返回结果
+}
+
+// 过关失败请求数据
+message Request4102Pack
+{
+    required Game.KingsMan.Cfg.EChallengeMode ChallengeMode  = 1;   // 模式
+    required string LevelName = 2;   // 关卡名称
+	required int32 PickVipGold = 3;	// 关卡中宝箱掉落的黄金数
+	required int32 UserID = 4;
+}
+
+// 过关失败回馈数据
+message Response4102Pack
+{
+	required int32 ErrorCode = 1;			//返回结果
+}
+
+//重置关卡次数请求数据
+message Request4103Pack
+{
+	required Game.KingsMan.Cfg.EChallengeMode ChallengeMode  = 1;   // 模式
+    required string LevelName = 2;   // 关卡名称
+	required int32 UserID = 3;
+}
+
+// 重置关卡次数回馈数据
+message Response4103Pack
+{
+	required int32 ErrCode      = 1;
+}
+
+//领取章节奖励
+message Request4104Pack
+{
+	required Game.KingsMan.Cfg.EChallengeMode ChallengeMode  = 1;   // 模式
+    required string ChapterName = 2;   // 章节名称
+	required int32 UserID = 3;
+	required int32 RewardType					        = 4;	// 奖励类型，0表示通章奖励，1全S奖励
+}
+
+// 领取章节奖励回馈数据
+message Response4104Pack
+{
+	required int32 ErrCode      = 1;
+}
+
+//领取章节奖励
+message Request4105Pack
+{
+	required string Params  = 1;   // 
+}
+
+// 领取章节奖励回馈数据
+message Response4105Pack
+{
+	required int32 ErrCode      = 1;
+}
+

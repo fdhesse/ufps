@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message ExchangeCardEntity
+{
+	required string InventoryID = 1;
+}
+

@@ -1,0 +1,107 @@
+syntax = "proto2";
+
+import "TreasureBoxEntity.proto";
+
+package Game.KingsMan.Model;
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "TreasureBoxMgr", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message TreasureBoxMgr
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"OpenPVPBoxCount")]
+	required int32 OpenPVPBoxCount = 2;   // 当天开启PVP宝箱的次数，每天会重置为0。
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"OpenTimeBoxCount")]
+	required int32 OpenTimeBoxCount = 3;   // 当天开启时间宝箱的次数，每天会重置为0。
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastOpenTBoxTime")]
+	required sint64 LastOpenTBoxTime = 4;	//上一次开启时间宝箱的时间
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastRefreshTBoxTime")]	
+	required sint64 LastRefreshTBoxTime = 5[default=0];	 // 上一次的Time宝箱刷新时间
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastRefreshPVPBoxTime")]	
+	required sint64 LastRefreshPVPBoxTime = 6[default=0];	 // 上一次的PVP宝箱刷新时间
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"OpenPVPBoxPoint")]
+	required int32 OpenPVPBoxPoint					            = 7[default=0];	 // 用于打开PVP宝箱的点数		
+		
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RewardRandomSeed")]
+	required uint32 RewardRandomSeed = 8; //奖励的随机种子
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"PVPBoxStateVec", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]	
+	repeated int32 PVPBoxStateVec = 9;		//pvp宝箱的状态
+	
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTBMedalPoint")]
+	required int32 RTBMedalPoint					            = 10[default=0];	 // 用于打开RTBMedalBox的点数			
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastOpenRTBMedalBoxTime")]
+	required sint64 LastOpenRTBMedalBoxTime					            = 11[default=0];	 // 上次打开RTBMedalBox的时间
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"OpenRTBMedalBoxCount")]
+	required int32 OpenRTBMedalBoxCount					            = 12[default=0];	 // 打开RTBMedalBox的次数
+
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTBWinBoxSlotVec", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]	
+	repeated int32 RTBWinBoxSlotVec = 13;		//RTBWinBox空位的状态,参考ERTBWinBoxSlotState
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastAllRTBWinBoxOpenTime")]
+	required sint64 LastAllRTBWinBoxOpenTime					            = 14[default=0];	 // 上次打开RTBMedalBox的时间
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"OpenRTBWinBoxCount")]
+	required int32 OpenRTBWinBoxCount					            = 15[default=0];	 // 打开RTBWinBox的次数
+	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"FormatVersion")]
+	required int32 FormatVersion					            = 16[default=0];	 // model的版本号
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTBMedalPoint2V2")]
+	required int32 RTBMedalPoint2V2					            = 17[default=0];	 // 用于打开RTBMedalBox的点数			
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastOpenRTBMedalBoxTime2V2")]
+	required sint64 LastOpenRTBMedalBoxTime2V2					            = 18[default=0];	 // 上次打开RTBMedalBox的时间
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"OpenRTBMedalBoxCount2V2")]
+	required int32 OpenRTBMedalBoxCount2V2					            = 19[default=0];	 // 打开RTBMedalBox的次数
+
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTBWinBoxSlotVec2V2", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]	
+	repeated int32 RTBWinBoxSlotVec2V2 = 20;		//RTBWinBox空位的状态,参考ERTBWinBoxSlotState
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"LastAllRTBWinBoxOpenTime2V2")]
+	required sint64 LastAllRTBWinBoxOpenTime2V2					            = 21[default=0];	 // 上次打开RTBMedalBox的时间
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"OpenRTBWinBoxCount2V2")]
+	required int32 OpenRTBWinBoxCount2V2					            = 22[default=0];	 // 打开RTBWinBox的次数
+	
+		
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTBWinBoxVec", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated TreasureBoxEntity RTBWinBoxVec = 23;     // 1v1 宝箱（增加了品质信息）
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RTBWinBoxVec2", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated TreasureBoxEntity RTBWinBoxVec2 = 24;     // 2v2 宝箱（增加了品质信息）
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RewardRTBWinBoxCount")]
+	required int32 RewardRTBWinBoxCount					            = 25[default=0];	 // 奖励RTBWinBox的个数
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"RewardRTBWinBoxCount2")]
+	required int32 RewardRTBWinBoxCount2				            = 26[default=0];	 // 奖励RTBWinBox2V2的个数	
+}

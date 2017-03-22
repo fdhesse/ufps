@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message ProduceEntity
+{
+	required string ProduceID = 1;				// 商品类型
+	required int32  LastBuyCount = 2;	    // 剩余的购买次数
+}

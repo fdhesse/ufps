@@ -1,0 +1,99 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message HeroTrainProperties
+{
+	required int32 Hp              = 1;//生命
+	required int32 Attack          = 2;//攻击
+	required int32 Defence         = 3;//防御
+	required int32 Violence        = 4;//暴击
+	required int32 Speed           = 5;//速度
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message PentandEntity
+{
+	required string Name = 1[default=""];//挂件名字
+	required Game.KingsMan.Cfg.EItemRarity Rarity = 2;//挂件品质
+	required int32 Durable = 3;//挂件耐久
+}
+
+/** @Inject
+ * public EquipEntity()
+ * {
+ *    PentandEntityA = new PentandEntity();
+ * }
+ */
+ 
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message EquipEntity
+{
+	required string Name = 1[default=""];//装备名字
+	required Game.KingsMan.Cfg.EItemRarity Rarity = 2;//装备品质
+	required int32 Level = 3;//装备等级
+	required PentandEntity PentandEntityA = 4;//当前挂件
+}
+
+/** @Inject
+ * public EquipEntityEx()
+ * {
+ *     EquipEntityList.PropertyName = "EquipEntityList";
+ *     AddChildrenListener(EquipEntityList);
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent 
+message EquipEntityEx
+{
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated EquipEntity EquipEntityList = 1;//武器列表
+	required string ChangeName = 2[default=""];//装备更换武器名称
+	required string CurrEquipName = 3[default=""];//当前装备武器名称
+}
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent 
+message SkillForHeroData
+{
+	required string InventoryId    = 1[default=""];//技能名称
+	required int32 Level    = 2; //技能等级
+	required int32 Fragment = 3; //被动技能碎片
+} 
+ 
+  /** @Inject
+ * public HeroCardEntity()
+ * {
+ *     HeroTrainPropertiesAdd = new HeroTrainProperties();
+ *     CurrHeroTrainPropertiesAdd = new HeroTrainProperties();
+ *     SkillForHeroDatas.PropertyName = "SkillForHeroDatas";
+ *     AddChildrenListener(SkillForHeroDatas);
+ *     EquipEntityTable.PropertyName = "EquipEntityTable";
+ *     AddChildrenListener(EquipEntityTable);
+ * }
+ */
+ 
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message HeroCardEntity
+{
+	required string InventoryId = 1[default=""];
+	required Game.KingsMan.Cfg.EItemRarity Rarity = 2;
+	required int32 Level = 3;
+	
+	required int32  CardStateMask = 4;			// 英雄卡片的状态 参考CardStateMask
+	required int32  CardSlotID = 5;					// 英雄卡片的位置ID 从0开始
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheDictionary 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"EquipEntityTable", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Text)]
+	map<string, EquipEntityEx> EquipEntityTable = 6;   // 类型 Vs 当前武器 列表
+	required int32 Power = 7;//战斗力
+	required string Medal = 8[default=""];//勋章
+	required int32 CurrExp = 9;//当前经验
+	required HeroTrainProperties HeroTrainPropertiesAdd = 11;//训练属性总加成
+	required HeroTrainProperties CurrHeroTrainPropertiesAdd = 12;//当前属性加成
+	required int32 UUID  = 13;//唯一标识
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated SkillForHeroData SkillForHeroDatas                     = 14;    // 被动技能列表
+	required int32 UseTimes           = 15;//使用次数
+	required int32 RTPVPUseTimes = 16;
+}
+

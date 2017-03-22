@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Model.ShareEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Entity, true, "Login", "GeneratedID", 0, "Key")]
+message GeneratedID
+{
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Key", IsKey = true)]
+	required string Key						= 1;
+
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"UID")]
+	required int64 UID						= 2;
+}

@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+message Response3000Pack
+{
+	required int32 Index = 1;//兑换领取状态
+}

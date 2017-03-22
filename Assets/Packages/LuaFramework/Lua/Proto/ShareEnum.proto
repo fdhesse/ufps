@@ -1,0 +1,93 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+enum ResClass
+{
+		Money								= 0;			// 钞票
+		VipGold							= 1;			// 黄金
+		TechnolgyEssence		= 2;			// 科技精华
+}
+
+enum GetCardSlotEnum   // 抽取卡片的卡槽号枚举
+{
+		NormalCard 	= 0;			// 精英卡片
+		SuperCard	= 1;				// 王牌卡片
+}
+
+enum CardOpResultEnum		// 卡片操作的结果枚举
+{
+		OK	=  0;							// 操作成功
+		
+		CardTypeIsExist = 1;							// 该类型的卡片已存在
+		CardTypeInvalid = 2;							// 卡片类型非法
+		CardLevelIsHigherThanPlayer = 3;	// 卡片等级高于Player
+		CardLevelIsMax = 4;								// 卡片等级最大
+		CardIDIsExist = 5;                // 卡片ID已存在
+		CardIsMaxCount = 6;                // 卡片已超出上限
+}
+
+enum CardStateMask		// 卡片操作的结果枚举
+{
+		CardStateMask_New = 0;	//是否是新卡	1--new 0--old
+		CardStateMask_InGame = 1;	//是否上阵	1--in  0--out
+}
+
+enum CardSource				//卡牌的来源
+{
+		CardSource_Shop = 0; 		//商店购买
+		CardSource_Level = 1;		//关卡奖励
+}
+
+enum ProgressOpResult		//操作升级队列的结果
+{
+		ProgressOpResult_OK = 0;				//成功
+		ProgressOpResult_HasFinish = 1;				//已经结束
+		ProgressOpResult_HasNotFinish = 2;				//没有结束
+		ProgressOpResult_NotEnoughResource = 3;			//资源不足
+		ProgressOpResult_MaxCount = 4;			//队列已满
+		ProgressOpResult_InvalidProgress = 5;		//无效的升级项目				
+		ProgressOpResult_Error = 6;		//未知错误
+}
+
+enum SkillCardBagFormatVersion		//技能背包的Model格式
+{
+		SCB_FV_Version0 = 0;				//初始格式
+		SCB_FV_Version1 = 1;				//添加卡组，该版本号下不再使用CardsInGame,使用CardInGameGroups
+		SCB_FV_Count = 2;
+}
+
+enum HeroCardBagFormatVersion		//英雄背包的Model格式
+{
+		HCB_FV_Version0 = 0;				//初始格式
+		HCB_FV_Version1 = 1;				//添加卡组，该版本号下不再使用CardsInGame,使用CardInGameGroups
+		HCB_FV_Count = 2;
+}
+
+enum BuildingsFormatVersion		//建筑的Model格式
+{
+		BDF_FV_Version0 = 0;				//初始格式
+		BDF_FV_Version1 = 1;				//添加新建筑  BuTecr
+		BDF_FV_Count = 2;
+}
+
+enum GuardCardMakerOpResult	//关于GuardCardMaker的操作结果
+{
+	GCMO_OK = 0;	//成功
+	GCMO_INVALID_MAKER = 1; //找不到对应的Maker
+	GCMO_ISBUSY = 2;	//已经被占用了
+	GCMO_MAXCOUNT = 3;	//已经达到上限
+	GCMO_CURRENTMAX = 4; //未达上限，但是当前条件已经不满足了
+	GCMO_NOCARD = 5;		//没有卡牌
+	GCMO_ERROR = 6;		//未知错误
+	
+}
+
+enum TreasureBoxMgrFormatVersion		//宝箱格式
+{
+		TBM_FV_Version0 = 0;				//初始格式
+		TBM_FV_Version1 = 1;				//添加RTBWinBox列表和RTBMedalBox
+		TBM_FV_Version2 = 2;				//添加RTBWinBox2V2列表和RTBMedalBox2V2列表
+		TBM_FV_Version3 = 3;				//更换RTBWinBox的结构
+		TBM_FV_Count = 4;
+}

@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message MailEntity
+{
+	required int32 ID = 1;
+	required uint32 UUID = 2;
+	required uint32 Type = 3;
+	required uint32 Sender = 4;
+	required uint32 SubjectID = 5;
+	required uint32 BodyID = 6;
+	required string DateTime = 7;
+	required uint32 RewardID = 8;
+	required bool Read = 9;
+	required bool Executed = 10;
+	required bool Deleted = 11;
+}

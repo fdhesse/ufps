@@ -1,0 +1,134 @@
+syntax = "proto2";
+package Game.KingsMan.MessagePack;
+
+//排行榜用户数据
+message UserRankInf
+{
+	required int32 UserId    = 1;
+	required string Nickname =  2;	
+	required string RankListName = 3; //排行榜名	
+	map<int32, int32>   RankScores  = 4; //key:rank index, value:scores多个子榜的数值在一起
+	required bool FirstChallenge = 5;	//是否首次通关
+	required string ParamStr = 6; //保留
+	required bytes RankData  = 8; //自定义数据
+}
+
+message UserRankHeroInf
+{
+	required string InventId = 1;
+	required int32  Level = 2;
+}
+
+message UserRankHeroInfList
+{
+	repeated UserRankHeroInf HeroList = 1;
+}
+
+//玩家奖杯排行
+message UserCupRankInf
+{
+	required string LeagueName = 1;//联盟名称
+	required string PlayerIcon = 2;//玩家头像
+	required int32 PlayerLevel = 3;//玩家等级
+	required int32 Location = 4;//所在区域
+	required int32 LastRank = 5;//上次排行
+	required int32 LastRankBeforFlush = 6;//上次刷新前排行
+	required int32 LeagueId = 7;
+	required int32 LeagueIcon = 8;
+}
+
+//排行榜列表项
+message UserRankItem
+{
+	required int32 UserId = 1;
+	required string Nickname = 2;
+	required int32 Score = 3; //排行榜名次
+	required int32 RewardNum = 4; //奖励数值
+	required bytes RankData  = 6; //自定义数据
+}
+
+message UserRankItemList
+{
+	repeated UserRankItem  RankItemList = 1; //子排行榜数据
+}
+
+message UserRankListData      
+{
+	map<int32, bytes> RankListData = 1; //key:子榜索引, bytes:单个场景的所有子排行榜数据， bytes <== UserRankItemList.serialze
+	map<int32, RankingChallengeInf> ChallengeInf = 2;
+}
+
+message UserRanking
+{
+	required int32 RankScore = 1; //用户得分
+	required int32 RankIndex = 2; //名次	
+}
+
+message RankingChallengeInf
+{
+	required int32 ChallengedUserNum = 1; //通关人数
+	required int32 ChallengedTimes = 2;   //通关总次数
+}
+
+message UserRankingData
+{
+	map<int32, UserRanking> RankingData = 1; //用户在场景排行榜上的所有子排行榜数据	
+}
+
+message LevelRankSaveData
+{
+	map<string, LevelRankListData> RankItemList = 1;//排行榜名+模式对应关卡存储数据
+}
+
+message LevelRankListData
+{
+	required sint64 LastFlushTime                = 1;//上次刷新时间
+	required UserRankListData UserLevelRankData  = 2;//关卡排行数据
+	required UserRankingData UserLevelRankingData= 3;//用户自己在排行榜的数据
+	required UserRankingData UserLastRankingData = 4;//用户自己上一次排行榜的数据
+	required UserRankingData UserMaxRankingData  = 5;//用户自己在排行榜的最好数据
+}
+
+message SelfItemData
+{
+	repeated UserRankHeroInf HeroList = 1;
+}
+
+message SelfLevelSavaData
+{
+	map<string, SelfItemData> SelfItemList = 1;//排行榜名+模式对应关卡上阵英雄存储数据
+}
+
+message PlayerCupRankItem
+{
+	repeated UserRankItem UserRankItemList = 1;
+}
+
+message LeagueInf
+{
+	required int32 ID = 1;
+	required string Name = 2;	
+	required int32 Icon = 4;			
+	required int32 Score = 5;
+	required int32 Location = 6;
+	required int32 MemberNum = 7;
+	required int32 RankLevel = 8; //公会排名
+	required int32 LastRankLevel = 9;		//刷新前上次公会排名
+}
+
+message LeagueCupRankItem
+{
+	repeated LeagueInf LeagueInfList              = 1;//
+}
+
+message CupRankItem
+{
+	required sint64 LastFlushTime                = 1;//上次刷新时间
+	required bytes RankData                      = 2; //自定义数据
+}
+
+message CupRankSavaData
+{
+	map<string, CupRankItem> CupRankItemList = 1;//排行榜名+存储数据
+}
+

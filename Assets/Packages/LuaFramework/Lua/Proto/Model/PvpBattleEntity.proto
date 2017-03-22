@@ -1,0 +1,160 @@
+syntax = "proto2";
+
+package Game.KingsMan.Model;
+
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message PvpLevelVisitInf  // pvp 
+{
+// @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32          LevelId  				= 1;     //level id
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32          BeAttackedTimes  		= 2;
+}
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message PvpBattleReportHero
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required string InventoryId = 1;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32 	Level 		= 2;
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32  Quality 	= 3;
+}
+
+/** @Inject
+ * public PvpLevelBattleReport()
+ * {
+ *     HeroList.PropertyName = "HeroList";
+ *     AddChildrenListener(HeroList);
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message PvpLevelBattleReport  // pvp 战报
+{
+// @Tag: [global::YAXLib.YAXAttributeForClass]
+  required uint64           PvpBattleId	  	= 1;     //battle id
+// @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32           LevelId  	  	= 2;     //level id
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required uint32          AttackerUserId 	= 3;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string 		   AttackerNickname 	= 4;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32  			AttackerLevel 		= 5;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32  			AttackerCupNum 		= 6;
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          AttackerHeadIcon		= 7;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int64           AttackedTime  	= 8;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required bool            IsWin  			= 9;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32           Resource1  		= 10;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32           Resource2  		= 11;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32           Resource3  		= 12;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          PlaybackUrl 		= 13;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          PlaybackToken 	= 14;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          ResVersionCode 	= 15;  
+
+    
+  // @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+  repeated PvpBattleReportHero HeroList =	16;
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string          ParamStr  		= 18;
+  
+    // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32  		   AttackerGuildId = 20;
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32  			DefenserCupNum 		= 21;
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required int32  			DefenserLevel 		= 22;
+  
+  // @Tag: [global::YAXLib.YAXAttributeForClass]
+  required string  		   AttackerGuildName = 23;
+}
+
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message PvpLevelBattleAttrib  //pvp攻防相关属性
+{
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          BeAttackedRemainTimes	   	= 1;  //当日被攻击剩余次数
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          AttackRemainTimes			= 2; //当日攻击剩余次数	
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int64          LastRefreshTime  			= 4; //
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          AttackWinTimes		= 5;		 //当日攻击胜利次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          DefenceLoseTimes	= 6;		 //当日防守失败次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int64          LastAttackTime  	= 8; //最后一次pvp攻击时间
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          AttackTotalTimesRecently	= 9;  //最近几天攻击累计次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          MatchRefreshedTimes			= 10; //当日已手配刷匹配数据次数  
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          AttackWinTotalTimes		= 11;  //攻击累计胜利次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          DefenceLoseTotalTimes	= 12;  //防域失败总次数
+	
+	// @Tag: [global::YAXLib.YAXAttributeForClass]
+	required int32          DayAddPvpBattleTimes	= 13;  //增加掠夺次数
+}
+
+/** @Inject
+ * protected override string GetIdentityId()
+ * {
+ *     return ID.ToString();
+ * }
+ */
+// @SuperClass: global::ZyGames.Framework.Model.BaseEntity
+// @Tag: [global::ZyGames.Framework.Model.EntityTable(global::ZyGames.Framework.Model.AccessLevel.ReadWrite, global::ZyGames.Framework.Model.CacheType.Dictionary, true, "User", "PvpBattleEntity", 0, "ID")]
+//                                                                       访问级别,                                          缓存的类型,          存变动是否更新到数据库, 映射到数据连接Key配置,映射到表名,缓存的生命周期(秒), 绑定表中主键字段名 
+message PvpBattleEntity  // 
+{
+	// @PropertyModifier: public override
+	// @Tag: [global::YAXLib.YAXAttributeForClass]	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Version")]
+	required int32 Version = 20000;
+    
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"ID", IsKey = true)]
+	required int32 ID = 1;
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"FormatVersion" )]
+	required int32 FormatVersion = 2;			//Modle格式的版本，用来保证新旧版本的兼容性		
+	
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"VisitInfo", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated PvpLevelVisitInf VisitInfo = 4;    // pvp 关卡访问信息
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"BattleCount" )]
+	required uint32 BattleCount = 5;
+	
+		// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList 
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"BattleReportList", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	repeated PvpLevelBattleReport BattleReportList = 6;    // pvp 关卡访问信息	
+	
+	// @Tag: [global::ZyGames.Framework.Model.EntityField(FieldName = @"Attribs", IsJsonSerialize = true, DbType = ZyGames.Framework.Model.ColumnDbType.Blob)]
+	required PvpLevelBattleAttrib Attribs = 8;	
+}
+
+     

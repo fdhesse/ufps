@@ -1,0 +1,31 @@
+syntax = "proto2";
+
+import "CommonDefs.proto";
+
+package Game.KingsMan.Model;
+
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message ActivityRewardEntity  // 活动奖励实体实例
+{
+	required int32                              UUID      = 1;      // 本奖励的唯一ID
+	required int32                              Times     = 2;      // 本奖励今日累计的动作次数(对于动作次数)或数量(对于消耗资源)
+	required Game.KingsMan.Cfg.RewardGotState   GotState  = 3;      // 本活动奖励的领取状态
+}
+
+/** @Inject
+ * public ActivityRecordEntity()
+ * {
+ *     Rewards.PropertyName = "Rewards";
+ *     AddChildrenListener(Rewards);
+ * }
+ */
+ 
+// @SuperClass: global::ZyGames.Framework.Event.EntityChangeEvent
+message ActivityRecordEntity  // 活动实体实例, 每天激活3个
+{
+	required int32                  UUID      = 1;     							// 本活动的唯一ID
+
+	// @CollectionType: global::ZyGames.Framework.Cache.Generic.CacheList
+	repeated ActivityRewardEntity   Rewards   = 2;      						// 本任务奖励领取状态
+}
+

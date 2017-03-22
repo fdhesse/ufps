@@ -1,0 +1,55 @@
+syntax = "proto2";
+
+package Game.KingsMan.MessagePack;
+
+/** @Inject
+ * [global::ProtoBuf.ProtoIgnore]
+ * public object Bind { private get; set; }
+ *
+ * [global::ProtoBuf.ProtoBeforeSerialization]
+ * private void BeforeSerialize()
+ * {
+ *     ExtVal = (Bind == null) ? ExtVal : global::ZyGames.Framework.Common.Serialization.ProtoBufUtils.Serialize(Bind, false);
+ * }
+ *
+ * public T GetBindVal<T>(bool createIfMissing = true) where T : new()
+ * {
+ *     if (ExtVal != null && !(Bind is T))
+ *     {
+ *         Bind = global::ZyGames.Framework.Common.Serialization.ProtoBufUtils.Deserialize<T>(ExtVal);
+ *     }
+ *     if (Bind == null && createIfMissing)
+ *     {
+ *         Bind = new T();
+ *     }
+ *     return (T)Bind;
+ * }
+ */
+message ServerInf
+{
+	required int32 ServerType                       = 1;
+	required int32 ServerId                         = 2;
+	required string Ip                              = 3;
+	required int32 Port                             = 4;
+	required string Domain                          = 5;
+
+	optional bytes ExtVal                           = 6;
+}
+
+// 网关服务器扩展信息
+message GateServerInf
+{
+    required int32 ConnectionNum                    = 1;
+}
+
+// 单用户业务服务器扩展信息
+message UserBusinessServerInf
+{
+    required uint32 MinUID                           = 1;    // 此服务器管理的最小用户ID(包含此数值)
+    required uint32 MaxUID                           = 2;    // 此服务器管理的最大用户ID(不包含此数值)
+}
+
+// 充值服务器扩展信息
+message RechargeServerInf
+{
+}
