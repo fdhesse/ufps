@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ceb08b2a55f7e47be698ca6ee36b5e, type: 3}
+  m_Name: PlayerAssaultRifle
+  m_EditorClassIdentifier: 
+  DisplayName: PlayerAssaultRifle
+  Description: 
+  Icon: {fileID: 0}
+  LocalPrefab: {fileID: 102894, guid: 58c63e836ee450a42a0ee7917e8cb5d8, type: 2}
+  RemotePrefab: {fileID: 1219670596921752, guid: ddb57a5b2eaa9c54a9a1c2e945a20f54,
+    type: 2}
+  mpPlayerTypeHelp: 73

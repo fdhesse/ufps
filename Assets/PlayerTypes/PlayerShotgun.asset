@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ceb08b2a55f7e47be698ca6ee36b5e, type: 3}
+  m_Name: PlayerShotgun
+  m_EditorClassIdentifier: 
+  DisplayName: PlayerShotgun
+  Description: 
+  Icon: {fileID: 0}
+  LocalPrefab: {fileID: 1113584248230438, guid: 21ab1efe431d58948ad3378f9ca2b28f,
+    type: 2}
+  RemotePrefab: {fileID: 1627422351634134, guid: 32e07ec95fc56dd4f9f3a01eea01b582,
+    type: 2}
+  mpPlayerTypeHelp: 73
