@@ -1,0 +1,463 @@
+Skyshop 1.12.5 change log
+====================
+Unity 5.4 Fixes:
+ - Switched OnSceneWasLoaded calls to use SceneManager
+ - Switched isCubemap flags to use TextureDimension.cube
+ - Removed hiddenFlag checks from CubeGUI constructor (it is forbidden).
+
+Skyshop 1.12.4 change log
+====================
+Unity 5.3 Fixes:
+- Material Property Block usage enabled in OSX
+- Material Property Blocks no longer cleared and rebuilt every frame
+- Fixed <noinit> shader property errors in editor update loop
+- Fixed miscellaneous deprecated function calls
+- Added glcore renderer support to all standard shaders
+- Added glcore renderer support to all cubemap probe shaders (fixes pink cubemap capture in OSX)
+
+Skyshop 1.12.3 change log
+====================
+Fixes:
+- Unity 5.2 probe capture no longer crashes.
+- SpeedTree shaders for Unity 5.1+ work again.
+- Hair shader anisotropy works again.
+- Deferred & Deferred (Legacy) trees no longer cut holes into things.
+- Removed Direct3D 11 checks, its features are now guaranteed by Unity 5.
+- Removed non Render-to-Cubemap option, render targets are guaranteed in Unity 5.
+- Terrain shaders now use the base color map in add passes also (affects terrains with more than 4 layers).
+- Fixed a foggy probe capture issue on PC/Desktops.
+- Skyshop Edit Selected button no longer causes null skybox errors.
+
+Known Issues:
+- Unity 5.2 Deferred render mode adds Unity reflections to all materials, Marmoset-shaded or not.
+- Skyshop's runtime changes to the skybox (sky swapping, blending, etc) don't affect standard materials unless a Unity sky probe exists in the scene.
+
+Skyshop 1.12.2 change log
+====================
+Fixes:
+- Fixed errors about broken skybox materials in Unity 5
+- Fixed red debug Speedtree billboards
+
+Skyshop 1.12.1 change log
+====================
+Fixes:
+- Added missing Deferred rendering functions.
+- Added missing GI and lightmapping functions.
+- Included both Unity 4 and Unity 5 Shader Forge extensions.
+
+Skyshop 1.12 change log
+====================
+General Fixes:
+- Fixed Matte shaders (reduced interpolator count).
+- Made SkyManager.Start() handle null SharedMaterial arrays.
+- Removed occlusion texture and weight params from Vertex Color shaders (harmless, copy paste error).
+- Cleaned up some RenderProbe callback code.
+- Livenda SSR compatibility (See Documentation/Shaders.txt for details).
+
+Unity 5 Changes:
+- New Deferred renderer support!
+- Shader Forge support in Unity 5!
+- SpeedTree shaders!
+- iOS Metal support!
+- WebGL support! (requires use of mobile shaders, no linear color correction)
+- Fixed blending bug with specular & glass shaders.
+- Updated TreeCreator shaders.
+- Updated some Lightmapping Extended code.
+
+
+Skyshop 1.11 change log
+====================
+Features:
+- Added Matte shaders for projecting skybox onto scene geometry (useful in CG-to-photo compositing)
+- Global skies can now also be box projected (for simple scenes)
+- Switched to Schlick fresnel approximation (better & faster)
+- Terrain shader detail weight is a float text field instead of a slider (was very hard to set consistently)
+- Added "Scrub Keywords" functionality to Edit->Skyshop menu for flushing shader keyword state in the editor
+
+Mobile
+- OpenGL ES 3.0 support (yay!)
+- Reduced vertex interpolants in mobile shaders (should run on Galaxy S3 and other old devices again)
+- Removed custom UV tiling per texture from mobile shaders, reducing very slow, dependent texture reads
+  (All mobile UV tiling now comes from the diffuse texture tiling & offset UI)
+- Sky and Skybox now rotate on mobile devices
+
+Major Bugs:
+- Animated Meshes now get bound to local skies
+- Blend to global sky now finishes and doesn't leave blending enabled forever
+- SkyAnchor now cleans up memory allocated by material instancing (previously a memory leak)
+- Force cubemaps to trilinearly filter everywhere (improves mipmapped gloss)
+- Fixed gamma issues on Tree Creator billboards (may break tree sprites in older versions of Unity)
+
+Minor Bugs:
+- Fixed numerous local and global shader keyword bugs (affects blending and projection)
+- Fixed IgnoredLayers serialization bug (caused Editor GUI problems)
+- Fixed a static object global sky blending bug
+- Bumped Specular Fast shader no longer box projects
+
+Known Issues:
+- Samsung Galaxy S3 phones claim OpenGL ES 3.0 support but fail on application start (Force GLES 2.0 to fix).
+- Older versions of Unity may have tree billboards that appear too bright. This is a gamma correction issue to stay compatible with Unity 4.5+.
+
+
+
+Skyshop 1.10.1 change log
+====================
+- Fixed shadows on terrains with more than 4 layers
+- Fixed blending from local to global skies getting stuck at 99%
+- Fixed probe capture crash under certain conditions
+- Fixed Shader Forge box projection code generation (requires recompiling old shaders)
+- SkyAnchors no longer draw red debug lines
+
+
+Skyshop 1.10 change log
+====================
+Features:
+- Added file format for custom diffuse spherical harmonics data ("SH Encoding File" stored as .asset)
+  (See "Custom Diffuse Files.txt" in docs for more info)
+- Diffuse irradiance files (.ASH) generated by Knald Lys are imported and auto-converted to SH Encoding Files
+- Added "Custom Diffuse SH" field to skies
+
+Performance:
+- Disabled objects are now ignored by Auto-Apply
+- Compute sky exposures, dimensions, and transforms once per frame, instead of per Apply()
+- Static object SkyAnchors call Apply only when necessary
+- Global Sky is only applied when necessary
+- Misc. allocation optimizations
+
+Bug Fixes:
+- Fixed box projection & sky blending on OSX desktop builds (Disabled MaterialPropertyBlocks on OSX desktop only).
+
+
+Skyshop 1.09 change log
+====================
+Features:
+- SkyManager Auto-Apply can now ignore objects by user-specified layer
+- Added "Probe Only Static Objects" toggle to hide dynamic objects when capturing cubemaps
+- Cubemaps created with the "New" button are named after the Sky object they were created through
+- Added "Bumped Specular IBL Fast" shader with Diffuse(RGB)Spec(A) to the "Mobile/Self-Illumin/" category (iOS runs out of texture samplers otherwise)
+- Reduced run-time memory churn in SkyAnchor and SkyManager (significantly!)
+- SkyAnchor now caches renderer.materials lists (greatly reduces memory use)
+- Added "Dynamic Materials" option to SkyManager in case material caches need to update at run-time (important if materials are added, removed, or replaced in renderer.materials).
+- Added "Skip Time" feature to SkyManager API to set/fast-forward sky blending.
+- Beta shaders are no longer zipped up in the install (hurray!)
+
+Bug Fixes:
+- SkyManager now only searches for MeshRenderer objects (a more robust fix for white 2D Sprites)
+- Enabled MaterialPropertyBlock code again (helps material instancing and memory churn)
+- Fixed all iOS vertex interpolant and texture sampler errors (affects mobile vertex color, vertex occlusion, and self-illumin shaders)
+- Fixed all iOS mobile terrain and vegetation shader warnings (GLES does not support vertex-only fallback shaders)
+- Changed "Action" to explicit "System.Action" everywhere
+- Removed remaining "MARMO_SPECULAR_FILTER" from all skin shaders and fallbacks
+- Exposed Translucency slider in "Skin Fast IBL"
+- Fixed D3D11 forward transparent cutout (for some reason clip() is required)
+
+
+skyshop 1.08.1 change log
+====================
+- Fixed 2D Sprites rendering white (Removed all MaterialPropertyBlock code)
+
+
+skyshop 1.08 change log
+====================
+Shaders:
+- All textures for all shaders now use Unity's tiling/offset GUI
+- All specular shaders use one less vertex interpolator
+- Fixed iOS bumped specular shaders (vertex interpolator limit)
+- Added box projection support to occlusion shaders (vertex interpolator limit)
+- Added iOS support to skin shader
+- Removed Layered Uber shader to reduce shader keyword count
+- Removed custom RenderTypes from last few shaders (custom RenderTypes break some postFX)
+- Added "Skin Cutout" and "Skin Detail" to beta shaders
+- Fixed "Tree Leaves Optimized" broken fallback
+
+Scripting:
+- Fixed LDR skies rendering white and way too bright (gamma & exposure issue)
+- Added gamma/linear color-space detection back into C# side of Skyshop (needed for LDR sky fix)
+- Sky.SpecularCube and Sky.SkyboxCube are now capitalized and use get/set to raise the Sky.Dirty flag
+- Added field for custom probe camera to Sky Manager
+- Unity 4.3 no longer uses MaterialPropertyBlocks (random properties change or break at runtime)
+
+
+Skyshop 1.07 Change Log
+=====================
+Major Features:
+- Sky blending/interpolation
+- Box Projection for all shaders
+- Spherical Harmonics Diffuse IBL
+- new Sky & Sky Manager system 
+- new Sky API
+- Local skies and sky triggers
+- new cubemap probe system
+- Shader Forge Integration
+- Skybox blurring
+
+Minor Stuff:
+- GPGPU convolution/sky computation
+- No more linear/gamma space detection on Sky objects (resolved in shader code)
+- Faster terrain and vegetation shaders (per-vertex diffuse IBL)
+- Mobile terrain shaders that don’t sample per-layer normal maps
+- Fixed soft-occlusion tree shaders
+- Faster shader building (mobile only builds for mobile, standard only non-mobile)
+- Less buggy transparency, matching Unity's transparent shaders more closely (don’t write to z-buffer)
+
+Known Issues:
+- Advanced terrain shaders won't work on mobile (too many texture samplers)
+	- Use Mobile/Terrain/ shaders instead
+- Gamma color space breaks Render-To-Cubemap mode and GPU Compute (results have gamma issues).
+	- Capture and image-process in linear color-space if possible
+	- Disable Render-To-Cubemap capture and use regular "Compute" otherwise
+
+
+Skyshop 1.06.2 Hot-Fix
+=====================
+ - Compute results no longer washed out (Input panoramas no longer auto-converted to linear space)
+ - RGBM importer now runs a clean-up pass, setting all imported RGBM .PNG files to
+ 	- uncompressed 	
+ 	- max size 4096 
+ 	- not linear (does not bypass sRGB sampling)
+ 	- no non-power-of-2 scaling
+ - Skyshop texture slots perform similar check on inputs and suggest formatting changes to be made.
+ - Added translucency back to Marmoset Skin IBL
+
+
+Skyshop 1.061 Change Log
+======================
+ - Fixed Compute button being disabled when no Sky was in scene (endDisabledGroup() mismatch).
+
+Skyshop 1.06 Change Log
+=====================
+Major Features
+ - Toggle for automatic/manual binding of indvidiual skies
+ - Sky script now handles OnTriggerEnter and OnTriggerExit events
+ - Added mobile-optimized "Skin Fast IBL" shader to Beta/ shaders
+ - Reload buttons to manually refresh the textures referenced by cubemap slots
+ - New-All, Find-All, and Clear-All buttons 
+ - "Panorama Name" field for easy naming of cubemaps created with "New" and "New All"
+ - Simple Terrain shaders work on mobile platforms
+
+Edit/Skyshop
+ - Unity no longer freezes when entering play mode with an Input Panorama present (serialization/memory bug)
+ - Adjusting intensity and exposure sliders no longer causes SH recompute (no more lagging!)
+ - Skyshop convolutions are no longer brighter than the source image (better normalization term)
+ - Input Panorama textures are set to "Bypass sRGB" before being used as input (fixes LDR horiz. cross gamma issue)
+ - Cubemap probes can be captured at 2048x2048 now
+ 
+Shaders
+ - Skin shader now also scatters Unity light probes
+ - Skin and spherical harmonics brightness now matches other IBL cubes
+ - Fixed translucency with omni and spotlights
+ - Added 90 more degrees of range to anisotropic direction (now 0-180 degrees)
+ - Vertex Color and Vertex Occlusion shaders work with Unity's image and post effects (can't be custom render-type)
+ - Mobile Translucency and Simple Glass shaders work on Android again (was missing #MARMO_ALPHA)
+ - Shaders now keep a float _SkyID to make sure skies can only unbind themselves from specific renderers
+ - Box projection no longer affects diffuse lookups (it is expensive and looks bad with a diffuse distribution).
+ 
+Known Issues
+ - Box projection works only in Unity 4.3+ (#pragma multi-compile requirements).
+ - Skyshop cubemap previews have to be refreshed manually when returning from play mode (Reload All button).
+   This is an alternative to the slow, memory-intensive serialization method that caused Unity to freeze in 1.05
+ - Vertex Occlusion and Vertex Color are ignored when capturing HDR cubemaps, a limitation of Unity's RenderType
+   and replacement shader system.
+ - Marmoset's Advanced Terrain shaders do not work on mobile platforms yet (investigation continues).
+
+
+
+Skyshop 1.05 Change Log
+=====================
+Major Features
+ - Box Projected Cubemaps (Beta)
+ - Spherical Harmonics Diffuse IBL (Beta)
+ - Skin Shader (Beta)
+ - Anisotropic Highlights (Beta, skin shader only)
+ - HDR Render to Cubemap
+ - Fixed Prefabs
+
+Script
+ - Skyshop no longer clears inputs and settings when entering play mode
+ - Added Apply(Renderer target) function to Sky script for per-object Sky binding
+ - Added diffuse spherical harmonic computation to happen automatically in the SkyInspector
+ - Added undo helpers into Util to conform to both Unity 4.2 and Unity 4.3 undo API
+ - Cleaned up Undo and made it more specific in a few cases
+ - Fixed non-mipmapped specular preview bug in SkyInspector
+ - Fixed mset_BeastConfig unreferenced leak
+ - Added UniformOcclusion shader parameter that can be set per object
+ - Added Sky.Apply to drawGizmosSelected for sky changes without an open inspector tab
+ - Cleaned up and refactored Sky.cs
+ - Added proper serialization support to a whole list of classes
+ 
+Edit/Skyshop
+ - "Create Prefabs from Selected" will create prefabs from all selected skies (required for old skies).
+
+Shaders
+ - Added "Beta" shader category for new shaders that are not quite production-ready
+ - Added Box Projection Cube-Mapping (Beta)
+ - Added diffuse spherical harmonics (Beta)
+ - Added SH-based skin shader (Beta)
+ - Added anisotropic direct light specular (Beta, skin shader only)
+ - Removed manual sRGB sampling code from grass & detail shaders (Unity 4.3 fixed a bug)
+ - Fixed invalid fallback paths in mobile & terrain shaders
+ - Made non-blended shaders output alpha of 1.0
+ - Disabled lightmapping in mobile bumped-spec shaders that use vertex colors/occlusion (too many interpolators)
+
+New shader feature #defines
+ - #define MARMO_BOX_PROJECTION 1
+ - #define MARMO_SPHERICAL_HARMONICS 1
+ - #define MARMO_ALPHA
+
+Alpha
+ - Shaders will write 1.0 into the output alpha unless this flag is defined
+
+Box Projection
+ - Shaders with box projection enabled treat the Sky as being a box with finite dimensions
+ - Sky object's transform scale defines the bounds of the projection box
+ - Does not yet work with vertex-lit shaders
+ - Enabled with #define MARMO_BOX_PROJECTION 1 (Note: the 1 is new and important)
+ - Can also be toggled as a multi-compile keyword
+ - This feature is considered beta and only enabled in the beta category of shaders
+
+Spherical Harmonics
+ - All skies now compute spherical harmonics coefficients to be used in place of the diffuse IBL cubemap
+ - SH is computed from the specular, skybox, or diffuse cube depending on which is present
+ - SH is computed automatically in the Sky Inspector, no recomputation necessary for older content.
+ - SH will be used in place of the diffuse IBL cubemap in shaders that enable the feature
+ - Enabled with #define MARMO_SPHERICAL_HARMONICS 1
+ - This feature is considered beta and only enabled in the beta category of shaders
+
+Known Issues
+ - Unity 4.2 grass & detail shaders are now rendered incorrectly, they still need manual sRGB sampling which was fixed in Unity 4.3.0.
+ - Old Sky objects cannot be turned into prefabs (they lose script references), use Edit->Skyshop->Create Prefabs from Selected
+ - RGBM probe does not capture transparent objects
+ - RGBM probe does not capture tree or grass billboards properly
+
+
+
+Skyshop 1.04.1 Change Log
+=======================
+Shaders
+ - Added Mobile/Occlusion/ shaders
+ - Fixed Self-Illumin shader fallbacks & shadows
+ - Removed blending from Transparent/Cutout (conforms to Unity & fixes shadows)
+ - Added "approxview" to all mobile shaders & fallbacks
+ - Fixed Mobile/Fast shader typos 
+Menus
+ - Changed "Refresh Skies" shortcut to ctrl+shift+R (ctrl+R is taken)
+
+
+
+Skyshop 1.04 Change Log
+=======================
+
+Moved Unity requirements to Unity 4.2+
+- Email support@marmoset.co to request a legacy build
+- Legacy build will not include terrain shaders
+
+
+SHADERS
+New shader feature #defines
+ - #define MARMO_OCCLUSION
+ - #define MARMO_VERTEX_COLOR
+ - #define MARMO_VERTEX_AO
+
+Ambient Occlusion Map
+ - Diffuse IBL occlusion in red channel
+ - Specular IBL occlusion in green channel
+ - Uses secondary UV set (texcoord1)
+ - Enabled in shaders with #define MARMO_OCCLUSION
+ - Shaders found in Marmoset/Occlusion/ category
+ 
+Vertex Colors
+ - Vertex color can modify diffuse color
+ - Enabled with #define MARMO_VERTEX_COLOR
+ - Shaders found in Marmoset/Vertex Color/ category
+ 
+Vertex Occlusion
+ - Vertex color can occlude image-based lighting
+ - Diffuse & specular IBL can be occluded separately using R & G channels
+ - Enabled with #define MARMO_VERTEX_OCCLUSION
+ - Shaders found in Marmoset/Vertex Occlusion/ category
+  
+Terrain Shaders
+ - Unity-style simple terrain shader + IBL
+ - Advanced Terrain shader
+   * Per-layer specular maps & controls
+   * Base normalmap (covers entire terrain)
+   * Base diffuse & AO map
+   * Diffuse & specular fresnel
+ - Optimized distant terrain shaders
+ - Usable on non-terrain meshes
+ - Shaders found in Marmoset/Terrain/ category
+ 
+Vegetation Shaders
+ - Waving grass shader
+ - Detail mesh shaders
+ - Soft Occlusion tree shaders
+ - Tree Creator shaders
+ - Detail & grass shaders are replaced automatically
+ - Shaders found in Marmoset/Nature/ category
+
+Vertex-Lit shaders
+ - Super-fast
+ - Shader-Model 2.0
+ - Vertex-Lit diffuse + IBL
+ - Vertex-Lit diffuse + diffuse & specular IBL
+ - Vertex-Lit diffuse + AO + diffuse & specular IBL
+ - Shaders found in Marmoset/Vertex Lit/ category
+
+Sky-dome Shader
+- For using the HDR sky cubemap with geometry 
+
+Combined Diff & Spec Texture
+ - Diffuse & specular maps sampled from the same texture
+ - Diffuse color in RGB, A used as both specular mask & gloss
+ - Enabled with #define MARMO_DIFFUSE_SPECULAR_COMBINED
+ - Used by Marmoset/Vertex Lit/ and Marmoset/Mobile/...Fast IBL shaders
+
+
+MOBILE
+ - Mipmap gloss support for iOS, hazaa!
+ - Mipmap gloss support for Android devices that support it (not many)
+ - Added Specular Fast & Bumped Specular Fast shaders with extreme mobile optimizations
+ - Improved fast fresnel approximation to match desktop shaders
+ - Improved Android support (with fallbacks in case of mipmap gloss failure)
+
+
+LIGHTMAPPING
+Full directional lightmap support
+ - Specular & gloss maps now affect dir lightmapped specular
+
+Added Lightmapped Diffuse & Lightmapped Specular Multiplier sliders
+ - Weights how much IBL is used on lightmapped surfaces
+
+
+MENU FEATURES
+Edit -> Skyshop -> Refresh Scene Skies
+ - Updates color-space on all skies in the scene
+ - Applies a sky if none are active (everything is black problem)
+
+Edit -> Skyshop -> Upgrade Scene Skies
+ - Converts all skies in the scene to use the latest Skyshop features
+ - Part of namespaced scripting fix
+
+Edit -> Skyshop -> Convert Scene to Mobile/Standard
+ - Goes through all materials referenced in the current scene
+ - Replaces all uses of standard Marmoset shaders with Marmoset Mobile ones (or vice versa)
+
+Edit -> Skyshop -> Convert Project to Mobile/Standard
+ - Goes through all material assets in the entire project
+ - Replaces all uses of standard Marmoset shaders with Marmoset Mobile ones (or vice versa)
+
+Edit -> Terrain -> Import/Export Splatmap
+ - Saves and loads PNG images as weight maps for terrain texture layers
+ - Useful for working with external terrain generation tools
+
+BUGS & MISC.
+ - Proper namespacing in scripts to prevent conflicts with other third-party code
+ - Fixed deferred, Specular IBL fresnel bug
+ - Fixed Mobile Specular IBL shadow bug
+ - Fixed transparency + fog bug
+ - Fixed Simple Glass diffuse bug
+ - Changed skybox texture coords to float3 for consoles
+ - MarmosetCore now knows about MarmosetInput globals
+ - Substance specular maps now work with Marmoset shaders (fixed in Substance).
+ - Fixed an Android "everything is black" bug (hlsl2glsl hates _ variable prefix).
+ - DIRECT_DIFFUSE & DIRECT_SPECULAR properly separated from IBL, can actually be toggled now.
