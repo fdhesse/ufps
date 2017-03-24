@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c46d540bb05f0ca45b6d55239b5322a8
+timeCreated: 1489468349
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: STXihei
+  fontNames:
+  - STXihei
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

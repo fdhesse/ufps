@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ceb08b2a55f7e47be698ca6ee36b5e, type: 3}
+  m_Name: MPHeroHDWeapons
+  m_EditorClassIdentifier: 
+  DisplayName: Hero
+  Description: 
+  Icon: {fileID: 0}
+  LocalPrefab: {fileID: 100120, guid: e24f9a984bffed547a44152b092fa37c, type: 2}
+  RemotePrefab: {fileID: 165776, guid: 5791d245b5452e048a0a739a269e9d79, type: 2}
+  mpPlayerTypeHelp: 84

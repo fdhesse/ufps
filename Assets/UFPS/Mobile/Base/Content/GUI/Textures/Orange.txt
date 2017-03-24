@@ -1,0 +1,204 @@
+{"frames": {
+
+"Crosshair.tga":
+{
+	"frame": {"x":2,"y":2,"w":22,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":22},
+	"sourceSize": {"w":22,"h":22}
+},
+"Interact.tga":
+{
+	"frame": {"x":94,"y":2,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"Interact64x64.png":
+{
+	"frame": {"x":128,"y":2,"w":64,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+	"sourceSize": {"w":64,"h":64}
+},
+"InteractGrab.tga":
+{
+	"frame": {"x":26,"y":2,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"InteractSwitch.tga":
+{
+	"frame": {"x":60,"y":2,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"InteractSwitch64x64.png":
+{
+	"frame": {"x":194,"y":2,"w":64,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+	"sourceSize": {"w":64,"h":64}
+},
+"attack_button.png":
+{
+	"frame": {"x":271,"y":508,"w":268,"h":269},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":268,"h":269},
+	"sourceSize": {"w":268,"h":269}
+},
+"crosshair_orange.png":
+{
+	"frame": {"x":260,"y":2,"w":119,"h":119},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":119,"h":119},
+	"sourceSize": {"w":119,"h":119}
+},
+"joystick_background.png":
+{
+	"frame": {"x":771,"y":2,"w":154,"h":142},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":154,"h":142},
+	"sourceSize": {"w":154,"h":142}
+},
+"joystick_knob.png":
+{
+	"frame": {"x":2,"y":508,"w":267,"h":267},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":267,"h":267},
+	"sourceSize": {"w":267,"h":267}
+},
+"jump.png":
+{
+	"frame": {"x":750,"y":146,"w":202,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":179},
+	"sourceSize": {"w":202,"h":179}
+},
+"mace.png":
+{
+	"frame": {"x":563,"y":146,"w":185,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":185,"h":71},
+	"sourceSize": {"w":185,"h":71}
+},
+"machinegun.png":
+{
+	"frame": {"x":376,"y":146,"w":185,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":185,"h":71},
+	"sourceSize": {"w":185,"h":71}
+},
+"menu_background.png":
+{
+	"frame": {"x":641,"y":2,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"pause.png":
+{
+	"frame": {"x":410,"y":327,"w":202,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":179},
+	"sourceSize": {"w":202,"h":179}
+},
+"pistol.png":
+{
+	"frame": {"x":2,"y":146,"w":185,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":185,"h":71},
+	"sourceSize": {"w":185,"h":71}
+},
+"reload.png":
+{
+	"frame": {"x":206,"y":327,"w":202,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":179},
+	"sourceSize": {"w":202,"h":179}
+},
+"revolver.png":
+{
+	"frame": {"x":189,"y":146,"w":185,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":185,"h":71},
+	"sourceSize": {"w":185,"h":71}
+},
+"run.png":
+{
+	"frame": {"x":614,"y":327,"w":229,"h":162},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":229,"h":162},
+	"sourceSize": {"w":229,"h":162}
+},
+"text_background.png":
+{
+	"frame": {"x":2,"y":779,"w":454,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":54},
+	"sourceSize": {"w":454,"h":54}
+},
+"toggle_bg.png":
+{
+	"frame": {"x":381,"y":2,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"toggle_checkmark.png":
+{
+	"frame": {"x":511,"y":2,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"weapon_switcher_background.png":
+{
+	"frame": {"x":541,"y":508,"w":454,"h":126},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":126},
+	"sourceSize": {"w":454,"h":126}
+},
+"zoom.png":
+{
+	"frame": {"x":2,"y":327,"w":202,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":179},
+	"sourceSize": {"w":202,"h":179}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "Orange.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3d89a5663fdb9afa1171411f9275d988:1/1$"
+}
+}
