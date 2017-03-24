@@ -16,12 +16,11 @@ Cubemap:
   m_TextureFormat: 5
   m_MipCount: 1
   m_IsReadable: 1
-  m_ReadAllowed: 1
   m_AlphaIsTransparency: 0
   m_ImageCount: 6
   m_TextureDimension: 2
   m_TextureSettings:
-    m_FilterMode: 1
+    m_FilterMode: 2
     m_Aniso: 1
     m_MipBias: 0
     m_WrapMode: 1

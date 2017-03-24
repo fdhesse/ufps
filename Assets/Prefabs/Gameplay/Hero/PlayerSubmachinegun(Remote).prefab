@@ -4389,7 +4389,7 @@ MonoBehaviour:
   DisableSpin: 0
   TossSounds: []
   ExtraPickups: []
-  surfaceTypeHelp: 117
+  surfaceTypeHelp: 106
 --- !u!114 &114093967233411438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4501,7 +4501,7 @@ MonoBehaviour:
   SpawnOnAwake: 0
   SpawnSound: {fileID: 8300000, guid: c6ffb5ccbd00a114494143e33e747a05, type: 3}
   SpawnFXPrefabs: []
-  helpbox: 133
+  helpbox: 122
 --- !u!114 &114126605348805014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4835,7 +4835,7 @@ MonoBehaviour:
   RespawnCheckRadius: -99999
   RespawnSound: {fileID: 0}
   DeathEffect: {fileID: 0}
-  helpbox: 95
+  helpbox: 73
   AllowFallDamage: 1
   FallDamageThreshold: 0.15
   DeathOnFallImpactThreshold: 0
@@ -4930,7 +4930,7 @@ MonoBehaviour:
   SurfaceType: {fileID: 11400000, guid: d5038622b1b2a6f43874b4c45ddadc71, type: 2}
   AllowDecals: 0
   SurfaceID: 0
-  surfaceTypeHelp: 139
+  surfaceTypeHelp: 128
 --- !u!114 &114515277109349154
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -72,7 +72,7 @@ MonoBehaviour:
       ParentName: Head
     - Prefab: {fileID: 100000, guid: 2ee56cc10b921a247bed60dd632d7a8e, type: 2}
       ParentName: Char1__Head
-    addPrefabsHelp: 111
+    addPrefabsHelp: 100
   m_AddComponents:
     Local:
     - ComponentName: vp_DMPlayerStats
@@ -80,7 +80,7 @@ MonoBehaviour:
     Remote:
     - ComponentName: vp_DMPlayerStats
       TransformName: 
-    addComponentsHelp: 100
+    addComponentsHelp: 89
 --- !u!114 &114000012495885468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,7 +135,7 @@ MonoBehaviour:
   RestoreInterval: 3
   RestoreDistance: 2
   PlayerHeight: 2
-  helpBox: 95
+  helpBox: 84
 --- !u!114 &114000013015306464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,10 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8a393322278d7f4cbc8b87b6a4c9ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameLength: 120
+  GameLength: 600
   PauseLength: 20
   CurrentLevel: pvp
-  currentLevelHelp: 84
+  currentLevelHelp: 73
 --- !u!114 &114000013071328260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,8 +173,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 900
+  instantiationId: 900
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114000013096018524
