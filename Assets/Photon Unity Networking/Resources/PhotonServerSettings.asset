@@ -18,7 +18,7 @@ MonoBehaviour:
   PreferredRegion: 2
   EnabledRegions: -1
   Protocol: 0
-  ServerAddress: 127.0.0.1
+  ServerAddress: 106.14.67.25
   ServerPort: 7000
   VoiceServerPort: 5055
   JoinLobby: 1
@@ -81,4 +81,8 @@ MonoBehaviour:
   - RequestForPickupItems
   - SpawnMonster
   - NetEndGame
+  - CReceiveChangeOperationObjState
+  - MReceiveChangeOperationObjState
+  - CCoopSupplyModeFinish
+  - CSetExitZoneVisible
   DisableAutoOpenWizard: 1

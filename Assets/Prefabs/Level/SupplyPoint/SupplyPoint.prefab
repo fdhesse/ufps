@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 4033066321434104}
   - component: {fileID: 136135068025490216}
   - component: {fileID: 114674258350437354}
+  - component: {fileID: 65184398559432798}
   m_Layer: 0
   m_Name: StopSwitch
   m_TagString: Untagged
@@ -235,9 +236,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1882766681665558}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5090027, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.62, y: 3.5, z: -0.86}
+  m_LocalScale: {x: 6, y: 4, z: 6}
   m_Children: []
   m_Father: {fileID: 4367381539703552}
   m_RootOrder: 1
@@ -374,7 +375,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1837915358003994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.727221, y: -1.07, z: 29.310333}
+  m_LocalPosition: {x: 10.942787, y: 0.46250826, z: 5.323883}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4039754731559736}
@@ -634,6 +635,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 62d3352618918a04aa5f6cf3cac45493, type: 3}
+--- !u!65 &65184398559432798
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882766681665558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65720858867498766
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -806,9 +819,9 @@ CapsuleCollider:
   m_GameObject: {fileID: 1882766681665558}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2
-  m_Height: 4
+  m_Enabled: 0
+  m_Radius: 0.5
+  m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136894720167741712
