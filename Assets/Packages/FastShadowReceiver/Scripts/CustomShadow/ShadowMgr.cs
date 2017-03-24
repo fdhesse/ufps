@@ -236,7 +236,9 @@ namespace FastShadowReceiver
                 buffer.uv3 = new Vector2[vertexCount];
                 buffer.uv4 = new Vector2[vertexCount];
                 buffer.colors = new Color[vertexCount];
-				s_uvBuffer.Add(vertexCount, buffer);
+
+				//s_uvBuffer.Add(vertexCount, buffer);
+
 			}
 			Matrix4x4 mat = searchInstance.uvProjection * m_meshTransform.localToWorldMatrix;
 			for (int i = 0; i < vertexCount; ++i) {
