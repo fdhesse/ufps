@@ -27,18 +27,14 @@ public class vp_SimpleCrosshair : MonoBehaviour
 	protected vp_FPPlayerEventHandler m_Player = null;
     private vp_FPAccuracyController _accuracyController;
 
-    public float MinCrossfairSize = 30;
-    public float MaxCrosshairSize = 200;
-    public float Size
+    public float CrossHairDistanceRatio = 1;
+    public float Distance
     {
         get
         {
             return null == _accuracyController
-                ? MinCrossfairSize
-                : Screen.width * (_accuracyController.CurrentAccuracy / FPSCamera.fieldOfView);
-            //return null == _accuracyController ? 
-            //    MinCrossfairSize : 
-            //    Mathf.Lerp(MinCrossfairSize, MaxCrosshairSize, _accuracyController.CurrentAccuracy / 90f);
+                ? (m_ImageCrosshair.width + 30)
+                : CrossHairDistanceRatio * Screen.width * (_accuracyController.CurrentAccuracy / FPSCamera.fieldOfView);
         }
     }
 
@@ -96,14 +92,20 @@ public class vp_SimpleCrosshair : MonoBehaviour
 			return;
 
 		GUI.color = new Color(1, 1, 1, 0.8f);
-		GUI.DrawTexture(
-            new Rect((Screen.width * 0.5f) - (Size * 0.5f),
-			         (Screen.height * 0.5f) - (Size * 0.5f),
-                     Size,
-                     Size), 
-            m_ImageCrosshair);
-		GUI.color = Color.white;
-	
+
+        var rect = new Rect((Screen.width * 0.5f) - m_ImageCrosshair.width * .5f,
+                                (Screen.height * 0.5f) - m_ImageCrosshair.height * .5f - Distance,
+                                m_ImageCrosshair.width,
+                                m_ImageCrosshair.height);
+        GUI.DrawTexture(rect, m_ImageCrosshair);
+        GUIUtility.RotateAroundPivot(90, new Vector2(Screen.width * .5f, Screen.height * .5f));
+        GUI.DrawTexture(rect, m_ImageCrosshair);
+        GUIUtility.RotateAroundPivot(90, new Vector2(Screen.width * .5f, Screen.height * .5f));
+        GUI.DrawTexture(rect, m_ImageCrosshair);
+        GUIUtility.RotateAroundPivot(90, new Vector2(Screen.width * .5f, Screen.height * .5f));
+        GUI.DrawTexture(rect, m_ImageCrosshair);
+
+        GUI.color = Color.white;
 	}
 	
 	
