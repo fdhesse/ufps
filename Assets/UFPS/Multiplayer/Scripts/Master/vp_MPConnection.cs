@@ -54,6 +54,7 @@ public class vp_MPConnection : Photon.MonoBehaviour
 	public static vp_MPConnection Instance = null;
 
     private int matchId = 0;
+    private int teamId = 0;
 
 	/// <summary>
 	/// 
@@ -94,14 +95,17 @@ public class vp_MPConnection : Photon.MonoBehaviour
     private void StartMultiplayer(MultiplayerInfo info)
     {
         matchId = info.matchId;
+        teamId = info.teamId;
 
-        while (vp_MPTeamManager.Instance.Teams.Count > 1)
+        while (vp_MPTeamManager.Instance.Teams.Count > info.teamNum)
             vp_MPTeamManager.Instance.Teams.RemoveAt(0);
 
         PhotonNetwork.PhotonServerSettings.ServerAddress = info.ip;
         PhotonNetwork.PhotonServerSettings.ServerPort = info.port;
 
         vp_MPMaster.Instance.CurrentLevel = info.levelName;
+        //vp_MPMaster.Instance.CurrentTeam = info.teamId;
+        PhotonNetwork.player.CustomProperties["Team"] = teamId;
 
         StayConnected = true;
     }
@@ -429,7 +433,7 @@ public class vp_MPConnection : Photon.MonoBehaviour
 		// to do the request on all clients
 
 		if(FindObjectOfType<vp_MPMaster>())	// in rare cases there might not be a vp_MPMaster, for example: a chat lobby
-			photonView.RPC("RequestInitialSpawnInfo", PhotonTargets.MasterClient, PhotonNetwork.player, 0, name);
+			photonView.RPC("RequestInitialSpawnInfo", PhotonTargets.MasterClient, PhotonNetwork.player, 0, name, teamId);
 
 		vp_Gameplay.IsMaster = PhotonNetwork.isMasterClient;
 

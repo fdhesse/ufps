@@ -31,6 +31,8 @@ public class vp_MPMaster : Photon.MonoBehaviour
 	public float GameLength = (5 * 60);		// default: 5 minutes
 	public float PauseLength = 20;			// default: 20 seconds
 	public string CurrentLevel = "";		// current level loaded on the master and enforced on all clients. master will load this on login
+    //public int CurrentTeam = 0;
+
 #if UNITY_EDITOR
 	[vp_HelpBox("'CurrentLevel' will be loaded by the master on login. Joining players will fetch this string from the master and proceed to load the correct level. At any time, the master method 'TransmitLoadLevel' can be called to make everyone load a new level.", UnityEditor.MessageType.None, typeof(vp_MPMaster), null, false, vp_PropertyDrawerUtility.Space.Nothing)]
 	public float currentLevelHelp;
@@ -643,7 +645,7 @@ public class vp_MPMaster : Photon.MonoBehaviour
 	/// a suitable player prefab
 	/// </summary>
 	[PunRPC]
-	public void RequestInitialSpawnInfo(PhotonPlayer player, int id, string name)
+	public void RequestInitialSpawnInfo(PhotonPlayer player, int id, string name, int team)
 	{
 
 		if (!PhotonNetwork.isMasterClient)
@@ -656,7 +658,7 @@ public class vp_MPMaster : Photon.MonoBehaviour
 		{
 			// for non-masters we send spawn info straight away. this assumes
 			// the master has already loaded the level and knows the spawnpoints
-			TransmitInitialSpawnInfo(player, id, name);
+			TransmitInitialSpawnInfo(player, id, name, team);
 		}
 		else
 		{
@@ -672,7 +674,7 @@ public class vp_MPMaster : Photon.MonoBehaviour
 	/// <summary>
 	/// 
 	/// </summary>
-	public void TransmitInitialSpawnInfo(PhotonPlayer player, int id, string name)
+	public void TransmitInitialSpawnInfo(PhotonPlayer player, int id, string name, int team)
 	{
 		
 		// allocate team number, player type and spawnpoint
@@ -682,7 +684,10 @@ public class vp_MPMaster : Photon.MonoBehaviour
 
 		if (vp_MPTeamManager.Exists)
 		{
-			teamNumber = ((vp_MPTeamManager.Instance.Teams.Count <= 1) ? 0 : vp_MPTeamManager.Instance.GetSmallestTeam());
+			//teamNumber = ((vp_MPTeamManager.Instance.Teams.Count <= 1) ? 0 : vp_MPTeamManager.Instance.GetSmallestTeam());
+            //teamNumber = CurrentTeam;
+            //teamNumber = (int)player.AllProperties["Team"];
+            teamNumber = team;
 			playerTypeName = vp_MPTeamManager.Instance.GetTeamPlayerTypeName(teamNumber);
 			placement = vp_MPPlayerSpawner.GetRandomPlacement(vp_MPTeamManager.GetTeamName(teamNumber));
 		}
@@ -1066,7 +1071,7 @@ public class vp_MPMaster : Photon.MonoBehaviour
 		// this can't be done in 'RequestInitialSpawnInfo' because the
 		// spawnpoints are unknown until 'OnLevelLoad'
 		if ((!vp_MPNetworkPlayer.PlayersByID.ContainsKey(PhotonNetwork.player.ID)) && (PhotonNetwork.room.PlayerCount == 1))
-			TransmitInitialSpawnInfo(PhotonNetwork.player, PhotonNetwork.player.ID, PhotonNetwork.player.NickName);
+            TransmitInitialSpawnInfo(PhotonNetwork.player, PhotonNetwork.player.ID, PhotonNetwork.player.NickName, (int)PhotonNetwork.player.CustomProperties["Team"]);
 
 	}
 
