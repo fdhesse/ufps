@@ -4548,7 +4548,7 @@ MonoBehaviour:
   SpawnOnAwake: 0
   SpawnSound: {fileID: 8300000, guid: c6ffb5ccbd00a114494143e33e747a05, type: 3}
   SpawnFXPrefabs: []
-  helpbox: 122
+  helpbox: 155
 --- !u!114 &114038172672140972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5691,7 +5691,7 @@ MonoBehaviour:
   SurfaceType: {fileID: 11400000, guid: d5038622b1b2a6f43874b4c45ddadc71, type: 2}
   AllowDecals: 0
   SurfaceID: 0
-  surfaceTypeHelp: 128
+  surfaceTypeHelp: 172
 --- !u!114 &114424469238987340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6320,7 +6320,7 @@ MonoBehaviour:
   DisableSpin: 0
   TossSounds: []
   ExtraPickups: []
-  surfaceTypeHelp: 106
+  surfaceTypeHelp: 128
 --- !u!114 &114818258191795160
 MonoBehaviour:
   m_ObjectHideFlags: 1

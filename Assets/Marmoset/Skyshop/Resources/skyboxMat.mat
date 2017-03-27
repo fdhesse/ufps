@@ -22,11 +22,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SkyCubeIBL:
-        m_Texture: {fileID: 8900000, guid: 3a9aeca16e23cce4487c62e182c995cb, type: 2}
+        m_Texture: {fileID: 8900000, guid: 632d1a10408aebd4bbb4f5c4fe92120e, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SkyCubeIBL1:
-        m_Texture: {fileID: 8900000, guid: 3a9aeca16e23cce4487c62e182c995cb, type: 2}
+        m_Texture: {fileID: 8900000, guid: 632d1a10408aebd4bbb4f5c4fe92120e, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
