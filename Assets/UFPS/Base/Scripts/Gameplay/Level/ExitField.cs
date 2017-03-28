@@ -22,6 +22,10 @@ public class ExitField : MonoBehaviour
 	/// </summary>
 	void OnTriggerEnter(Collider col)
 	{  
+        if( !vp_Gameplay.IsMaster )
+        {
+            return;
+        }
 
         if( Zone != null && col != null )
         {
@@ -42,6 +46,11 @@ public class ExitField : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        if (!vp_Gameplay.IsMaster)
+        {
+            return;
+        }
+
         Transform player = other.transform.root;
         if (player != null)
         {
@@ -52,6 +61,6 @@ public class ExitField : MonoBehaviour
             }
         }
     }
-
+ 
 
 }

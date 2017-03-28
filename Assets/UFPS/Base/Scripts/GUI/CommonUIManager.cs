@@ -15,9 +15,12 @@ public class CommonUIManager : MonoBehaviour
 {
 
     public OperationProgressHUD CenterProgressBar = null;
+    public OperationProgressHUD AmountBar = null;
+    public GameObject PVPCoorpUI = null;
+
     public FlagHUD FlagMgr = null;
     
-	protected virtual void Awake()
+	void Awake()
 	{
 		
 	}
@@ -31,9 +34,9 @@ public class CommonUIManager : MonoBehaviour
 	/// <summary>
 	/// Makes sure all the necessary properies are set
 	/// </summary>
-	protected virtual void Init()
+	void Init()
 	{
-	
+
 	}
 	
 	
@@ -42,9 +45,34 @@ public class CommonUIManager : MonoBehaviour
 	/// </summary>
 	protected virtual void OnEnable()
 	{
-			
-		
+        switch( vp_Gameplay.GetBattleMode() )
+        {
+            case eCombatMode.ECM_COORP:
+                {
+                    if (PVPCoorpUI != null)
+                    {
+                        PVPCoorpUI.SetActive(false);
+                    }		
+                }
+                break;
+            case eCombatMode.ECM_PVP_COORP:
+                {
+                    if (PVPCoorpUI != null)
+                    {
+                        PVPCoorpUI.SetActive(true);
+                    }		
+                }
+                break;
+            default:
+                {
+                    if (PVPCoorpUI != null)
+                    {
+                        PVPCoorpUI.SetActive(false);
+                    }		
 
+                }
+                break;
+        }
 	}
 
 

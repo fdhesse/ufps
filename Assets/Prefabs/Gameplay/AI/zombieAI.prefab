@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 114000013712764572}
   - component: {fileID: 136000012185036816}
   - component: {fileID: 114000012957809514}
+  - component: {fileID: 114464926332602452}
   m_Layer: 25
   m_Name: zombieAI
   m_TagString: Untagged
@@ -1133,7 +1134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013937930950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 109.127525, y: 13.289422, z: 22.866146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000013211072608}
@@ -1455,6 +1456,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldArea: 5
+--- !u!114 &114464926332602452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013937930950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b7f2a39b3cf214485b1306b4be5ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SurfaceType: {fileID: 11400000, guid: d5038622b1b2a6f43874b4c45ddadc71, type: 2}
+  AllowDecals: 1
+  SurfaceID: 0
+  surfaceTypeHelp: 249
 --- !u!136 &136000012185036816
 CapsuleCollider:
   m_ObjectHideFlags: 1

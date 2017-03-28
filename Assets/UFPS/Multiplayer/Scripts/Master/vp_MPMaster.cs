@@ -106,6 +106,15 @@ public class vp_MPMaster : Photon.MonoBehaviour
         vp_GlobalEvent<bool>.Register("M2CSetExitZoneVisble", M2CSetExitZoneVisble); 
         vp_GlobalEvent<bool>.Register("M2CCoopSupplyModeFinish", M2CCoopSupplyModeFinish); 
 
+        //about pvpcoop rule
+
+        vp_GlobalEvent<bool, int>.Register("OnNetPVPCoopEndGame", OnNetPVPCoopEndGame);
+
+        //about drop and pickup collections
+        vp_GlobalEvent<CollectionDropInfo>.Register("OnDropCollections", OnDropCollections);
+        vp_GlobalEvent<CollectionPickupInfo>.Register("OnPickUpCollections", OnPickUpCollections);
+        vp_GlobalEvent<CollectionDropInfo>.Register("RequestDropCollections", RequestDropCollections);
+
         new MonsterManager(1000);
 	}
 
@@ -136,7 +145,14 @@ public class vp_MPMaster : Photon.MonoBehaviour
         vp_GlobalEvent<bool>.Unregister("M2CSetExitZoneVisble", M2CSetExitZoneVisble);
         vp_GlobalEvent<bool>.Unregister("M2CCoopSupplyModeFinish", M2CCoopSupplyModeFinish); 
 
+        //about pvp coop rule
+        vp_GlobalEvent<bool, int>.Unregister("OnNetPVPCoopEndGame", OnNetPVPCoopEndGame);
         MonsterManager.Instance.Clear();
+
+        //about drop and pickup collections
+        vp_GlobalEvent<CollectionDropInfo>.Unregister("OnDropCollections", OnDropCollections);
+        vp_GlobalEvent<CollectionPickupInfo>.Unregister("OnPickUpCollections", OnPickUpCollections);
+        vp_GlobalEvent<CollectionDropInfo>.Unregister("RequestDropCollections", RequestDropCollections);
 	}
 	
 
@@ -1142,6 +1158,28 @@ public class vp_MPMaster : Photon.MonoBehaviour
     }
 
 
+    private void OnNetPVPCoopEndGame( bool isDraw, int winTeamNumber )
+    {
+        photonView.RPC("NetPVPCoopEndGame", PhotonTargets.All, isDraw, winTeamNumber ); 
+    }
+
+    [PunRPC]
+    public void NetPVPCoopEndGame(bool isDraw, int winTeamNumber)
+    {
+        Time.timeScale = 0;
+        if( isDraw )
+        {
+            GameAPI.Win = false;
+        }
+        else
+        {
+            GameAPI.Win = (vp_MPLocalPlayer.Instance.TeamNumber == winTeamNumber);
+        }
+        
+        vp_GlobalEvent.Send("EndGame");
+    }
+
+
     [PunRPC]
     public void NetEndGame(bool win)
     {
@@ -1185,7 +1223,7 @@ public class vp_MPMaster : Photon.MonoBehaviour
             return;
         }
 
-        photonView.RPC("CReceiveChangeOperationObjState", PhotonTargets.Others, changeParam.PlayerID, changeParam.ObjectID, changeParam.ToStateID, changeParam.StateTime, changeParam.SavePercent, changeParam.Result);   
+        photonView.RPC("CReceiveChangeOperationObjState", PhotonTargets.Others, changeParam.PlayerID, changeParam.ObjectID, changeParam.ToStateID, changeParam.StateTime, changeParam.SavePercent, changeParam.CurCount, changeParam.ChangeCount, changeParam.Result);   
     }
 
     public void M2CChangeOperationObjStateImm( OperationStateChangeParam changeParam )
@@ -1195,7 +1233,7 @@ public class vp_MPMaster : Photon.MonoBehaviour
             return;
         }
 
-        photonView.RPC("CReceiveChangeOperationObjState", PhotonTargets.Others, changeParam.PlayerID, changeParam.ObjectID, changeParam.ToStateID, changeParam.StateTime, changeParam.SavePercent, changeParam.Result);   
+        photonView.RPC("CReceiveChangeOperationObjState", PhotonTargets.Others, changeParam.PlayerID, changeParam.ObjectID, changeParam.ToStateID, changeParam.StateTime, changeParam.SavePercent, changeParam.CurCount, changeParam.ChangeCount, changeParam.Result);   
     }
 
     //告诉M玩家谁把哪一个Object的状态变为了什么
@@ -1238,14 +1276,14 @@ public class vp_MPMaster : Photon.MonoBehaviour
 
     //告诉C玩家谁把哪一个Object的状态变为了什么
     [PunRPC]
-    public void CReceiveChangeOperationObjState(int playerID, int ObjectID, int stateID, float stateTime, float savePercent, int result, PhotonMessageInfo info)
+    public void CReceiveChangeOperationObjState(int playerID, int ObjectID, int stateID, float stateTime, float savePercent, float curCount, float changeCount, int result, PhotonMessageInfo info)
     {
        
         OperationObject obj = OperationObject.GetObject( ObjectID );
 
         if( obj != null )
         {
-            obj.OnRequestChangeStateResult( result, playerID, ObjectID, stateID, stateTime, savePercent );
+            obj.OnRequestChangeStateResult( result, playerID, ObjectID, stateID, stateTime, savePercent, curCount, changeCount );
         }
 
     }
@@ -1278,6 +1316,110 @@ public class vp_MPMaster : Photon.MonoBehaviour
         //vp_GlobalEvent<bool>.Send("SetExitZoneVisble", isSuccess);
         OnEndGame( isSuccess );
     }
-    
+
+
+    static public vp_MPTeam GetTeamNumberByViewID(int viewID)
+    {
+        Transform trans = GetTransformOfViewID(viewID); 
+        if( trans != null )
+        {
+            return GetTeamInfoByTransform( trans );
+        }
+
+        return null;
+    }
+
+    static public vp_MPTeam GetTeamInfoByTransform( Transform transform )
+    {
+        if( transform != null )
+        {
+            vp_MPNetworkPlayer network = transform.GetComponent<vp_MPNetworkPlayer>();
+            if( network == null )
+            {
+                return null;
+            }
+
+            return network.Team;
+        }
+
+        return null;
+    }
+
+    protected void RequestDropCollections(CollectionDropInfo dropInfo)
+    {
+        photonView.RPC("M2COneDropCollection", PhotonTargets.MasterClient, dropInfo.DropperID, dropInfo.Count, dropInfo.Position);  
+    }
+
+    [PunRPC]
+    public void M2COneDropCollection(int playerID, float changeCount, Vector3 pos)
+    {
+        if (changeCount != 0.0f)
+        {
+
+            int CollectionDropID = CollectionsPickupMgr.GenCollectionID();
+            CollectionDropInfo dropInfo = new CollectionDropInfo();
+            dropInfo.Count = changeCount;
+            dropInfo.DropperID = playerID;
+            dropInfo.ID = CollectionDropID;
+            dropInfo.Position = pos;
+
+            vp_GlobalEvent<CollectionDropInfo>.Send("OnDropCollections", dropInfo);
+        }
+    }
+
+
+    protected void OnDropCollections(CollectionDropInfo dropInfo)
+    {
+        photonView.RPC("M2COneDropCollection", PhotonTargets.All, dropInfo.DropperID, dropInfo.Count, dropInfo.ID, dropInfo.Position );  
+    }
+
+    //告诉所有玩家,掉落道具了
+    [PunRPC]
+    public void M2COneDropCollection( int playerID, float changeCount, int objectID, Vector3 pos )
+    {
+        CollectionDropInfo tempInfo = new CollectionDropInfo();
+        tempInfo.Position = pos;
+        tempInfo.Count = changeCount;
+        tempInfo.ID = objectID;
+        tempInfo.DropperID = playerID;
+        //生成道具
+        vp_GlobalEvent<CollectionDropInfo>.Send("AddCollectionsDrop", tempInfo);
+        //为玩家扣除
+        Transform trs = GetTransformOfViewID( playerID );
+        if( trs != null )
+        {
+            trs.SendMessage("TryDropAllCount", SendMessageOptions.DontRequireReceiver);
+        }
+
+    }
+
+    //通知各个客户端做拾取逻辑
+    protected void OnPickUpCollections(CollectionPickupInfo pickupInfo)
+    {
+        photonView.RPC("M2COnePickupCollection", PhotonTargets.All, pickupInfo.PickerID, pickupInfo.ChangeCount, pickupInfo.ObjectID );  
+    }
+
+
+    [PunRPC]
+    public void M2COnePickupCollection(int playerID, float changeCount, int objectID )
+    {
+        CollectionPickupInfo tempInfo = new CollectionPickupInfo();
+        tempInfo.ChangeCount = changeCount;
+        tempInfo.ObjectID = objectID;
+        tempInfo.PickerID = playerID;
+
+        //销毁道具
+        vp_GlobalEvent<int>.Send("RemoveCollectionDrop", objectID);
+
+        //为玩家添加
+        Transform trs = GetTransformOfViewID(playerID);
+        if (trs != null)
+        {
+            List<string> msgParams = new List<string>();
+            msgParams.Add(playerID.ToString());
+            msgParams.Add(changeCount.ToString());
+            trs.SendMessage("ChangePlayerGotCount", msgParams);            
+        }
+    }
 }
 

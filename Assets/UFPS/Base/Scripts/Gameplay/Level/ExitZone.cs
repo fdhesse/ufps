@@ -8,12 +8,12 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ExitZone : MonoBehaviour
+public class ExitZone : Photon.MonoBehaviour
 {
     private HashSet<int> EnterPlayerIDSet = new HashSet<int>();
     private HashSet<int> AllPlayerIDSet = new HashSet<int>();
     public ExitField Field = null;
-
+    private float _DelayUpdateSec = 0.0f;
 
     void OnEnable()
     {
@@ -30,6 +30,15 @@ public class ExitZone : MonoBehaviour
 	{
         if( Field != null )
         {
+            if( !vp_Gameplay.IsMaster )
+            {
+               Collider collider = Field.GetComponent<Collider>();
+               if( collider != null )
+               {
+                   collider.enabled = false;
+               }
+            }
+
             Field.gameObject.SetActive( false );
         }
 
@@ -42,6 +51,18 @@ public class ExitZone : MonoBehaviour
         if( !vp_Gameplay.IsMaster )
         {
             return;
+        }
+
+        if ( _DelayUpdateSec > 0.0f )
+        {
+            _DelayUpdateSec -= Time.deltaTime;
+
+            if( _DelayUpdateSec <= 0.0f )
+            {
+                _DelayUpdateSec = 0.0f;
+                _RefreshAllPlayer( true );
+                RefreshNeedExit();                
+            }
         }
 
         if (Field != null )
@@ -169,8 +190,35 @@ public class ExitZone : MonoBehaviour
         if (Field != null)
         {
             Field.gameObject.SetActive(visible);
+
+            Collider collider = Field.GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = vp_Gameplay.IsMaster;
+            }
         }
      
+    }
+
+    protected virtual void OnPhotonPlayerDisconnected(PhotonPlayer player)
+    {
+        if (Field != null)
+        {
+            Collider collider = Field.GetComponent<Collider>();
+            if (collider != null)
+            {
+                //当collider可见时,会重新计算 站在其中的角色
+                collider.enabled = PhotonNetwork.isMasterClient;
+            }
+        }
+
+        if (!PhotonNetwork.isMasterClient)
+        {
+            return;
+        }
+
+        _DelayUpdateSec = 1.0f;
+            
     }
 
 }

@@ -17,19 +17,23 @@ MonoBehaviour:
     MinPitch: 0.8
     MaxPitch: 1
     MaxOnePerFrame: 0
-    soundsHelp: 150
+    soundsHelp: 128
   Objects:
     m_Objects:
     - Prefab: {fileID: 100000, guid: c8349fdbdb51d9b479ae0c200256e06a, type: 2}
       Probability: 1
     - Prefab: {fileID: 100000, guid: d7711a290e1c1264ea2a44d29b49ad57, type: 2}
       Probability: 1
-    objectsHelp: 95
+    objectsHelp: 73
   Decal:
-    m_Prefabs: []
-    prefabsHelp: 183
+    m_Prefabs:
+    - {fileID: 186514, guid: 358d3ba17f89dce4aa2f7f7f57813358, type: 2}
+    - {fileID: 186514, guid: 2404998d84ac1604ea7661c3ebdd8669, type: 2}
+    - {fileID: 186514, guid: 05ebfc0af60a64b4d91c052e98ba0850, type: 2}
+    - {fileID: 186514, guid: 1418274fd34f9054fa5624e6ee7a4cd3, type: 2}
+    prefabsHelp: 139
     MinScale: 1
     MaxScale: 1
     AllowEdgeOverlap: 0.5
-    edgeOverlapHelp: 216
-  surfaceEffectHelp: 194
+    edgeOverlapHelp: 183
+  surfaceEffectHelp: 150

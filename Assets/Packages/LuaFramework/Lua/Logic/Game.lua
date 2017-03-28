@@ -41,7 +41,7 @@ local WWW = UnityEngine.WWW;
 --初始化完成，发送链接服务器信息--
 function Game.OnInitOK()
     AppConst.SocketPort = 5000;
-    --AppConst.SocketAddress = "127.0.0.1";
+   --AppConst.SocketAddress = "127.0.0.1";
     AppConst.SocketAddress = "106.14.67.25";
     networkMgr:SendConnect();
 
@@ -103,8 +103,7 @@ function Game.EnterGame(onEnter)
 
 end
 
-
-function Game.EnterPve(matchId, roomUrl, onEnter)
+function Game.EnterPve(matchId, teamId, roomUrl, onEnter)
   --resMgr:LoadLevel("pvescenes", "TWD_coop_warehouse", nil, function() 
       
     local info = MultiplayerInfo.New();
@@ -115,7 +114,9 @@ function Game.EnterPve(matchId, roomUrl, onEnter)
     info.ip = ip;
     info.port = port;
     info.matchId = matchId;
-    print(ip);
+    --info.teamNum = teamNum;
+    info.teamId = teamId;
+    --print(ip);
     
     GameAPI.StartMultiplayer(info);      
     PreloadPanel('Combat');
@@ -125,11 +126,20 @@ function Game.EnterPve(matchId, roomUrl, onEnter)
   --end);  
 end
 
+--[[
 function Game.EnterPvp(onEnter)
   this.PvpMode = true;
   --resMgr:LoadLevel("pvescenes", "TWD_coop_warehouse", nil, function() 
       
     local info = MultiplayerInfo.New();
+    local index = string.find(roomUrl, ':');
+    local ip = string.sub(roomUrl, 1, index-1);
+    local port = tonumber(string.sub(roomUrl, index+1, #roomUrl));
+      
+    info.ip = ip;
+    info.port = port;
+    info.matchId = matchId;
+    print(ip);    
     
     GameAPI.StartMultiplayer(info);
     PreloadPanel('Combat');
@@ -139,6 +149,7 @@ function Game.EnterPvp(onEnter)
     --resMgr:UnloadAssetBundle("pvpscenes", false);
   --end);  
 end
+--]]
 
 function Game.EnterLobby(onEnter)
   resMgr:LoadLevel("lobbyscenes", "lobby", nil, function() 

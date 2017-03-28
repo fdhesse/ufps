@@ -221,6 +221,8 @@ GameObject:
   - component: {fileID: 114512203965256554}
   - component: {fileID: 114778078013921290}
   - component: {fileID: 114594634142108056}
+  - component: {fileID: 114088523660852658}
+  - component: {fileID: 114434323240715564}
   m_Layer: 25
   m_Name: zombie_With_AimHelper_AI_Gray
   m_TagString: Enemy
@@ -1257,6 +1259,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114088523660852658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388913233335132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ebd18534f15dc49afc7f1f5e378bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxDropCount: 2
+  MinDropCount: 0
 --- !u!114 &114205621335167654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1268,6 +1283,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf57047888301064c870cc84817af2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114434323240715564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388913233335132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b7f2a39b3cf214485b1306b4be5ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SurfaceType: {fileID: 11400000, guid: d5038622b1b2a6f43874b4c45ddadc71, type: 2}
+  AllowDecals: 1
+  SurfaceID: 0
+  surfaceTypeHelp: 249
 --- !u!114 &114512203965256554
 MonoBehaviour:
   m_ObjectHideFlags: 1

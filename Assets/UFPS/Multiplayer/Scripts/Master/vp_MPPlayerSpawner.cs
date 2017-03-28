@@ -375,6 +375,11 @@ public class vp_MPPlayerSpawner : Photon.MonoBehaviour
                 operationMgr.m_Player = newPlayer.GetComponentInChildren<vp_PlayerEventHandler>();
             }
 
+            PlayerCollectionDropper dropper = newPlayer.GetComponentInChildren<PlayerCollectionDropper>();
+            if (dropper == null)
+                dropper = newPlayer.AddComponent<PlayerCollectionDropper>();
+
+
 			
 			Instance.AddPrefabs(newPlayer.transform, Instance.m_AddPrefabs.Local);
 			Instance.AddComponents(newPlayer.transform, Instance.m_AddComponents.Local);
@@ -415,6 +420,19 @@ public class vp_MPPlayerSpawner : Photon.MonoBehaviour
 			r.SetAnimated(false);
 			r.LastMasterPosition = pos;
 			r.LastMasterRotation = rot;
+
+            OperationManager operationMgr = newPlayer.GetComponentInChildren<OperationManager>();
+            if (operationMgr == null)
+                operationMgr = newPlayer.AddComponent<OperationManager>();
+            if (operationMgr != null)
+            {
+                operationMgr.m_Player = newPlayer.GetComponentInChildren<vp_PlayerEventHandler>();
+            }
+
+            PlayerCollectionDropper dropper = newPlayer.GetComponentInChildren<PlayerCollectionDropper>();
+            if (dropper == null)
+                dropper = newPlayer.AddComponent<PlayerCollectionDropper>();
+
 
 			Instance.AddPrefabs(newPlayer.transform, Instance.m_AddPrefabs.Remote);
 			Instance.AddComponents(newPlayer.transform, Instance.m_AddComponents.Remote);

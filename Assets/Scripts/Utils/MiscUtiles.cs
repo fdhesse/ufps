@@ -28,4 +28,32 @@ public static class MiscUtils
 
         return Mathf.Abs( Numerator / Denominator );
     }
+
+    public static string GetTimeStrBySec_M_S( float sec )
+    {
+
+        string result = "00:00";
+
+        if( sec <= 0.0f )
+        {
+            return result;
+        }
+
+        float leftTime = sec;
+        string strM = ((int)(leftTime / 60.0f)).ToString();
+        string strS = (((int)leftTime) % 60).ToString();
+
+        if (strM.Length == 1)
+        {
+            strM = "0" + strM;
+        }
+
+        if (strS.Length == 1)
+        {
+            strS = "0" + strS;
+        }
+
+        result = strM + ":" + strS;
+        return result;
+    }
 }

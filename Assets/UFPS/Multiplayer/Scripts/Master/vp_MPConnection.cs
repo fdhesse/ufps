@@ -97,8 +97,8 @@ public class vp_MPConnection : Photon.MonoBehaviour
         matchId = info.matchId;
         teamId = info.teamId;
 
-        while (vp_MPTeamManager.Instance.Teams.Count > info.teamNum)
-            vp_MPTeamManager.Instance.Teams.RemoveAt(0);
+        //while (vp_MPTeamManager.Instance.Teams.Count > info.teamNum)
+        //    vp_MPTeamManager.Instance.Teams.RemoveAt(0);
 
         PhotonNetwork.PhotonServerSettings.ServerAddress = info.ip;
         PhotonNetwork.PhotonServerSettings.ServerPort = info.port;

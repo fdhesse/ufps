@@ -73,7 +73,7 @@ function LobbyModel.StartMatch(missionId, isCreate)
 
       if errorCode == 0 then
         --LobbyViewModel.Users = responsePack.resultEx.MatchedUserList;
-        matchId = responsePack.resultEx.MasterUserId;        
+        matchId = responsePack.resultEx.TeamId;        
         
         if responsePack.resultEx.MatchedUserList then
           LobbyViewModel.UpdateMatch(responsePack.resultEx);
@@ -127,13 +127,23 @@ function LobbyModel.UpdateMatch(missionId)
       
       if errorCode == 0 then
         --timer:Stop();
-        matchId = responsePack.resultEx.MasterUserId;
-        LobbyViewModel.UpdateMatch(responsePack.resultEx);
+        local result = responsePack.resultEx;
+        matchId = result.TeamId;
+        LobbyViewModel.UpdateMatch(result);
         --LobbyViewModel.UpdateViewModel();
         LobbyViewModel.SwitchPanel(4);  
         if responsePack.resultEx.State == 1 then
+          local teamId = 0;
+          local len = #result.MatchedUserList;
+          for i=1, len, 1 do
+            if (result.MatchedUserList[i].UserId == GameEnv.AccountId) then 
+              teamId = result.MatchedUserList[i].TeamId
+              break
+            end            
+          end
+    
           timer:Stop();
-          Game.EnterPve(matchId, responsePack.resultEx.RoomServerUrl, function()
+          Game.EnterPve(matchId, teamId, result.RoomServerUrl, function()
             LobbyViewModel.SwitchPanel(1);
             ClosePanel('MainMenu');              
             ClosePanel('LobbySceneUI');
@@ -200,7 +210,11 @@ function LobbyModel.BeginMatch(missionId)
   );    
 end
 
+function LobbyModel.TestEntityChange(entity)
+  print('TestEntityChange ' .. entity.HeadIcon); 
+end
 
+GameData:RegisterEntityChangedCB(Game.KingsMan.MessagePack.EntityType.ET_PLAYER, LobbyModel.TestEntityChange);
 
 local i = 1;
 

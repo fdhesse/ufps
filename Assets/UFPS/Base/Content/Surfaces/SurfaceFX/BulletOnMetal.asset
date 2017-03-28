@@ -36,7 +36,10 @@ MonoBehaviour:
     objectsHelp: 73
   Decal:
     m_Prefabs:
-    - {fileID: 186514, guid: 22612b782c405124cb90249ccbe608a0, type: 2}
+    - {fileID: 186514, guid: f474573b40cb63442bf10091efbcfb7a, type: 2}
+    - {fileID: 186514, guid: 0bb3552b0a33aea46921676ed3cb80d4, type: 2}
+    - {fileID: 186514, guid: c0c5e7ca0e22fef42b8df8438b2f7b45, type: 2}
+    - {fileID: 186514, guid: 2e8263a3c92187049838eea026541cb8, type: 2}
     prefabsHelp: 128
     MinScale: 1
     MaxScale: 1

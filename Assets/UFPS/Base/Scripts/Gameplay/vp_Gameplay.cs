@@ -22,6 +22,11 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 #endif
 
+public enum eCombatMode
+{
+    ECM_COORP = 0,
+    ECM_PVP_COORP = 1,
+}
 public class vp_Gameplay
 {
 
@@ -141,5 +146,15 @@ public class vp_Gameplay
 		//	3) at time of writing OpenURL does not work on WebGL
 
 	}
+
+    public static eCombatMode GetBattleMode()
+    {
+        if( vp_MPTeamManager.TeamCount >= 2 )
+        {
+            return eCombatMode.ECM_PVP_COORP;
+        }
+
+        return eCombatMode.ECM_COORP;
+    }
 
 }
