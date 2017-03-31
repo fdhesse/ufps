@@ -3,6 +3,7 @@ LobbyModel = {}
 local this = LobbyModel;
   
 local matchId = 0;
+local sequence = -1;
 
 --[[
 function LobbyModel.Connect()
@@ -124,33 +125,39 @@ function LobbyModel.UpdateMatch(missionId)
     end,
     function(errorCode, responsePack)
       print('UpdateMatch response');
+      print(errorCode)
       
       if errorCode == 0 then
         --timer:Stop();
         local result = responsePack.resultEx;
-        matchId = result.TeamId;
-        LobbyViewModel.UpdateMatch(result);
-        --LobbyViewModel.UpdateViewModel();
-        LobbyViewModel.SwitchPanel(4);  
-        if responsePack.resultEx.State == 1 then
-          local teamId = 0;
-          local len = #result.MatchedUserList;
-          for i=1, len, 1 do
-            if (result.MatchedUserList[i].UserId == GameEnv.AccountId) then 
-              teamId = result.MatchedUserList[i].TeamId
-              break
-            end            
-          end
-    
-          timer:Stop();
-          Game.EnterPve(matchId, teamId, result.RoomServerUrl, function()
-            LobbyViewModel.SwitchPanel(1);
-            ClosePanel('MainMenu');              
-            ClosePanel('LobbySceneUI');
-           
-          end);  
-        
-        end
+        --if (sequence ~= result.Sequence) then
+          sequence = result.Sequence;
+          matchId = result.TeamId;
+          
+          LobbyViewModel.UpdateMatch(result);
+          --LobbyViewModel.UpdateViewModel();
+          LobbyViewModel.SwitchPanel(4);  
+          print(responsePack.resultEx.State);
+          if responsePack.resultEx.State == 1 then
+            local teamId = 0;
+            local len = #result.MatchedUserList;
+            for i=1, len, 1 do
+              if (result.MatchedUserList[i].UserId == GameEnv.AccountId) then 
+                teamId = result.MatchedUserList[i].TeamId
+                break
+              end            
+            end
+      
+            timer:Stop();
+            Game.EnterPve(matchId, teamId, sequence, result.RoomServerUrl, function()
+              LobbyViewModel.SwitchPanel(1);
+              ClosePanel('MainMenu');              
+              ClosePanel('LobbySceneUI');
+             
+            end);  
+          
+        --end
+      end
       elseif errorCode == Game.KingsMan.MessagePack.ErrorEnum.MatchFailedMatching then
         --skip this error
       else
@@ -209,6 +216,61 @@ function LobbyModel.BeginMatch(missionId)
     end
   );    
 end
+
+function LobbyModel.HeartBeat()
+   GameData:CallServer(Game.KingsMan.MessagePack.ActionEnum.MatchHeartBeat, 9850, 
+    function(requestPack)
+      requestPack.UserId = GameEnv.AccountId;      
+      requestPack.MissionId = LobbyViewModel.MissionId;
+      requestPack.MatchId = matchId;
+      print('HeartBeat request');
+    end,
+    function(errorCode, responsePack)
+      print('HeartBeat response');    
+    end
+  );    
+end
+
+function LobbyModel.CheckTeam()
+   ShowPanel('LobbySceneUI');
+   GameData:CallServer(Game.KingsMan.MessagePack.ActionEnum.MatchQuery, 9850, 
+    function(requestPack)
+      requestPack.UserId = GameEnv.AccountId;      
+      requestPack.MissionId = LobbyViewModel.MissionId;
+      print('MatchQuery request');
+    end,
+    function(errorCode, responsePack)
+      print('MatchQuery response');    
+      if (errorCode == 0) then
+        matchId = responsePack.resultEx.TeamId;        
+        
+        if responsePack.resultEx.MatchedUserList then
+          LobbyViewModel.UpdateMatch(responsePack.resultEx);
+          LobbyViewModel.SwitchPanel(4);  
+        end
+        
+        this.TimeUpdateMatch(LobbyViewModel.MissionId);
+      end
+    end
+  );  
+end
+
+function LobbyModel.EndMatch()
+   GameData:CallServer(Game.KingsMan.MessagePack.ActionEnum.MatchEnd, 9850, 
+    function(requestPack)
+      requestPack.UserId = GameEnv.AccountId;      
+      requestPack.MissionId = LobbyViewModel.MissionId;
+      requestPack.MatchId = sequence;
+      print('EndMatch request');
+    end,
+    function(errorCode, responsePack)
+      print('EndMatch response');    
+      if (errorCode == 0) then
+      end
+    end
+  );  
+end
+
 
 function LobbyModel.TestEntityChange(entity)
   print('TestEntityChange ' .. entity.HeadIcon); 

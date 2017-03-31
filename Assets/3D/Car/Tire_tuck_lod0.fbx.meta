@@ -20,6 +20,8 @@ ModelImporter:
     4300000: Tire_tuck_lod0
     4300002: polySurface8
     4300004: polySurface12
+    6400000: polySurface12
+    6400002: polySurface8
   materials:
     importMaterials: 1
     materialName: 0
@@ -48,7 +50,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 1

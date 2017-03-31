@@ -16,10 +16,19 @@ public class OperationStateChangeParam
     public int Result = 0;
     public float StateTime = 0.0f;
     public float SavePercent = 0.0f;
+
+    public float CurCount = 0;
+    public float ChangeCount = 0;
 }
+
 
 public class OperationObject :  MonoBehaviour
 {
+    public enum eOperationObjectType
+    {
+        EOOT_SUPPLY,
+        EOOT_COLLECTIONPOINT,
+    };
     public enum eOperationObjectState
     {
         EOOS_IDEL,
@@ -28,6 +37,7 @@ public class OperationObject :  MonoBehaviour
         EOOS_DROP,
         EOOS_FINISHING,
         EOOS_FINISHED,
+        EOOS_INVALID,
         EOOS_COUNT,
     };
 
@@ -38,11 +48,11 @@ public class OperationObject :  MonoBehaviour
         ECOOSR_ERROR_INVALID_STATE,        
     };
 
-    private eOperationObjectState _CurState = eOperationObjectState.EOOS_IDEL;
-    private eOperationObjectState _TryChangeToState = eOperationObjectState.EOOS_IDEL;
-    private eOperationObjectState _SaveRequestState = eOperationObjectState.EOOS_COUNT;
+    protected eOperationObjectState _CurState = eOperationObjectState.EOOS_IDEL;
+    protected eOperationObjectState _TryChangeToState = eOperationObjectState.EOOS_IDEL;
+    protected eOperationObjectState _SaveRequestState = eOperationObjectState.EOOS_COUNT;
 
-    private float _CurStateTime = 0.0f;
+    protected float _CurStateTime = 0.0f;
 
     //操作进度条的时间
     //private float _OperationStartTime = 0.0f;
@@ -57,31 +67,93 @@ public class OperationObject :  MonoBehaviour
     //private float _FishingStartTime = 0.0f;
 
     //保存中断或停止时的进度条( 0 ~ 1 )
-    private float _SavePercent = 0.0f;
+    protected float _SavePercent = 0.0f;
 
-    private int _SaveOperationPlayerID = 0; //当前操作的PlayerID
+    protected int _SaveOperationPlayerID = 0; //当前操作的PlayerID
+    protected int _SaveOperationTeamID = 0; //当前操作的TeamID(-1表示初始值)
 
     public float OperationSec = 1.0f;   //Editor
     public float HoldSec = 1.0f;    //Editor
     public float DropSec = 2.0f;    //Editor
     public float FinishingTime = 1.0f; //Editor
 
-    public int ID = 0;
-
-    
+    public int ID = 0;    
 
     public List<vp_OptionSwitch> SwitchList = new List<vp_OptionSwitch>();
 
+    public bool DispareWhenEmpty = false;
+
     //public List<GameObject> StateListenerVec = new List<GameObject>();
 
-    vp_PlayerEventHandler mPlayer = null;
+    protected vp_PlayerEventHandler mPlayer = null;
 
     public eOperationObjectState GetCurState() { return _CurState; }
     public float GetCurStateTime() { return _CurStateTime; }
     static public Dictionary<int, OperationObject> ID2OperationObjTable = new Dictionary<int, OperationObject>();
 
     //the state synced from master
-    private eOperationObjectState _SyncState = eOperationObjectState.EOOS_COUNT;
+    protected eOperationObjectState _SyncState = eOperationObjectState.EOOS_COUNT;
+
+
+    //可供操作的总量
+    public float Amount = 10;
+
+    //当前总量
+    public float CurCount = 10;
+
+    //一次改变多少( -1表示减少,+1表示增加 )
+    public float ChangeOneTime = 1;
+
+
+    public virtual float ChangeValue()
+    {
+        float saveValue = CurCount;
+        CurCount += ChangeOneTime;
+
+        if (CurCount <= 0.0f)
+        {
+            CurCount = 0.0f;
+
+        }
+
+        else if (CurCount >= Amount)
+        {
+            CurCount = Amount;
+        }
+
+        return CurCount - saveValue;
+    }
+
+    public virtual void OnOperationFinished()
+    {
+        if (CurCount <= 0.0f)
+        {
+            CurCount = 0.0f;
+
+            if (ChangeOneTime < 0.0f)
+            {
+                _SavePercent = 0.0f;
+                _ChangeToState(eOperationObjectState.EOOS_INVALID);
+            }
+        }
+
+        else if (CurCount >= Amount)
+        {
+            CurCount = Amount;
+
+            if (ChangeOneTime > 0.0f)
+            {
+                _SavePercent = 0.0f;
+                _ChangeToState(eOperationObjectState.EOOS_INVALID);
+            }
+        }
+        else
+        {
+            _SavePercent = 0.0f;
+            _ChangeToState(eOperationObjectState.EOOS_IDEL);
+        }
+    }
+
 
     static public OperationObject GetObject( int id )
     {
@@ -93,7 +165,7 @@ public class OperationObject :  MonoBehaviour
         return null;
     }
 
-    public void OnInteract( List<object> objVec )
+    public virtual void OnInteract( List<object> objVec )
     {
         if (objVec == null)
         {
@@ -121,14 +193,14 @@ public class OperationObject :  MonoBehaviour
         if( !EnableChangeState( newState ) )
         {
             return;
-        }      
+        }              
 
         //目前没有什么人操作
         if( _SaveOperationPlayerID == 0 )
         {
             if (player != null)
             {
-                _SaveOperationPlayerID = vp_MPMaster.GetViewIDOfTransform(player.transform);
+                _SaveOperationPlayerID = vp_MPMaster.GetViewIDOfTransform(player.transform);                                
             }
             else
             {
@@ -194,6 +266,8 @@ public class OperationObject :  MonoBehaviour
         Update();
     }
 
+    protected virtual void _Awake(){}
+
     void Awake()
     {
         _SavePercent = 0.0f;
@@ -204,13 +278,25 @@ public class OperationObject :  MonoBehaviour
         {
             ID2OperationObjTable.Add(ID, this);
         }
+
+        vp_GlobalEvent<float, float>.Register("OnLocalPlayerGotCountChanged", OnLocalPlayerGotCountChanged);
+        _OnEnable();
+        _Awake();
     }
+
+    protected virtual void OnLocalPlayerGotCountChanged(float curValue, float changeValue)
+    {
+
+    }
+
     void OnDestroy()
     {
         if (ID2OperationObjTable.ContainsKey(ID))
         {
             ID2OperationObjTable.Remove(ID);
         }
+
+        vp_GlobalEvent<float, float>.Unregister("OnLocalPlayerGotCountChanged", OnLocalPlayerGotCountChanged);
     }
 
     void OnEnable()
@@ -218,8 +304,18 @@ public class OperationObject :  MonoBehaviour
         _SavePercent = 0.0f;
         _ChangeToState(eOperationObjectState.EOOS_IDEL);
         _TryChangeToState = eOperationObjectState.EOOS_IDEL;
+       
     }
 
+    protected virtual void _OnEnable()
+    {
+
+    }
+
+    public virtual void _OnStateHaveChanged()
+    {
+        
+    }
 
     public bool RefreshMC(int playerID)
     {
@@ -227,7 +323,7 @@ public class OperationObject :  MonoBehaviour
         eOperationObjectState newState = _TryChangeToState;
         _TryChangeToState = eOperationObjectState.EOOS_COUNT;
 
-
+        float changeValue = 0.0f;
         switch ((eOperationObjectState)_CurState)
         {
             case eOperationObjectState.EOOS_IDEL:
@@ -237,6 +333,17 @@ public class OperationObject :  MonoBehaviour
                         case eOperationObjectState.EOOS_BEING_OPERATION:
                             {
                                 _ChangeToState(eOperationObjectState.EOOS_BEING_OPERATION);
+                                
+                                
+
+                                int curOperationTeamID = GetCurrentOperationTeamID();
+
+                                if (_SaveOperationTeamID != curOperationTeamID)
+                                {
+                                    _SaveOperationTeamID = curOperationTeamID;
+                                    _SavePercent = 0.0f;
+                                }
+
                                 EnterOperation(0.0f);
                             }
                             break;
@@ -271,7 +378,7 @@ public class OperationObject :  MonoBehaviour
                     //更新
                     if (_CurState == eOperationObjectState.EOOS_BEING_OPERATION)
                     {
-                        UpdateOperation(0.0f);
+                        changeValue = UpdateOperation(0.0f);
                     }
                 }
                 break;
@@ -284,6 +391,15 @@ public class OperationObject :  MonoBehaviour
                         case eOperationObjectState.EOOS_BEING_OPERATION:
                             {
                                 _ChangeToState(eOperationObjectState.EOOS_BEING_OPERATION);
+
+                                int curOperationTeamID = GetCurrentOperationTeamID();
+
+                                if (_SaveOperationTeamID != curOperationTeamID)
+                                {
+                                    _SaveOperationTeamID = curOperationTeamID;
+                                    _SavePercent = 0.0f;
+                                }
+
                                 EnterOperation(0.0f);
                             }
 
@@ -313,6 +429,14 @@ public class OperationObject :  MonoBehaviour
                             {
                                 _SavePercent = Mathf.Clamp(_SavePercent - MiscUtils.GetPercentAbsClamped(_CurStateTime, DropSec), 0.0f, 1.0f);
                                 _ChangeToState(eOperationObjectState.EOOS_BEING_OPERATION);
+                                int curOperationTeamID = GetCurrentOperationTeamID();
+
+                                if (_SaveOperationTeamID != curOperationTeamID)
+                                {
+                                    _SaveOperationTeamID = curOperationTeamID;
+                                    _SavePercent = 0.0f;
+                                }
+
                                 EnterOperation(0.0f);
                             }
                             break;
@@ -346,16 +470,25 @@ public class OperationObject :  MonoBehaviour
                     //_SavePercent = 0.0f;
                     //_ChangeToState( eOperationObjectState.EOOS_IDEL );
                     //
+                    OnOperationFinished();
                 }
                 break;
-            default:
+            case eOperationObjectState.EOOS_INVALID:
+                {
+                    if( this.gameObject.GetActive() )
+                    {
+                        this.gameObject.SetActive(false);
+                    }
+                }
+                break;
+             default:
                 break;
 
         }
 
         if( oldState != _CurState )
         {            
-            if( !( _CurState == eOperationObjectState.EOOS_BEING_OPERATION || _CurState == eOperationObjectState.EOOS_FINISHED ) )
+            if( !( _CurState == eOperationObjectState.EOOS_BEING_OPERATION || _CurState == eOperationObjectState.EOOS_FINISHING ) )
             {
                 _SaveOperationPlayerID = 0;
             }
@@ -420,6 +553,20 @@ public class OperationObject :  MonoBehaviour
                 }
             }
 
+            _OnStateHaveChanged();
+
+            if (changeValue != 0.0f )
+            {
+                Transform curPlayer = vp_MPMaster.GetTransformOfViewID( playerID );
+                if( curPlayer != null )
+                {
+                    List<string> msgParams = new List<string>();
+                    msgParams.Add( playerID.ToString() );
+                    msgParams.Add((-changeValue).ToString());
+                    curPlayer.SendMessage( "ChangePlayerGotCount", msgParams );
+                }
+            }
+
             if (mPlayer != null)
             {
                 mPlayer.SendMessage("OnOptionStateSwitch", this, SendMessageOptions.DontRequireReceiver);
@@ -440,12 +587,11 @@ public class OperationObject :  MonoBehaviour
                 changeParam.PlayerID = playerID;
                 changeParam.ObjectID = ID;
                 changeParam.SavePercent = _SavePercent;
-
-                //M2CChangeOperationObjState(changeParam);
+                changeParam.CurCount = CurCount;
+                changeParam.ChangeCount = changeValue;
 
                 vp_GlobalEvent<OperationStateChangeParam>.Send("M2CChangeOperationStateImm", changeParam);
             }
-
 
             return true; 
         }
@@ -453,7 +599,12 @@ public class OperationObject :  MonoBehaviour
         return false;
     }
 
-    private void _UpdateMC()
+    protected virtual void TransCurrentStatus( int playerID )
+    {
+
+    }
+
+    protected void _UpdateMC()
     {
 
         float curTime = MiscUtils.GetCurBattleTime();
@@ -471,7 +622,7 @@ public class OperationObject :  MonoBehaviour
     }
 
 
-    void _RefreshC( int playerID )
+    protected void _RefreshC()
     {
         eOperationObjectState newState = _TryChangeToState;
         _TryChangeToState = eOperationObjectState.EOOS_COUNT;
@@ -549,6 +700,8 @@ public class OperationObject :  MonoBehaviour
 
                 }
 
+                _OnStateHaveChanged();
+
                 if (mPlayer != null)
                 {
                     mPlayer.SendMessage("OnOptionStateSwitch", this, SendMessageOptions.DontRequireReceiver);
@@ -559,10 +712,18 @@ public class OperationObject :  MonoBehaviour
                     mPlayer = null;
                 }
             }
+
+            if( _CurState == eOperationObjectState.EOOS_INVALID )
+            {
+                if (this.gameObject.GetActive())
+                {
+                    this.gameObject.SetActive(false);
+                }
+            }
         }
     }
 
-    void _UpdateC()
+    protected void _UpdateC()
     {
 
         int playerID = 0;
@@ -570,8 +731,13 @@ public class OperationObject :  MonoBehaviour
         {
             playerID = vp_MPMaster.GetViewIDOfTransform(mPlayer.transform);
         }
-        _RefreshC(playerID);
+        _RefreshC();
         _CurStateTime += Time.deltaTime;
+    }
+
+    protected virtual void _Update()
+    {
+
     }
 
     void Update()
@@ -584,14 +750,15 @@ public class OperationObject :  MonoBehaviour
         {
             _UpdateC();
         }
+        _Update();
     }
 
-    void EnterOperation( float curTime )
+    protected void EnterOperation(float curTime)
     {
         //以后会替换为服务器的时间
         _CurStateTime = 0.0f;
     }
-    void LeaveOperation( float curTime )
+    protected void LeaveOperation(float curTime)
     {
         //_SavePercent = Mathf.Clamp(_SavePercent + MiscUtils.GetPercentAbsClamped(curTime - _OperationStartTime, OperationSec), 0.0f, 1.0f);
         _SavePercent = Mathf.Clamp(_SavePercent + MiscUtils.GetPercentAbsClamped( _CurStateTime, OperationSec), 0.0f, 1.0f);
@@ -635,25 +802,29 @@ public class OperationObject :  MonoBehaviour
         return 0.0f;
     }
 
-    void UpdateOperation( float curTime )
-    {        
+    protected float UpdateOperation(float curTime)
+    {
+        float changeValue = 0.0f;
         float curPercent = GetOperationPercent( curTime );
         if( curPercent >= 1.0f )
         {
             LeaveOperation(curTime);
+            changeValue = ChangeValue();
             _ChangeToState(eOperationObjectState.EOOS_FINISHING);
             //_FishingStartTime = curTime;
         }
+
+        return changeValue;
     }
 
-    private void _ChangeToState( eOperationObjectState newState )
+    protected void _ChangeToState( eOperationObjectState newState )
     {
         _CurStateTime = 0.0f;
         _CurState = newState;
     }
 
 
-    private bool _IsMaster()
+    protected bool _IsMaster()
     {
         //multi mode is true
         //single mode is false 
@@ -772,7 +943,7 @@ public class OperationObject :  MonoBehaviour
         return false;
     }
 
-    public void OnRequestChangeStateResult( int result, int playerID, int ObjectID, int stateID, float stateTime, float savePercent )
+    public virtual void OnRequestChangeStateResult( int result, int playerID, int ObjectID, int stateID, float stateTime, float savePercent, float curCount, float changeCount )
     {
         if( Enum.IsDefined(typeof( eChangeOperationObjectStateResult ), result ) )
         {
@@ -784,6 +955,18 @@ public class OperationObject :  MonoBehaviour
 
             _SaveRequestState = eOperationObjectState.EOOS_COUNT;
 
+            if (changeCount != 0.0f)
+            {
+                Transform curPlayer = vp_MPMaster.GetTransformOfViewID(playerID);
+                if (curPlayer != null)
+                {
+                    List<string> msgParams = new List<string>();
+                    msgParams.Add(playerID.ToString());
+                    msgParams.Add((-changeCount).ToString());
+                    curPlayer.SendMessage("ChangePlayerGotCount", msgParams);
+                }
+            }
+
             if( mPlayer != null )
             {
                 mPlayer.SendMessage("SetPlayerOperationState", false);
@@ -791,8 +974,10 @@ public class OperationObject :  MonoBehaviour
 
             _SaveOperationPlayerID = playerID;
             _SavePercent = savePercent;
+            CurCount = curCount;
+
             ForceChangeState(toState, stateTime);
-            _RefreshC(playerID);
+            _RefreshC();
             
             eChangeOperationObjectStateResult eResult = (eChangeOperationObjectStateResult)result;            
             switch( eResult )
@@ -826,17 +1011,52 @@ public class OperationObject :  MonoBehaviour
     {
         foreach (KeyValuePair<int, OperationObject> kv in ID2OperationObjTable)
         {
-            if( kv.Value._CurState != eOperationObjectState.EOOS_FINISHED )
+            if (kv.Value._CurState != eOperationObjectState.EOOS_INVALID && kv.Value.GetType() == eOperationObjectType.EOOT_SUPPLY )
             {
                 return false;
             }            
         }
-        return true;
-
-        
+        return true;        
     }
 
+    public float GetCurAmountPercent( out float curValue, out float amount )
+    {
+        curValue = 0.0f;
+        amount = 0.0f;
 
+        if( Amount <= 0.0f )
+        {
+            return 1.0f;
+        }
+
+        curValue = CurCount;
+        amount = Amount;
+
+        float percent = CurCount / Amount;
+
+        return percent;
+    }
+
+    
+    public bool IsMultiSupply()
+    {
+        return Amount > Math.Abs(ChangeOneTime) && GetType() == eOperationObjectType.EOOT_SUPPLY;
+    }
+
+    public virtual eOperationObjectType GetType()
+    {
+        return eOperationObjectType.EOOT_SUPPLY;
+    }
+
+    public int GetCurrentOperationTeamID()
+    {
+        vp_MPTeam teamInfo = vp_MPMaster.GetTeamNumberByViewID( _SaveOperationPlayerID );
+        if (teamInfo != null)
+        {
+            return teamInfo.Number;
+        }
+        return 0;
+    }
 }
 
 

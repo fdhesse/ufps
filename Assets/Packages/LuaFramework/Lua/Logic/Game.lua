@@ -11,6 +11,7 @@ local core = require "sproto.core"
 local print_r = require "3rd/sproto/print_r"
 
 require "Common/functions"
+require "State/CombatState"
 require "Logic/LuaClass"
 --require "Logic/CtrlManager"
 require "Logic/ActionManager"
@@ -41,7 +42,7 @@ local WWW = UnityEngine.WWW;
 --初始化完成，发送链接服务器信息--
 function Game.OnInitOK()
     AppConst.SocketPort = 5000;
-   --AppConst.SocketAddress = "127.0.0.1";
+    --AppConst.SocketAddress = "127.0.0.1";
     AppConst.SocketAddress = "106.14.67.25";
     networkMgr:SendConnect();
 
@@ -77,6 +78,7 @@ function Game.OnEndGame()
   --local ctrl = CtrlManager.GetCtrl(CtrlNames.Combat);
   --ctrl.ShowResult(true, GameAPI.Win);
   --CombatPanelViewModel.Win = GameAPI.Win;
+  LobbyModel.EndMatch();
   CombatPanelViewModel.SetWin(GameAPI.Win);
   ShowPanel('Combat');
 end
@@ -103,7 +105,7 @@ function Game.EnterGame(onEnter)
 
 end
 
-function Game.EnterPve(matchId, teamId, roomUrl, onEnter)
+function Game.EnterPve(matchId, teamId, teamSequence, roomUrl, onEnter)
   --resMgr:LoadLevel("pvescenes", "TWD_coop_warehouse", nil, function() 
       
     local info = MultiplayerInfo.New();
@@ -114,13 +116,14 @@ function Game.EnterPve(matchId, teamId, roomUrl, onEnter)
     info.ip = ip;
     info.port = port;
     info.matchId = matchId;
-    --info.teamNum = teamNum;
+    info.teamNum = teamSequence;
     info.teamId = teamId;
     --print(ip);
     
     GameAPI.StartMultiplayer(info);      
-    PreloadPanel('Combat');
-     
+    
+    CombatState.Enter();
+    
     onEnter();    
     --resMgr:UnloadAssetBundle("pvpscenes", false);
   --end);  
@@ -152,6 +155,7 @@ end
 --]]
 
 function Game.EnterLobby(onEnter)
+  CombatState.Exit();
   resMgr:LoadLevel("lobbyscenes", "lobby", nil, function() 
       
     ShowPanel('MainMenu');
@@ -164,5 +168,6 @@ end
 
 --销毁--
 function Game.OnDestroy()
+  CombatState.Exit();
 	--logWarn('OnDestroy--->>>');
 end

@@ -10,6 +10,9 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: warehouse_1
+    4300002: polySurface323
+    4300004: polySurface343
+    4300006: polySurface1645
   materials:
     importMaterials: 1
     materialName: 0

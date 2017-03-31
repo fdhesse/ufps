@@ -111,6 +111,14 @@ public class FlagObject : MonoBehaviour
             OperationObject obj = parent.GetComponent<OperationObject>();
             if( obj != null )
             {
+                if( obj.GetType() == OperationObject.eOperationObjectType.EOOT_COLLECTIONPOINT )
+                {
+                    CollectionPoint pt = obj as CollectionPoint;
+                    if (pt != null && !pt.IsInLocalPlayerTeam())
+                    {
+                        gameObject.SetActive( false );
+                    }
+                }
                 float curTime = MiscUtils.GetCurBattleTime();
                 CurProgress = obj.GetOperationPercent( curTime );
 
@@ -146,7 +154,7 @@ public class FlagObject : MonoBehaviour
                 
                 OperationObject.eOperationObjectState state = obj.GetCurState();
 
-                if ( state == OperationObject.eOperationObjectState.EOOS_FINISHED )
+                if ( state == OperationObject.eOperationObjectState.EOOS_FINISHED || state == OperationObject.eOperationObjectState.EOOS_INVALID )
                 {
                     CurVisble = false;
                 }

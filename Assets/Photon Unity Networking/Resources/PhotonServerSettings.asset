@@ -85,4 +85,7 @@ MonoBehaviour:
   - MReceiveChangeOperationObjState
   - CCoopSupplyModeFinish
   - CSetExitZoneVisible
+  - M2COneDropCollection
+  - M2COnePickupCollection
+  - NetPVPCoopEndGame
   DisableAutoOpenWizard: 1
