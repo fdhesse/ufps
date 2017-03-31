@@ -286,6 +286,9 @@ enum ActionEnum
 	MatchUpdate					= 9421;
 	MatchCancel					= 9422;
 	MatchBegin					= 9423;
+	MatchHeartBeat				= 9424;
+	MatchQuery					= 9425;
+	MatchEnd					= 9426;
 
 	RTSendBattleReport				= 9450; //发送战报给对战双方
 	RTGetBattleUploadInf			= 9451; //获取战报回放数据上传参数

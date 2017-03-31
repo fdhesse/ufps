@@ -1082,7 +1082,6 @@ GameObject:
   - component: {fileID: 4000010454571364}
   - component: {fileID: 33000012881561862}
   - component: {fileID: 23000013545105942}
-  - component: {fileID: 114000013200904030}
   - component: {fileID: 65000014264138796}
   - component: {fileID: 114000012758135402}
   m_Layer: 24
@@ -3662,7 +3661,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!102 &102000010174592568
 TextMesh:
@@ -4284,7 +4283,7 @@ MonoBehaviour:
   - {fileID: 114000012179129928}
   - {fileID: 114000010190408154}
   - {fileID: 114000012610122126}
-  - {fileID: 114000013200904030}
+  - {fileID: 0}
   - {fileID: 114000012758135402}
   Anchors:
   - {fileID: 114000011566090158}
@@ -4832,35 +4831,6 @@ MonoBehaviour:
   Objects: []
   MethodIndexes: 
   Methods: []
---- !u!114 &114000013200904030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013811779080}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870b186eb2f774408bc2d0f85c16b683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Manager: {fileID: 114000011495289060}
-  Objects: []
-  MethodIndexes: 
-  Methods: []
-  EnemyColor: {r: 1, g: 0, b: 0, a: 1}
-  ColorChangeDuration: 0.25
-  EnemyMask:
-    serializedVersion: 2
-    m_Bits: 33554432
-  InteractIconSize: 2.5
-  EnemyCrosshair: {fileID: 2800000, guid: 156235ff3c8ff7a4d807b1e07985c0ce, type: 3}
-  ScaleOnRun: 1
-  ScaleMultiplier: 1.25
-  AssistedTargeting: 1
-  AssistedTargetingSpeed: 20
-  AssistedTargetingRadius: 1
-  AssistedTargetingTrackingRadius: 2
-  AssistedTargetingFoldout: 1
 --- !u!114 &114000013315932198
 MonoBehaviour:
   m_ObjectHideFlags: 1

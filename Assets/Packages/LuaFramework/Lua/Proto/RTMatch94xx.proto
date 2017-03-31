@@ -48,6 +48,7 @@ message RTMatchResultEx
 	repeated RTMatchInf MatchedUserList = 4;
 	required int32 TeamId = 5;
 	required int32 MasterUserId = 6;
+	required int32 Sequence = 7;
 }
 
 message Request9400Pack //RTMatchStart
@@ -224,6 +225,42 @@ message Request9423Pack //MatchBegin
 message Response9423Pack
 {	
 	//required RTMatchResultEx resultEx = 1;
+}
+
+message Request9424Pack //MatchBegin
+{
+	required int32 UserId = 1;
+	required int32 MissionId = 2;	
+	required int32 MatchId = 3;		
+}
+
+message Response9424Pack
+{	
+	//required RTMatchResultEx resultEx = 1;
+}
+
+message Request9425Pack //MatchQuery
+{
+	required int32 UserId = 1;
+	required int32 MissionId = 2;	
+	//required int32 MatchId = 3;		
+}
+
+message Response9425Pack
+{	
+	required RTMatchResultEx resultEx = 1;
+	//required int32 State = 1;
+}
+
+message Request9426Pack //MatchEnd
+{
+	required int32 UserId = 1;
+	required int32 MissionId = 2;	
+	required int32 MatchId = 3;		
+}
+
+message Response9426Pack
+{	
 }
 
 message Request9450Pack //RTSendBattleReport

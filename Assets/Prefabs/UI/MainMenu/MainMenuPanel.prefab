@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 222000011496961810}
   - component: {fileID: 114000013243874892}
   - component: {fileID: 114000012152197286}
+  - component: {fileID: 114942380827422100}
   m_Layer: 5
   m_Name: clan
   m_TagString: Untagged
@@ -125,6 +126,7 @@ GameObject:
   - component: {fileID: 222000012064780800}
   - component: {fileID: 114000013325563590}
   - component: {fileID: 114000012226255534}
+  - component: {fileID: 114225173268407436}
   m_Layer: 5
   m_Name: gacha
   m_TagString: Untagged
@@ -263,6 +265,8 @@ GameObject:
   - component: {fileID: 224000013801237956}
   - component: {fileID: 222000011597879390}
   - component: {fileID: 114000012314217334}
+  - component: {fileID: 114184456737267324}
+  - component: {fileID: 114297021441006130}
   m_Layer: 5
   m_Name: SC_icon
   m_TagString: Untagged
@@ -281,6 +285,7 @@ GameObject:
   - component: {fileID: 222000013761770894}
   - component: {fileID: 114000010562940800}
   - component: {fileID: 114000013689676350}
+  - component: {fileID: 114723783666273614}
   m_Layer: 5
   m_Name: quest
   m_TagString: Untagged
@@ -354,6 +359,7 @@ GameObject:
   - component: {fileID: 114000012207192566}
   - component: {fileID: 114000010944217002}
   - component: {fileID: 114000012624026344}
+  - component: {fileID: 114577253186101788}
   m_Layer: 5
   m_Name: map
   m_TagString: Untagged
@@ -441,6 +447,7 @@ GameObject:
   - component: {fileID: 222000011746618634}
   - component: {fileID: 114000011375373732}
   - component: {fileID: 114000010900654588}
+  - component: {fileID: 114623304692563834}
   m_Layer: 5
   m_Name: setting
   m_TagString: Untagged
@@ -511,6 +518,7 @@ GameObject:
   - component: {fileID: 222000014046167044}
   - component: {fileID: 114000010812919118}
   - component: {fileID: 114000011884207704}
+  - component: {fileID: 114205715051328268}
   m_Layer: 5
   m_Name: shop
   m_TagString: Untagged
@@ -579,6 +587,8 @@ GameObject:
   - component: {fileID: 224000012721818160}
   - component: {fileID: 222000012575431558}
   - component: {fileID: 114000011952900220}
+  - component: {fileID: 114589790578903866}
+  - component: {fileID: 114010085397376938}
   m_Layer: 5
   m_Name: HC_icon
   m_TagString: Untagged
@@ -650,6 +660,8 @@ GameObject:
   - component: {fileID: 222000012169628198}
   - component: {fileID: 114000010422211642}
   - component: {fileID: 114000013158232522}
+  - component: {fileID: 114077559704363580}
+  - component: {fileID: 114849950635343858}
   m_Layer: 5
   m_Name: talent
   m_TagString: Untagged
@@ -668,6 +680,7 @@ GameObject:
   - component: {fileID: 222000013084732312}
   - component: {fileID: 114000012292654564}
   - component: {fileID: 114000011854415602}
+  - component: {fileID: 114878010207034750}
   m_Layer: 5
   m_Name: friend
   m_TagString: Untagged
@@ -686,6 +699,8 @@ GameObject:
   - component: {fileID: 222000010936382016}
   - component: {fileID: 114000013004850466}
   - component: {fileID: 114000011918819346}
+  - component: {fileID: 114135716546684062}
+  - component: {fileID: 114359894211416226}
   m_Layer: 5
   m_Name: inventory
   m_TagString: Untagged
@@ -775,6 +790,7 @@ GameObject:
   - component: {fileID: 222000013625378572}
   - component: {fileID: 114000012121996518}
   - component: {fileID: 114000013200009710}
+  - component: {fileID: 114644452127805630}
   m_Layer: 5
   m_Name: heroes
   m_TagString: Untagged
@@ -931,6 +947,7 @@ GameObject:
   - component: {fileID: 222000010187640808}
   - component: {fileID: 114000011064264066}
   - component: {fileID: 114000012142227650}
+  - component: {fileID: 114784237317354658}
   m_Layer: 5
   m_Name: rank
   m_TagString: Untagged
@@ -1020,6 +1037,7 @@ GameObject:
   - component: {fileID: 114000010261746184}
   - component: {fileID: 114000013951942660}
   - component: {fileID: 114000013373874724}
+  - component: {fileID: 114411684265337690}
   m_Layer: 5
   m_Name: liveevent
   m_TagString: Untagged
@@ -1038,6 +1056,7 @@ GameObject:
   - component: {fileID: 222000012692799632}
   - component: {fileID: 114000013824086516}
   - component: {fileID: 114000012310168620}
+  - component: {fileID: 114809200812089860}
   m_Layer: 5
   m_Name: mail
   m_TagString: Untagged
@@ -1521,7 +1540,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000011375373732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114623304692563834}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000010944217002
@@ -1562,7 +1592,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000012207192566}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114577253186101788}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000010960304162
@@ -2203,7 +2244,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000012292654564}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114878010207034750}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000011884207704
@@ -2244,7 +2296,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000010812919118}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114205715051328268}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000011918819346
@@ -2285,7 +2348,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000013004850466}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114359894211416226}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000011952900220
@@ -2488,7 +2562,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000011064264066}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114784237317354658}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000012144775120
@@ -2562,7 +2647,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000013243874892}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114942380827422100}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000012166132376
@@ -2657,7 +2753,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000013325563590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114225173268407436}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000012249395440
@@ -2741,7 +2848,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000013824086516}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114809200812089860}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000012314217334
@@ -3214,7 +3332,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000010422211642}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114849950635343858}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000013163074960
@@ -3288,7 +3417,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000012121996518}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114644452127805630}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000013215820550
@@ -3588,7 +3728,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000010562940800}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114723783666273614}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000013781876812
@@ -3722,7 +3873,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000010261746184}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114411684265337690}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000013957030042
@@ -3758,6 +3920,318 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &114010085397376938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012500521850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 114000011952900220}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114589790578903866}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114077559704363580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012718734576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afbe783d92eb24fdbaac40a98677e036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: OnTalent
+  Type: 0
+  TriggerType: 0
+--- !u!114 &114135716546684062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013189494744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afbe783d92eb24fdbaac40a98677e036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: OnInventory
+  Type: 0
+  TriggerType: 0
+--- !u!114 &114184456737267324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011155871828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 114000012314217334}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114297021441006130}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114205715051328268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012305604558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: b04daf8d81ed8b54aa558d2805018052, type: 3}
+--- !u!114 &114225173268407436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010612393012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: b04daf8d81ed8b54aa558d2805018052, type: 3}
+--- !u!114 &114297021441006130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011155871828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: b04daf8d81ed8b54aa558d2805018052, type: 3}
+--- !u!114 &114359894211416226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013189494744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: e0899934c52e8c849b316f2b14187279, type: 3}
+--- !u!114 &114411684265337690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014166956610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: 065aaeb7dd40a064e9d3aedf9879082a, type: 3}
+--- !u!114 &114577253186101788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011589188028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: 065aaeb7dd40a064e9d3aedf9879082a, type: 3}
+--- !u!114 &114589790578903866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012500521850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: b04daf8d81ed8b54aa558d2805018052, type: 3}
+--- !u!114 &114623304692563834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011900027816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: 62a40e30fbfa79b4280bc9c91753e529, type: 3}
+--- !u!114 &114644452127805630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013362160526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: e0899934c52e8c849b316f2b14187279, type: 3}
+--- !u!114 &114723783666273614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011181277782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: e0899934c52e8c849b316f2b14187279, type: 3}
+--- !u!114 &114784237317354658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014003824870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: 62a40e30fbfa79b4280bc9c91753e529, type: 3}
+--- !u!114 &114809200812089860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014250078818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: 62a40e30fbfa79b4280bc9c91753e529, type: 3}
+--- !u!114 &114849950635343858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012718734576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: e0899934c52e8c849b316f2b14187279, type: 3}
+--- !u!114 &114878010207034750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012846327710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: 62a40e30fbfa79b4280bc9c91753e529, type: 3}
+--- !u!114 &114942380827422100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010537033160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: e0899934c52e8c849b316f2b14187279, type: 3}
 --- !u!124 &124000010138735524
 Behaviour:
   m_ObjectHideFlags: 1

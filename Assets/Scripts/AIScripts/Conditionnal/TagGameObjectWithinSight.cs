@@ -55,6 +55,8 @@ public class PlayerWithinSight : Conditional
 
     bool IsPlayerInSight()
     {
+        if (_player == null) return false;
+
         var angle = Vector3.Angle(transform.forward, _player.transform.position - transform.position);
         var dst = Vector3.Distance(transform.position, _player.transform.position);
 

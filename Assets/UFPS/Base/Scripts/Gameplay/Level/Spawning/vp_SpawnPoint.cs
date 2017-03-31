@@ -33,7 +33,7 @@ public class vp_SpawnPoint : MonoBehaviour
 
 	protected static List<vp_SpawnPoint> m_MatchingSpawnPoints = new List<vp_SpawnPoint>(50);	// work variable
 
-	protected static List<vp_SpawnPoint> m_SpawnPoints = null;
+	protected static List<vp_SpawnPoint> m_SpawnPoints = new List<vp_SpawnPoint>();
 	public static List<vp_SpawnPoint> SpawnPoints
 	{
 		get
@@ -41,8 +41,8 @@ public class vp_SpawnPoint : MonoBehaviour
 			// if we have no list of spawnpoints (which is the case if the
 			// game just booted up or a new level was loaded) - attempt to
 			// populate a new one by scanning the scene for vp_SpawnPoints
-			if (m_SpawnPoints == null)
-				m_SpawnPoints = new List<vp_SpawnPoint>(FindObjectsOfType(typeof(vp_SpawnPoint)) as vp_SpawnPoint[]);
+            //if (m_SpawnPoints == null)
+            //    m_SpawnPoints = new List<vp_SpawnPoint>(FindObjectsOfType(typeof(vp_SpawnPoint)) as vp_SpawnPoint[]);
 			return m_SpawnPoints;
 		}
 	}
@@ -53,10 +53,10 @@ public class vp_SpawnPoint : MonoBehaviour
 	/// </summary>
 	private void OnEnable()
 	{
-
-#if UNITY_5_4_OR_NEWER
-		SceneManager.sceneLoaded += OnLevelLoad;
-#endif
+        m_SpawnPoints.Add(this);
+//#if UNITY_5_4_OR_NEWER
+//        SceneManager.sceneLoaded += OnLevelLoad;
+//#endif
 
 	}
 
@@ -66,10 +66,10 @@ public class vp_SpawnPoint : MonoBehaviour
 	/// </summary>
 	private void OnDisable()
 	{
-
-#if UNITY_5_4_OR_NEWER
-		SceneManager.sceneLoaded -= OnLevelLoad;
-#endif
+        m_SpawnPoints.Remove(this);
+//#if UNITY_5_4_OR_NEWER
+//        SceneManager.sceneLoaded -= OnLevelLoad;
+//#endif
 
 	}
 
@@ -207,14 +207,14 @@ public class vp_SpawnPoint : MonoBehaviour
 	/// (the list will be automatically recreated and repopulated the next
 	/// time the 'SpawnPoints' property is read)
 	/// </summary>
-#if UNITY_5_4_OR_NEWER
-	protected virtual void OnLevelLoad(Scene scene, LoadSceneMode mode)
-#else
-	protected virtual void OnLevelWasLoaded()
-#endif
-	{
-		m_SpawnPoints = null;
-	}
+//#if UNITY_5_4_OR_NEWER
+//    protected virtual void OnLevelLoad(Scene scene, LoadSceneMode mode)
+//#else
+//    protected virtual void OnLevelWasLoaded()
+//#endif
+//    {
+//        m_SpawnPoints = null;
+//    }
 
 
 	// ---- editor stuff below this line. NOTE: there is also 'vp_SpawnPointEditor.cs' ----

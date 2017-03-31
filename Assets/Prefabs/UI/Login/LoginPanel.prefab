@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 114000011622188792}
   - component: {fileID: 114000010861275208}
   - component: {fileID: 114000011315654890}
+  - component: {fileID: 114112671792822354}
   m_Layer: 0
   m_Name: Confirm
   m_TagString: Untagged
@@ -201,6 +202,7 @@ GameObject:
   - component: {fileID: 54000010079551240}
   - component: {fileID: 114000010348275680}
   - component: {fileID: 114000013724185052}
+  - component: {fileID: 114330020616858900}
   m_Layer: 0
   m_Name: LoginPanel
   m_TagString: Untagged
@@ -515,7 +517,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000011695685156}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114112671792822354}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000011010683704
@@ -1014,6 +1027,30 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114112671792822354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011766565584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed02b440cf6381944894b754145c8765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClipName: {fileID: 8300000, guid: 62570c80b0ebf92448b28da97d215cc3, type: 3}
+--- !u!114 &114330020616858900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012864180540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e43bbe1390caa43b123136c7dba6c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BgAudioClip: {fileID: 8300000, guid: 87ff442f9fb904a4f888d1e696e65d50, type: 3}
 --- !u!222 &222000010047574644
 CanvasRenderer:
   m_ObjectHideFlags: 1

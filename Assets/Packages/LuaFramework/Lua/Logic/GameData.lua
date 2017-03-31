@@ -34,6 +34,8 @@ GameData =
     SysNoticeVer = 0;
     DynamicVers = {};    
     --EntityTypeToEnumTable = {};
+    
+  mEntityChangedCB                                = {};    
 };
 
 
@@ -238,12 +240,13 @@ function GameData:ReceiveResponsePackUD(extensionPack)
     --print(entityPack.Type); 
 		if pEntity ~= nil and self:ReceiveEntityPack(pEntity, entityPack) then
       --print(entityPack.Type);
-			table.insert(entitysArray, pEntity);
+			--table.insert(entitysArray, {type = entityPack.Type, entity = pEntity});
+      entitysArray[entityPack.Type] = pEntity;
 		--else
 			--assert(false, 'failed to receive response entity package of type ' .. Game.KingsMan.MessagePack.EntityType.NAME_TABLE[entityPack.Type]);
 		end
 	end
-	--if #entitysArray > 0 then GameEnv:DispatchEntityChangedEvent(entitysArray); end
+	self:DispatchEntityChangedEvent(entitysArray)
 end
 
 function GameData:ReceiveEntityPack(pEntity, entityPack)
@@ -257,3 +260,20 @@ function GameData:ReceiveEntityPack(pEntity, entityPack)
   print('false')
 	return false;
 end
+
+function GameData:RegisterEntityChangedCB(entityType, fnCallback)
+  if self.mEntityChangedCB[entityType] == nil then self.mEntityChangedCB[entityType] = {}; end
+  table.insert(self.mEntityChangedCB[entityType], fnCallback);
+end
+
+function GameData:DispatchEntityChangedEvent(entityArray)
+  for entityType, pEntity in pairs(entityArray) do
+    --local name = pb.fullname(pEntity);
+    print('DispatchEntityChangedEvent ' .. entityType)
+    local fnCallbacks = self.mEntityChangedCB[entityType];
+    if type(fnCallbacks) == 'table' then
+      for i = 1, #fnCallbacks, 1 do fnCallbacks[i](pEntity); end
+    end
+  end
+end
+

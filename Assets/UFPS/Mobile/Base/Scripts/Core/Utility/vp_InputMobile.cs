@@ -335,7 +335,7 @@ public class vp_InputMobile : vp_Input
     /// </summary>
     public static void Register(vp_UIControl control)
     {
-    
+        //Debug.LogWarningFormat("Register:{0}", control.ToString());
     	ControlRegistration(control, true);
     
     }
@@ -346,7 +346,7 @@ public class vp_InputMobile : vp_Input
     /// </summary>
     public static void Unregister(vp_UIControl control)
     {
-    
+        //Debug.LogWarningFormat("Unregister:{0}", control.ToString());    
     	ControlRegistration(control, false);
     
     }

@@ -24,5 +24,7 @@ CombatPanelViewModel = {
     ClosePanel('Combat');
     GameAPI.ExecuteEvent("ExitCombat");
     GameAPI.ExecuteEvent("LoadLobby");
+    
+    LobbyModel.CheckTeam();
   end,
 };

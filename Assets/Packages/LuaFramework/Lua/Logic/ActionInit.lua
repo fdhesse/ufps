@@ -47,6 +47,18 @@ ActionMgr:RegisterAction(Game.KingsMan.MessagePack.ActionEnum.MatchBegin, Game.K
 	0, --Game.KingsMan.MessagePack.ActionFlag.AF_SYNCUD | Game.KingsMan.MessagePack.ActionFlag.AF_SYNCNOTICE,
 	Game.KingsMan.MessagePack.Request9423Pack, Game.KingsMan.MessagePack.Response9423Pack);  
 
+ActionMgr:RegisterAction(Game.KingsMan.MessagePack.ActionEnum.MatchHeartBeat, Game.KingsMan.MessagePack.ServerEnum.UserBusiness,
+	0, --Game.KingsMan.MessagePack.ActionFlag.AF_SYNCUD | Game.KingsMan.MessagePack.ActionFlag.AF_SYNCNOTICE,
+	Game.KingsMan.MessagePack.Request9424Pack, Game.KingsMan.MessagePack.Response9424Pack);  
+
+ActionMgr:RegisterAction(Game.KingsMan.MessagePack.ActionEnum.MatchQuery, Game.KingsMan.MessagePack.ServerEnum.UserBusiness,
+	0, --Game.KingsMan.MessagePack.ActionFlag.AF_SYNCUD | Game.KingsMan.MessagePack.ActionFlag.AF_SYNCNOTICE,
+	Game.KingsMan.MessagePack.Request9425Pack, Game.KingsMan.MessagePack.Response9425Pack);  
+
+ActionMgr:RegisterAction(Game.KingsMan.MessagePack.ActionEnum.MatchEnd, Game.KingsMan.MessagePack.ServerEnum.UserBusiness,
+	0, --Game.KingsMan.MessagePack.ActionFlag.AF_SYNCUD | Game.KingsMan.MessagePack.ActionFlag.AF_SYNCNOTICE,
+	Game.KingsMan.MessagePack.Request9426Pack, Game.KingsMan.MessagePack.Response9426Pack);  
+
 --room
 ActionMgr:RegisterAction(Game.KingsMan.MessagePack.ActionEnum.RoomCreate, Game.KingsMan.MessagePack.ServerEnum.Room,
 	0, --Game.KingsMan.MessagePack.ActionFlag.AF_SYNCUD | Game.KingsMan.MessagePack.ActionFlag.AF_SYNCNOTICE,
