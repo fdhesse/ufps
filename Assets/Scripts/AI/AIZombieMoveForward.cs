@@ -4,39 +4,28 @@ using BehaviorDesigner.Runtime.Tasks;
 public class AIZombieMoveForward : Action
 {
     public float Speed = 1;
-    public float CheckTime = 1;
 
-    private float _lastStart;
+    public float DistanceThreshold = 1;
 
-    private bool _collision;
+    private Animator _animator;
+    private CollisionDetector _collisionDetector;
 
     public override void OnStart()
     {
-        _lastStart = Time.time;
-        _collision = false;
-    }
-
-    new void OnTriggerEnter(Collider c)
-    {
-        _collision = true;
-        Debug.Log("TriggerEnter");
-    }
-
-    new void OnTriggerExit(Collider c)
-    {
-        _collision = false;
-        Debug.Log("TriggerExit");
-    }
-
-    public override void OnTriggerStay(Collider other)
-    {
-        Debug.Log("base.OnTriggerStay(other)");
+        _animator = gameObject.GetComponentInChildren<Animator>();
+        _collisionDetector = gameObject.GetComponent<CollisionDetector>();
     }
 
     public override TaskStatus OnUpdate()
     {
-        //if (_collision) return TaskStatus.Failure;
-        if (Time.time - _lastStart > CheckTime) return TaskStatus.Success;
+        if (_animator.GetBool("isDead")) return TaskStatus.Inactive;
+        if (_collisionDetector.Colliding)
+        {
+            _animator.SetBool("isIdle", true);
+            return TaskStatus.Success;
+        }
+
+        _animator.SetBool("isIdle", false);
 
         transform.position += transform.forward * Speed * Time.deltaTime;
 

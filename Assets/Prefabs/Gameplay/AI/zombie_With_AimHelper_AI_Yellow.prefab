@@ -1339,7 +1339,7 @@ MonoBehaviour:
   RespawnCheckRadius: -99999
   RespawnSound: {fileID: 0}
   DeathEffect: {fileID: 0}
-  helpbox: 84
+  helpbox: 62
 --- !u!114 &114781395669622676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1408,7 +1408,7 @@ MonoBehaviour:
   SurfaceType: {fileID: 11400000, guid: d5038622b1b2a6f43874b4c45ddadc71, type: 2}
   AllowDecals: 1
   SurfaceID: 0
-  surfaceTypeHelp: 161
+  surfaceTypeHelp: 106
 --- !u!114 &114874882027154054
 MonoBehaviour:
   m_ObjectHideFlags: 1

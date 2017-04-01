@@ -51,16 +51,16 @@ public class vp_FXBullet : vp_Bullet
 	}
 
 
-	/// <summary>
-	/// applies damage in the UFPS format, with the amount of damage, its source
-	/// and the damage type 'Bullet'
-	/// </summary>
-	protected override void DoUFPSDamage()
-	{
+    /// <summary>
+    /// applies damage in the UFPS format, with the amount of damage, its source
+    /// and the damage type 'Bullet'
+    /// </summary>
+    protected override void DoUFPSDamage(float damageMultiplier)
+    {
 
-		m_TargetDHandler.Damage(new vp_DamageInfo(Damage, m_Source, vp_DamageInfo.DamageType.Bullet));
+        m_TargetDHandler.Damage(new vp_DamageInfo(Damage * damageMultiplier, m_Source, vp_DamageInfo.DamageType.Bullet));
 
-	}
+    }
 
 
 }

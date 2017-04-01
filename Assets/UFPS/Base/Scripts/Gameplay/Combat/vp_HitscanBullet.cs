@@ -165,23 +165,23 @@ public class vp_HitscanBullet : vp_Bullet
 	}
 
 
-	/// <summary>
-	/// applies damage in the UFPS format, with the amount of damage,
-	/// its source and the dmaage type 'Bullet'
-	/// </summary>
-	protected override void DoUFPSDamage()
-	{
+    /// <summary>
+    /// applies damage in the UFPS format, with the amount of damage,
+    /// its source and the dmaage type 'Bullet'
+    /// </summary>
+    protected override void DoUFPSDamage(float damageMultiplier)
+    {
 
-		m_TargetDHandler.Damage(new vp_DamageInfo(Damage, m_Source, vp_DamageInfo.DamageType.Bullet));
+        m_TargetDHandler.Damage(new vp_DamageInfo(Damage * damageMultiplier, m_Source, vp_DamageInfo.DamageType.Bullet));
 
-	}
+    }
 
 
-	/// <summary>
-	/// if the object has a visible renderer, adds it to the decal manager.
-	/// if not, schedules it for destruction as soon as it's silent
-	/// </summary>
-	protected override void TryDestroy()
+    /// <summary>
+    /// if the object has a visible renderer, adds it to the decal manager.
+    /// if not, schedules it for destruction as soon as it's silent
+    /// </summary>
+    protected override void TryDestroy()
 	{
 
 		if ((m_Renderer != null) && m_Renderer.enabled)

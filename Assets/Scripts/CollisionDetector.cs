@@ -18,4 +18,15 @@ public class CollisionDetector : MonoBehaviour
     {
         Colliding = false;
     }
+
+    void OnCollisionEnter(Collision c)
+    {
+        Debug.Log("OnCollisionEnter");
+        Colliding = true;
+    }
+
+    void OnCollisionExit(Collision c)
+    {
+        Colliding = false;
+    }
 }

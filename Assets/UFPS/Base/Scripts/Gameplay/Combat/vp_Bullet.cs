@@ -276,32 +276,33 @@ public class vp_Bullet : MonoBehaviour
 		if ((DamageMode == vp_DamageInfo.DamageMode.DamageHandler)
 			|| (DamageMode == vp_DamageInfo.DamageMode.Both))
 		{
-			m_TargetDHandler = vp_DamageHandler.GetDamageHandlerOfCollider(m_Hit.collider);
-			if (m_TargetDHandler != null)
-				DoUFPSDamage();
-		}
+            var headshotDamageHandler = m_Hit.collider.GetComponent<vp_HeadshotDamageHandler>();
+            m_TargetDHandler = vp_DamageHandler.GetDamageHandlerOfCollider(m_Hit.collider);
+            if (m_TargetDHandler != null)
+                DoUFPSDamage(headshotDamageHandler == null ? 1 : headshotDamageHandler.DamageMultiplier);
+        }
 
-	}
-
-
-	/// <summary>
-	/// applies damage in the UFPS format, with the amount of damage and its
-	/// source. NOTE: this method is overridden by 'vp_FXBullet'
-	/// </summary>
-	protected virtual void DoUFPSDamage()
-	{
-
-		m_TargetDHandler.Damage(new vp_DamageInfo(Damage, m_Source));
-
-	}
+    }
 
 
-	/// <summary>
-	/// checks if the impact sound is still playing and, if not, destroys the
-	/// object. otherwise tries again in 1 sec. visible objects (typically -
-	/// decals) will not be automatically destroyed
-	/// </summary>
-	protected virtual void TryDestroy()
+    /// <summary>
+    /// applies damage in the UFPS format, with the amount of damage and its
+    /// source. NOTE: this method is overridden by 'vp_FXBullet'
+    /// </summary>
+    protected virtual void DoUFPSDamage(float damageMultiplier = 1)
+    {
+
+        m_TargetDHandler.Damage(new vp_DamageInfo(Damage * damageMultiplier, m_Source));
+
+    }
+
+
+    /// <summary>
+    /// checks if the impact sound is still playing and, if not, destroys the
+    /// object. otherwise tries again in 1 sec. visible objects (typically -
+    /// decals) will not be automatically destroyed
+    /// </summary>
+    protected virtual void TryDestroy()
 	{
 
 		if (this == null)
