@@ -54,6 +54,7 @@ public class vp_FPController : vp_CharacterController
 	}
 
     // motor
+    private FreezePlayer _freezePlayer;
     public float MotorAcceleration = 0.18f;
 	public float MotorDamping = 0.17f;
 	public float MotorBackwardsSpeed = 0.65f;
@@ -113,7 +114,7 @@ public class vp_FPController : vp_CharacterController
 		base.OnEnable();
 
 		vp_TargetEvent<Vector3>.Register(m_Transform, "ForceImpact", AddForce);
-
+	    _freezePlayer = GetComponent<FreezePlayer>();
 	}
 
 
@@ -304,12 +305,12 @@ public class vp_FPController : vp_CharacterController
 			(Player.InputMoveVector.Get().y * MotorBackwardsSpeed))		// if moving backwards: apply backwards-modifier
 			* (Transform.TransformDirection(
 			Vector3.forward *
-			(MotorAcceleration * 0.1f) *
+			(_freezePlayer.Frost ? 0 : (MotorAcceleration * 0.1f)) *
 			m_MotorAirSpeedModifier) *
 			m_SlopeFactor);
 		m_MotorThrottle += Player.InputMoveVector.Get().x * (Transform.TransformDirection(
 			Vector3.right *
-			(MotorAcceleration * 0.1f) *
+			(_freezePlayer.Frost ? 0 : (MotorAcceleration * 0.1f)) *
 			m_MotorAirSpeedModifier) *
 			m_SlopeFactor);
 

@@ -3,25 +3,11 @@
 public class CollisionDetector : MonoBehaviour
 {
     public bool Colliding { get; set; }
-
-    void OnTriggerEnter(Collider c)
-    {
-        Colliding = true;
-    }
-
-    void OnTriggerStay(Collider c)
-    {
-        Colliding = true;
-    }
-
-    void OnTriggerExit(Collider c)
-    {
-        Colliding = false;
-    }
-
+    
     void OnCollisionEnter(Collision c)
     {
-        Debug.Log("OnCollisionEnter");
+        if (c.gameObject.tag == "Ground") return;
+
         Colliding = true;
     }
 

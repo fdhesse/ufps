@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
-public class ZombieWithinSight : Conditional
+public class AIZombieWithinSight : HumanizedReactionConditional
 {
-    public bool GDB;
-
     public float ConeAngle = 90;
     public float ConeDistance = 5;
 
@@ -17,43 +14,51 @@ public class ZombieWithinSight : Conditional
 
     public SharedTransform Target;
 
-    private Animator _animator;
-
     private GameObject[] _targets;
     private List<GameObject> _lastTargetsInSight = new List<GameObject>();
 
     public override void OnAwake()
     {
+        base.OnAwake();
+
         _targets = GameObject.FindGameObjectsWithTag(ZombieTag); // todo create a pool or make sure new zombies will be registered in this array
-        _animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     public override TaskStatus OnUpdate()
     {
         var targetsInSight = TargetsInSight();
-        var ret = TaskStatus.Failure;
 
-        if (null != Target.Value && IsTargetInSight(Target.Value.gameObject))
+        if (waiting)
+            return TaskStatus.Running;
+
+        //try track the current target
+        if (null != Target.Value &&
+            targetsInSight.Contains(Target.Value.gameObject))
         {
             _lastTargetsInSight = targetsInSight;
             return TaskStatus.Success;
         }
 
-        foreach (var targetInSight in targetsInSight)
+        if (null == Target.Value || !targetsInSight.Contains(Target.Value.gameObject))
         {
-            if (_lastTargetsInSight.Contains(targetInSight)) continue;
-
-            if (null == Target.Value && 
-                Random.Range(0, 1f) >= ProbabilityToAvoidTrigger)
+            foreach (var targetInSight in targetsInSight)
             {
-                Target.Value = targetInSight.transform;
-                ret = TaskStatus.Success;
+                if (_lastTargetsInSight.Contains(targetInSight)) continue;
+
+                //we have a new target, and we do the proba test
+                if (Random.Range(0, 1f) >= ProbabilityToAvoidTrigger)
+                {
+                    //proba test succeed : follow
+                    StartCoroutine(Countdown());
+                    Target.Value = targetInSight.transform;
+                    _lastTargetsInSight = targetsInSight;
+                    return TaskStatus.Failure;
+                }
             }
         }
 
         _lastTargetsInSight = targetsInSight;
-
-        return ret;
+        return TaskStatus.Failure;
     }
 
     List<GameObject> TargetsInSight()

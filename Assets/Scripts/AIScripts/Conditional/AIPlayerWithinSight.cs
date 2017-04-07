@@ -2,14 +2,12 @@
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
-public class PlayerWithinSight : Conditional
+public class AIPlayerWithinSight : HumanizedReactionConditional
 {
     public float ConeAngle = 90;
     public float ConeDistance = 5;
 
     public float ProbabilityToAvoidTrigger = .5f;
-
-    public string PlayerTag = "Player";
 
     public SharedTransform Target;
 
@@ -20,7 +18,9 @@ public class PlayerWithinSight : Conditional
 
     public override void OnAwake()
     {
-        _player = GameObject.FindGameObjectWithTag(PlayerTag);
+        base.OnAwake();
+
+        _player = GameObject.FindGameObjectWithTag("Player");
         _animator = gameObject.GetComponentInChildren<Animator>();
     }
 
@@ -36,20 +36,25 @@ public class PlayerWithinSight : Conditional
                     Target.Value = null;
                     return TaskStatus.Failure;
                 }
+                _animator.SetBool("isIdle", true); //previous action should take care of this
+                StartCoroutine(Countdown());
             }
-            else if (Target.Value == _player.transform)
-                return TaskStatus.Success;
-            else
+
+            if (waiting)
                 return TaskStatus.Failure;
 
-            Target.Value = _player.transform;
-
-            return TaskStatus.Success;
+            if (IsPlayerInSight())
+            {
+                Target.Value = _player.transform;
+                return TaskStatus.Success;
+            }
+            return TaskStatus.Failure;
         }
 
         //if player not in sight
         _lastTimePlayerInSight = false;
-        Target.Value = null;
+        if (Target.Value == _player)
+            Target.Value = null;
         return TaskStatus.Failure;
     }
 

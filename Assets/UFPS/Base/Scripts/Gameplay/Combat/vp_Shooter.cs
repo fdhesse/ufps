@@ -297,12 +297,11 @@ public class vp_Shooter : vp_Component
 	/// </summary>
 	protected virtual void PlayFireSound()
 	{
-
 		if (Audio == null)
 			return;
 
-        if (null != FireSoundTriggered)
-    	    FireSoundTriggered(transform.position);
+	    if (null != FireSoundTriggered)
+	        FireSoundTriggered(transform.position);
 
         Audio.pitch = Random.Range(SoundFirePitch.x, SoundFirePitch.y) * Time.timeScale;
 		Audio.clip = SoundFire;
