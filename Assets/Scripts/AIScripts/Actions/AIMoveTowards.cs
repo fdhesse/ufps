@@ -47,7 +47,7 @@ public class AIMoveTowards : HumanizedSpeedAction
         var dst = Vector3.Distance(transform.position, Target.Value.position);
         if (dst < ThresholdCompleteDistance)
         {
-            if (EnableGrab)
+            if (EnableGrab && !_freezePlayer.Frost)
             {
                 if (!_animator.GetBool("isGrabbing"))
                     EnableGrabAnim();
@@ -84,7 +84,7 @@ public class AIMoveTowards : HumanizedSpeedAction
 
     IEnumerator ApplyPlayerDamage()
     {
-        while (_zombieDamageHandler.CurrentHealth > 0)
+        while (_zombieDamageHandler.CurrentHealth > 0 && _playerDamageHandler.CurrentHealth > 0)
         {
             yield return new WaitForSeconds(GrabDamageWaitTime);
             _playerDamageHandler.Damage(GradDamagePerHit);
@@ -93,7 +93,7 @@ public class AIMoveTowards : HumanizedSpeedAction
 
     IEnumerator UnfrostWhenDead()
     {
-        while (_zombieDamageHandler.CurrentHealth > 0)
+        while (_zombieDamageHandler.CurrentHealth > 0 && _playerDamageHandler.CurrentHealth > 0)
         {
             _freezePlayer.Frost = true;
             yield return new WaitForSeconds(.25f);
